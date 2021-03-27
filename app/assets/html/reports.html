@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -11,16 +12,14 @@
         var income_type;
         var members;
         function showdonations() {
-            $('#example').DataTable( {
-                "ajax": { 
-                    "url": "api/reports/"+$('#member_id').val()+"/"+$('#income_type_id').val(),
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "api/reports/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
                     dataSrc: ""
                 },
                 "columns": [
                     { "data": "id" },
-                    { "data": "member_id" },
-                    { "data": "income_type_id" },
-                    { "data": "quantity_value"},
+                    { "data": "quantity_value" },
                     { "data": "quantity" },
                     { "data": "value" },
                 ]
@@ -78,23 +77,20 @@
         <h1>Report</h1>
         <form action="/api/members/" name="addMemberForm" method="post">
             <label for="member_id">Member</label>
-            <select type="text" id="member_id" name="member_id">
+            <select type="text" class="form-control" id="member_id" name="member_id">
                 <option value="">Select Members</option>
             </select>
             <br>
 
             <label for="income_type_id">Type</label>
-            <select type="text" id="income_type_id" name="income_type_id">
+            <select type="text" class="form-control" id="income_type_id" name="income_type_id">
             </select>
-
-            <input type="button" value="Generate Report" onclick="showdonations()">
+            <input type="button" value="Show Details" onclick="showdonations()">
         </form>
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Member ID</th>
-                    <th>Type</th>
+                    <th>Receipt Number</th>
                     <th>Quantity Value</th>
                     <th>Quantity</th>
                     <th>Value</th>
