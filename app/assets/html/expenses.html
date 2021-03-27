@@ -10,16 +10,15 @@
         $(document).ready(function() {
             $('#example').DataTable( {
                 "ajax": { 
-                    "url": "api/donations",
+                    "url": "api/expenses",
                     dataSrc: ""
                 },
                 "columns": [
                     { "data": "id" },
-                    { "data": "member_id" },
-                    { "data": "income_type_id" },
-                    { "data": "quantity_value"},
-                    { "data": "quantity" },
-                    { "data": "value" },
+                    { "data": "type_id" },
+                    { "data": "receipt" },
+                    { "data": "value"},
+                    { "data": "description" }
                 ]
             } );
         } );
@@ -52,15 +51,15 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Member ID</th>
                     <th>Type</th>
-                    <th>Quantity Value</th>
-                    <th>Quantity</th>
+                    <th>Receipt</th>
                     <th>Value</th>
+                    <th>Description</th>
                 </tr>
             </thead>
         </table>
-        <a href="add-donation" class="btn btn-info" role="button">Add Donation</a>
+        <a href="add_expense" class="btn btn-info" role="button">Add Expense</a>
+        <a href="add_expense_type" class="btn btn-info" role="button">Add Expense Type</a>
         </div>
         <script>
             function w3_open() {

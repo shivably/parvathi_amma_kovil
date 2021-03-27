@@ -10,6 +10,17 @@ module.exports = function(app, db) {
     processData(res, "SELECT * FROM ExpenseType");
   });
 
+    // Load products by ID: http://localhost:4300/api/income_type/id/$id
+  // example: http://localhost:4300/api/income_type/id/15
+  app.get('/api/expense/id/:id', (req, res) => {
+    processData(res, "SELECT * FROM Expense where id == "+req.params.id);
+  });
+
+  // Load all products: http://localhost:4300/api/income_type/
+  app.get('/api/expenses', (req, res) => {
+    processData(res, "SELECT * FROM Expense");
+  });
+
   function processData(res, sql){
     db.serialize(function() {
       db.all(sql, 
@@ -52,6 +63,12 @@ module.exports = function(app, db) {
        var data = req.body;
         processProduct(req, res, db);
   });
+
+  app.post('/api/expense/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+     var data = req.body;
+      addExpense(req, res, db);
+});
 
       
     // Delete a product
@@ -96,6 +113,38 @@ module.exports = function(app, db) {
       editMember(req, res, db);
   });
 };
+
+function addExpense(req, res, db){
+  //validateRequest(req, res);
+  insertExpense(req.body, res, db);
+}
+
+function insertExpense(income_type, res, db){
+  var type_id = income_type.type_id;
+  var receipt = income_type.receipt;
+  var value = income_type.value;
+  var description = income_type.description;
+
+  console.dir(income_type)
+
+  var sql = `insert into Expense (type_id, receipt, value, description) 
+          VALUES 
+          (?, ?, ?);`;
+
+  var values = [type_id, receipt, value, description];
+
+  db.serialize(function () {
+      db.run(sql, values, function (err) {
+          if (err){
+              console.error(err);
+              res.status(500).send(err);
+          }
+          else {
+              res.status(200).send({response_action: 'redirect', url:'/income_type', msg: "Successfully Added Income Type"})
+          }
+      });
+  });
+}
 
 function processProduct(req, res, db){
   //validateRequest(req, res);

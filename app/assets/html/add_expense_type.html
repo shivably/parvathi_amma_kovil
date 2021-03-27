@@ -9,12 +9,11 @@
         function submitData() {
             var person = {
                 name: $("#name").val(),
-                value: $("#value").val(),
                 description: $("#description").val(),
             }
             console.dir(person);
             $.ajax({
-                url: '/api/income_type/',
+                url: '/api/expense_type/',
                 type: 'post',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -52,18 +51,15 @@
           </nav>
         <br/>
     <div class="container center_div">
-    <h1>Add Donation Type</h1>
+    <h1>Add Expense Type</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
         <label for="name">Name</label><br>
         <input type="text" id="name" name="name"><br>
 
-        <label for="value">Value</label><br>
-        <input type="text" id="value" name="value"><br>
-
         <label for="description">Description</label><br>
         <textarea id="description" name="description"></textarea><br>
 
-        <input type="button" value="Add Type" onclick="submitData()">
+        <input type="button" value="Add" onclick="submitData()">
       </form>
       </div>
 </body>

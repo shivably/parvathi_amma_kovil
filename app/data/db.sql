@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Members
     name TEXT NOT NULL, 
     address TEXT, 
     permanent_address INT NOT NULL , 
-    phone TEXT NOT NULL,
+    phone TEXT,
     email TEXT,
     aadhar TEXT,
     pan TEXT,

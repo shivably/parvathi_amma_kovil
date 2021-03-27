@@ -33,6 +33,18 @@ app.get('/add-donation', (req, res) => {
     res.sendFile('./app/assets/html/add-donation.html', { root: __dirname });
 });
 
+app.get('/expenses', (req, res) => {
+    res.sendFile('./app/assets/html/expenses.html', { root: __dirname });
+});
+
+app.get('/add_expense_type', (req, res) => {
+    res.sendFile('./app/assets/html/add_expense_type.html', { root: __dirname });
+});
+
+app.get('/add_expense', (req, res) => {
+    res.sendFile('./app/assets/html/add_expense.html', { root: __dirname });
+});
+
 app.get('/reports', (req, res) => {
     res.sendFile('./app/assets/html/reports.html', { root: __dirname });
 });
