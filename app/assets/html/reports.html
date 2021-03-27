@@ -3,29 +3,28 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-
     <script>
-        window.jsPDF = window.jspdf.jsPDF
         var income_type;
         var members;
-        function generatereport() {
-            const doc = new jsPDF({
-                orientation: "landscape",
-                unit: "in",
-                format: [4, 2]
-            });
-            console.dir(members)
-            $.each(members, function (i, row) {
-                for (const [key, value] of Object.entries(row)) {
-                    doc.text(key, 1, i);
-                }
+        function showdonations() {
+            $('#example').DataTable( {
+                "ajax": { 
+                    "url": "api/reports/"+$('#member_id').val()+"/"+$('#income_type_id').val(),
+                    dataSrc: ""
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "member_id" },
+                    { "data": "income_type_id" },
+                    { "data": "quantity_value"},
+                    { "data": "quantity" },
+                    { "data": "value" },
+                ]
             })
-            //doc.text("Hello world!", 1, 1);
-            doc.save("two-by-four.pdf");
         }
         $(document).ready(function () {
             $.ajax({
@@ -83,12 +82,25 @@
                 <option value="">Select Members</option>
             </select>
             <br>
+
             <label for="income_type_id">Type</label>
             <select type="text" id="income_type_id" name="income_type_id">
             </select>
-            
-            <input type="button" value="Generate Report" onclick="generatereport()">
+
+            <input type="button" value="Generate Report" onclick="showdonations()">
         </form>
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Member ID</th>
+                    <th>Type</th>
+                    <th>Quantity Value</th>
+                    <th>Quantity</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </body>
 
