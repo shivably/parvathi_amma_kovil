@@ -85,10 +85,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/donations">Donation</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reports">Reports</a>
+          </li>
         </ul>
       </nav>
       <br/>
-    <h1>Add Member</h1>
+      <div class="container center_div">
+    <h1>Donation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
         <label for="member_id">Member</label><br>
         <select type="text" id="member_id" name="member_id">
@@ -110,6 +114,8 @@
         <input type="text" readonly id="value" name="value"><br>
 
         <input type="button" value="Add" onclick="submitData()">
+      </form>
+      </div>
 </body>
 
 </html>

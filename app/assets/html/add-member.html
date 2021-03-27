@@ -46,33 +46,41 @@
           <li class="nav-item">
             <a class="nav-link" href="/donations">Donation</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reports">Reports</a>
+          </li>
         </ul>
       </nav>
       <br/>
+      <div class="container center_div">
     <h1>Add Member</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name"><br>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name"><br>
 
-        <label for="address">Address</label><br>
-        <input type="text" id="address" name="address"><br>
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address"><br>
 
-        <label for="permanent_address">Permanent Address</label><br>
-        <input type="text" id="permanent_address" name="permanent_address"><br>
+        <label for="permanent_address">Permanent Address</label>
+        <input type="text" class="form-control" id="permanent_address" name="permanent_address"><br>
 
-        <label for="phone">Phone</label><br>
-        <input type="text" id="phone" name="phone"><br>
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone"><br>
 
-        <label for="email">Email</label><br>
-        <input type="email" id="email" name="email"><br>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email"><br>
 
-        <label for="aadhar">Aadhar</label><br>
-        <input type="text" id="aadhar" name="aadhar"><br>
+        <label for="aadhar">Aadhar</label>
+        <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
 
-        <label for="dob">DOB</label><br>
-        <input type="text" id="dob" name="dob"><br>
+        <label for="dob">DOB</label>
+        <input type="text" class="form-control" id="dob" name="dob"><br>
 
         <input type="button" value="Add" onclick="submitData()">
+      </div>
+    </form>
+    </div>
 </body>
 
 </html>

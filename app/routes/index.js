@@ -7,6 +7,8 @@ const loadDatabase = require('../data/setup-database');
 const members = require('./member');
 const income_type = require('./income_type');
 const donation = require('./donation');
+const reports = require('./reports');
+
 
 
 module.exports = function (app, db) {
@@ -24,6 +26,6 @@ module.exports = function (app, db) {
   members(app, db);
   income_type(app, db);
   donation(app, db);
-
+  reports(app, db);
 
 };
