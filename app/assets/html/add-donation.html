@@ -99,6 +99,11 @@
             <option value="">Select Members</option>
         </select>
         <br>
+        <label for="donor_name">Name</label><br>
+        <input type="text" readonly id="donor_name" name="donor_name"><br>
+
+        <label for="donor_contact">Contact</label><br>
+        <input type="text" readonly id="donor_contact" name="donor_contact"><br>
 
         <label for="income_type_id">Type</label><br>
         <select type="text" id="income_type_id" name="income_type_id" onchange="update_quantity_value(this.value)">
@@ -111,7 +116,7 @@
         <input type="text" id="quantity" name="quantity" onchange="compute(this.value)"><br>
 
         <label for="value">Value</label><br>
-        <input type="text" readonly id="value" name="value"><br>
+        <input type="text" id="value" name="value"><br>
 
         <input type="button" value="Add" onclick="submitData()">
       </form>
