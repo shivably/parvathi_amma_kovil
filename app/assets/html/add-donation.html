@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      var income_type;
+      var members;
+      $(document).ready(function() {
+            $.ajax({
+                url: '/api/members/',
+                type: 'get',
+                contentType: 'application/json',
+                success: function (response_data) {
+                  console.dir(response_data)
+                  members = response_data;
+                  $.each(response_data, function(k, v) {
+                    $('#member_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+                  });
+                },
+            });
+
+            $.ajax({
+                url: '/api/income_type/',
+                type: 'get',
+                contentType: 'application/json',
+                success: function (response_data) {
+                  console.dir(response_data)
+                  income_type = response_data
+                  $.each(response_data, function(k, v) {
+                    $('#income_type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+                  });
+                  $('#quantity_value').val(income_type[0].value);
+                },
+            });
+        });
+        function compute(quantity){
+          var quantity_value = $("#quantity_value").val()
+          $('#value').val(quantity_value * quantity);
+        }
+        function update_quantity_value(id){
+          $.each(income_type, function(k, v) {
+            if(v.id = id){
+              $('#quantity_value').val(v.value);
+            }
+          })
+        }
+        function submitData() {
+            var person = {
+                member_id: $("#member_id").val(),
+                income_type_id: $("#income_type_id").val(),
+                quantity_value: $("#quantity_value").val(),
+                quantity: $("#quantity").val(),
+                value: $("#value").val()
+            }
+            console.dir(person);
+            $.ajax({
+                url: '/api/donation/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response_data) {
+                    if (response_data.response_action == 'redirect'){
+                        window.location.replace(response_data.url+"?msg="+response_data.msg);
+                    }
+                },
+                data: JSON.stringify(person)
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/members">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/income_type">Tax</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/donations">Donation</a>
+          </li>
+        </ul>
+      </nav>
+      <br/>
+    <h1>Add Member</h1>
+    <form action="/api/members/" name="addMemberForm" method="post">
+        <label for="member_id">Member</label><br>
+        <select type="text" id="member_id" name="member_id">
+            <option value="">Select Members</option>
+        </select>
+        <br>
+
+        <label for="income_type_id">Type</label><br>
+        <select type="text" id="income_type_id" name="income_type_id" onchange="update_quantity_value(this.value)">
+        </select><br>
+
+        <label for="quantity_value">Quantity Value</label><br>
+        <input type="text" readonly id="quantity_value" name="quantity_value"><br>
+
+        <label for="quantity">Quantity</label><br>
+        <input type="text" id="quantity" name="quantity" onchange="compute(this.value)"><br>
+
+        <label for="value">Value</label><br>
+        <input type="text" readonly id="value" name="value"><br>
+
+        <input type="button" value="Add" onclick="submitData()">
+</body>
+
+</html>
