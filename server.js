@@ -19,6 +19,15 @@ app.get('/members', (req, res) => {
 app.get('/add-member', (req, res) => {
     res.sendFile('./app/assets/html/add-member.html', { root: __dirname });
 });
+
+app.get('/kovil', (req, res) => {
+    res.sendFile('./app/assets/html/kovil.html', { root: __dirname });
+});
+
+app.get('/add_kovil', (req, res) => {
+    res.sendFile('./app/assets/html/add_kovil.html', { root: __dirname });
+});
+
 app.get('/income_type', (req, res) => {
     res.sendFile('./app/assets/html/income_type.html', { root: __dirname });
 });

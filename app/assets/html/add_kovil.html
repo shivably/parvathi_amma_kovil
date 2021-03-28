@@ -23,12 +23,11 @@
         function submitData() {
             var person = {
                 name: $("#name").val(),
-                value: $("#value").val(),
                 description: $("#description").val(),
             }
             console.dir(person);
             $.ajax({
-                url: '/api/income_type/',
+                url: '/api/kovil/',
                 type: 'post',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -50,10 +49,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="/members">Members</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="/kovil">Kovil</a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/donations">Donation</a>
               </li>
               <li class="nav-item">
@@ -70,13 +69,6 @@
     <form action="/api/members/" name="addMemberForm" method="post">
         <label for="name">Name</label><br>
         <input type="text" id="name" name="name"><br>
-
-        <label for="kovil_id">Kovil</label><br>
-        <select type="text" id="kovil_id" name="kovil_id">
-        </select><br>
-
-        <label for="value">Value</label><br>
-        <input type="text" id="value" name="value"><br>
 
         <label for="description">Description</label><br>
         <textarea id="description" name="description"></textarea><br>
