@@ -15,7 +15,7 @@ module.exports = function (app, db) {
   app.post('/api/reports/', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
-    processData(res, "SELECT * FROM Income where donor_name like %" + donor_name.name + "%");
+    processData(res, "SELECT * FROM Income where donor_name like '%" + data.donor_name + "%'");
   });
 
   function processData(res, sql) {
