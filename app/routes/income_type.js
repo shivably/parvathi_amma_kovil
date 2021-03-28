@@ -105,15 +105,16 @@ function processProduct(req, res, db){
 function insertProduct(income_type, res, db){
   var name = income_type.name;
   var value = income_type.value;
+  var kovil_id = income_type.kovil_id;
   var description = income_type.description;
 
   console.dir(income_type)
 
-  var sql = `insert into IncomeType (name, value, description) 
+  var sql = `insert into IncomeType (name, kovil_id, value, description) 
           VALUES 
-          (?, ?, ?);`;
+          (?, ?, ?, ?);`;
 
-  var values = [name, value, description];
+  var values = [name, kovil_id, value, description];
 
   db.serialize(function () {
       db.run(sql, values, function (err) {
