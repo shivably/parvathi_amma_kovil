@@ -129,7 +129,7 @@ function insertExpense(income_type, res, db){
 
   var sql = `insert into Expense (type_id, receipt, value, description) 
           VALUES 
-          (?, ?, ?);`;
+          (?, ?, ?, ?);`;
 
   var values = [type_id, receipt, value, description];
 

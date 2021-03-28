@@ -6,6 +6,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+            $(document).ready(function() {
+            $.ajax({
+                url: '/api/expense_type/',
+                type: 'get',
+                contentType: 'application/json',
+                success: function (response_data) {
+                  console.dir(response_data)
+                  members = response_data;
+                  $.each(response_data, function(k, v) {
+                    $('#type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+                  });
+                },
+            });
+        });
         function submitData() {
             var person = {
               type_id: $("#type_id").val(),
@@ -53,10 +67,10 @@
           </nav>
         <br/>
     <div class="container center_div">
-    <h1>Add Expense Type</h1>
+    <h1>Add Expense</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
         <label for="type_id">Type</label><br>
-        <input type="text" id="type_id" name="type_id"><br>
+        <select type="text" id="type_id" name="type_id"></select><br>
 
         <label for="receipt">Receipt</label><br>
         <input type="text" id="receipt" name="receipt"><br>
