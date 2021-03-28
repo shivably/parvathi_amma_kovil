@@ -12,18 +12,37 @@
         var income_type;
         var members;
         function showdonations() {
-            $('#example').DataTable({
-                "ajax": {
-                    "url": "api/reports/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
-                    dataSrc: ""
-                },
-                "columns": [
-                    { "data": "id" },
-                    { "data": "quantity_value" },
-                    { "data": "quantity" },
-                    { "data": "value" },
-                ]
-            })
+            if($('#member_id').val() != null && $('#member_id').val() != ""){
+                $('#example').DataTable({
+                    "ajax": {
+                        "url": "api/reports/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
+                        dataSrc: ""
+                    },
+                    "columns": [
+                        { "data": "id" },
+                        { "data": "quantity_value" },
+                        { "data": "quantity" },
+                        { "data": "value" },
+                    ]
+                })
+            } else if($('#donor_name').val()!= null && $('#donor_name').val() != ""){
+                $('#example').DataTable({
+                    "ajax": {
+                        "url": "api/reports/",
+                        "type": "POST",
+                        "data": {'donor_name': $('#donor_name').val()},
+                        dataSrc: ""
+                    },
+                    "columns": [
+                        { "data": "id" },
+                        { "data": "quantity_value" },
+                        { "data": "quantity" },
+                        { "data": "value" },
+                    ]
+                })
+            } else {
+                alert("Please Select Search Criteria!")
+            }
         }
         $(document).ready(function () {
             $.ajax({
@@ -80,6 +99,10 @@
             <select type="text" class="form-control" id="member_id" name="member_id">
                 <option value="">Select Members</option>
             </select>
+            <br>
+
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="donor_name" name="donor_name">
             <br>
 
             <label for="income_type_id">Type</label>
