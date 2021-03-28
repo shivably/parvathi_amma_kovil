@@ -58,6 +58,10 @@ app.get('/reports', (req, res) => {
     res.sendFile('./app/assets/html/reports.html', { root: __dirname });
 });
 
+app.get('/receipt', (req, res) => {
+    res.sendFile('./app/assets/html/receipt.html', { root: __dirname });
+});
+
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
 });

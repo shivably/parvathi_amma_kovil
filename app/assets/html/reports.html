@@ -24,6 +24,12 @@
                         { "data": "quantity_value" },
                         { "data": "quantity" },
                         { "data": "value" },
+                        { 'data': 'link',
+                         'render': function (data, type, row, meta)
+                         {
+                             return '<a class="btn btn-info" role="button" href="/receipt' + "/?id=" + row.id + '">Show </a>'
+                         }
+                     }
                     ]
                 })
             } else if($('#donor_name').val()!= null && $('#donor_name').val() != ""){
@@ -123,6 +129,7 @@
                     <th>Quantity Value</th>
                     <th>Quantity</th>
                     <th>Value</th>
+                    <th></th>
                 </tr>
             </thead>
         </table>
