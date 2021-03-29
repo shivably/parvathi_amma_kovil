@@ -160,15 +160,17 @@ function insertProduct(income, res, db){
   var member_id = income.member_id;
   var income_type_id = income.income_type_id;
   var quantity = income.quantity;
+  var donor_name = income.donor_name;
+  var donor_contact = income.donor_contact;
   var value = income.value;
   var quantity_value = income.quantity_value;
   console.dir(income)
 
-  var sql = `insert into Income (member_id, income_type_id, quantity, value, quantity_value) 
+  var sql = `insert into Income (member_id, income_type_id, quantity, donor_name, donor_contact, value, quantity_value) 
           VALUES 
-          (?, ?, ?, ?, ?);`;
+          (?, ?, ?, ?, ?, ?, ?);`;
 
-  var values = [member_id, income_type_id, quantity, value, quantity_value];
+  var values = [member_id, income_type_id, quantity, donor_name, donor_contact, value, quantity_value];
 
   db.serialize(function () {
       db.run(sql, values, function (err) {

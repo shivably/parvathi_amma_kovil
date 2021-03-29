@@ -43,17 +43,23 @@
                     $('#donation_unit_value').html(donation[0].quantity_value)
                     $('#donation_value').html(donation[0].value)
 
-                    $.ajax({
-                        url: '/api/member/id/' + donation[0].member_id,
-                        type: 'get',
-                        contentType: 'application/json',
-                        success: function (member) {
-                            console.dir(member)
-                            $('#member').html(member[0].name);
-                            $('#address').html(member[0].address);
-                            $('#phone').html(member[0].phone);
-                        },
-                    });
+                    if (donation[0].member_id){
+                        $.ajax({
+                            url: '/api/member/id/' + donation[0].member_id,
+                            type: 'get',
+                            contentType: 'application/json',
+                            success: function (member) {
+                                console.dir(member)
+                                $('#member').html(member[0].name);
+                                $('#address').html(member[0].address);
+                                $('#phone').html(member[0].phone);
+                            },
+                        });
+                    } else {
+                        $('#member').html(donation[0].donor_name);
+                        //$('#address').html(donation[0].donor_contact);
+                        $('#phone').html(donation[0].donor_contact);
+                    }
                     $.ajax({
                         url: '/api/income_type/id/' + donation[0].income_type_id,
                         type: 'get',
