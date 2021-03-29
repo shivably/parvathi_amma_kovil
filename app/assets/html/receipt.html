@@ -53,9 +53,9 @@
                             },
                         });
                     } else {
-                        $('#member').html(donation[0].donor_name);
+                        $('#member').html(donation[0].name);
                         //$('#address').html(donation[0].donor_contact);
-                        $('#phone').html(donation[0].donor_contact);
+                        $('#phone').html(donation[0].contact);
                     }
                     $.ajax({
                         url: '/api/donation_details/receipt_id/' + donation[0].id,

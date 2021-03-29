@@ -172,7 +172,7 @@ function insertDonationDetail(income, res, db) {
         res.status(500).send(err);
       }
       else {
-        res.status(200).send({ response_action: 'redirect', url: '/receipt/?id='+receipt_id, msg: "Successfully Added New Member" })
+        res.status(200).send({ response_action: 'redirect', url: '/receipt/', receipt_id: receipt_id, msg: "Successfully Added New Member" })
       }
     });
   });
