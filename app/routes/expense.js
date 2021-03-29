@@ -140,7 +140,7 @@ function insertExpense(income_type, res, db){
               res.status(500).send(err);
           }
           else {
-              res.status(200).send({response_action: 'redirect', url:'/income_type', msg: "Successfully Added Income Type"})
+              res.status(200).send({response_action: 'redirect', url:'/expenses', msg: "Successfully Added Income Type"})
           }
       });
   });
@@ -170,7 +170,7 @@ function insertProduct(income_type, res, db){
               res.status(500).send(err);
           }
           else {
-              res.status(200).send({response_action: 'redirect', url:'/income_type', msg: "Successfully Added Income Type"})
+              res.status(200).send({response_action: 'redirect', url:'/expenses', msg: "Successfully Added Income Type"})
           }
       });
   });
