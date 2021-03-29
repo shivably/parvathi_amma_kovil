@@ -73,23 +73,28 @@
                                     $('#Kodai_unit_value').html(data.unit_value)
                                     $('#Kodai_quantity').html(data.quantity)
                                     $('#Kodai_value').html(data.value)
+                                    total = total + data.value
                                 }
                                 else if (data.donation_type === 2 || data.donation_type === 8) {
                                     $('#Seethana_value').html(data.value)
+                                    total = total + data.value
                                 }
                                 else if (data.donation_type === 3 || data.donation_type === 9) {
                                     $('#Nankudai_value').html(data.value)
+                                    total = total + data.value
                                 }
                                 else if (data.donation_type === 4 || data.donation_type === 10) {
                                     $('#Undiyal_value').html(data.value)
+                                    total = total + data.value
                                 } 
                                 else if (data.donation_type === 5 || data.donation_type === 11) {
                                     $('#Nemisa_value').html(data.value)
+                                    total = total + data.value
                                 } 
                                 else if (data.donation_type === 6 || data.donation_type === 12) {
                                     $('#Ithara_value').html(data.value)
+                                    total = total + data.value
                                 }
-                                total = total + data.value
                             })
                             $('#total').html(total)
                         },
@@ -199,7 +204,7 @@
                                         <div class="col-9 col-sm-5">Nankudai Varavu</div>
                                         <div class="d-none d-sm-block col-2" id="Nankudai_quantity">-</div>
                                         <div class="d-none d-sm-block col-2 text-95" id="Nankudai_unit_value">-</div>
-                                        <div class="col-2 text-secondary-d2" id="Nankudaivalue">-</div>
+                                        <div class="col-2 text-secondary-d2" id="Nankudai_value">-</div>
                                     </div>
                                     <div class="row mb-2 mb-sm-0 py-25">
                                         <div class="d-none d-sm-block col-1">4</div>

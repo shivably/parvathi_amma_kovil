@@ -106,9 +106,17 @@ module.exports = function (app, db) {
 };
 
 function processDonationDetails(req, res, db) {
+  var values = []
+  var values2 = []
+
+  var receipt_id;
   for (var prod of req.body) {
-    insertDonationDetail(prod, res, db);
+    receipt_id = prod.receipt_id
+    values.push([prod.receipt_id, prod.donation_type, prod.unit_value, prod.quantity, prod.value]);
+    values2.push(prod.receipt_id, prod.donation_type, prod.unit_value, prod.quantity, prod.value);
+
   }
+  bulkinsertDonationDetail(receipt_id, values, values2, res, db);
 }
 
 function processDonationDetail(req, res, db) {
@@ -152,18 +160,16 @@ function insertDonor(income, res, db) {
   });
 }
 
-function insertDonationDetail(income, res, db) {
-  var receipt_id = income.receipt_id;
-  var donation_type = income.donation_type;
-  var unit_value = income.unit_value;
-  var quantity = income.quantity;
-  var value = income.value;
+function bulkinsertDonationDetail(receipt_id, donation_list, donation_list2, res, db) {
 
+  placeholders = donation_list.map((i) => '(?, ?, ?, ?, ?)').join(',');
   var sql = `insert into DonationDetails (receipt_id, donation_type, unit_value, quantity, value) 
-          VALUES 
-          (?, ?, ?, ?, ?);`;
+          VALUES `+
+          placeholders+`;`;
+          console.log(sql)
 
-  var values = [receipt_id, donation_type, unit_value, quantity, value];
+  var values = donation_list2;
+  console.dir(values)
 
   db.serialize(function () {
     db.run(sql, values, function (err) {
@@ -172,7 +178,7 @@ function insertDonationDetail(income, res, db) {
         res.status(500).send(err);
       }
       else {
-        res.status(200).send({ response_action: 'redirect', url: '/receipt/', receipt_id: receipt_id, msg: "Successfully Added New Member" })
+        res.status(200).send({ response_action: 'redirect', url: '/receipt/', 'receipt_id': receipt_id, msg: "Successfully Added New Member" })
       }
     });
   });
