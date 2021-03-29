@@ -15,7 +15,7 @@
             if($('#member_id').val() != null && $('#member_id').val() != ""){
                 $('#example').DataTable({
                     "ajax": {
-                        "url": "api/reports/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
+                        "url": "/api/receipt/member_id/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
                         dataSrc: ""
                     },
                     "columns": [
@@ -95,11 +95,11 @@
                 <a class="nav-link" href="/members">Members</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/kovil">Kovil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/donations">Donation</a>
-            </li>
+                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
+              </li>
             <li class="nav-item">
                 <a class="nav-link" href="/expenses">Expenses</a>
               </li>

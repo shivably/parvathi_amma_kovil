@@ -74,7 +74,7 @@
           if ($('#kodai_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 7,
+              donation_type: 1,
               unit_value: $('#kodai_vari_unit_value').val(),
               quantity: $('#kodai_vari_quantity').val(),
               value: $('#kodai_vari_value').val(),
@@ -83,7 +83,7 @@
           if ($('#seethana_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 8,
+              donation_type: 2,
               unit_value: $('#seethana_vari_unit_value').val(),
               quantity: $('#seethana_vari_quantity').val(),
               value: $('#seethana_vari_value').val(),
@@ -92,7 +92,7 @@
           if ($('#nankudai_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 9,
+              donation_type: 3,
               unit_value: $('#nankudai_vari_unit_value').val(),
               quantity: $('#nankudai_vari_quantity').val(),
               value: $('#nankudai_vari_value').val(),
@@ -101,7 +101,7 @@
           if ($('#undiyal_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 10,
+              donation_type: 4,
               unit_value: $('#undiyal__vari_unit_value').val(),
               quantity: $('#undiyal__vari_quantity').val(),
               value: $('#undiyal_vari_value').val()
@@ -110,7 +110,7 @@
           if ($('#nemisa_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 11,
+              donation_type: 5,
               unit_value: $('#nemisa_vari_unit_value').val(),
               quantity: $('#nemisa_vari_quantity').val(),
               value: $('#nemisa_vari_value').val()
@@ -119,7 +119,7 @@
           if ($('#ithara_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 12,
+              donation_type: 6,
               unit_value: $('#ithara_vari_unit_value').val(),
               quantity: $('#ithara_vari_quantity').val(),
               value: $('#ithara_vari_value').val()
@@ -149,14 +149,14 @@
   <!-- A grey horizontal navbar that becomes vertical on small screens -->
   <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/members">Members</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/kovil">Kovil</a>
-      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/donations">Donation</a>
+        <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/expenses">Expenses</a>
@@ -194,6 +194,7 @@
           <div class="col"><input type="text" placeholder="Quantity" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="kodai_vari_value" name="kodai_vari_value"></div>
         </div>
+      </br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
@@ -203,7 +204,8 @@
           <div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value" name="seethana_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity" name="seethana_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="seethana_vari_value" name="seethana_vari_value"></div>
-        </div>
+      </br>
+        </div></br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
@@ -213,7 +215,7 @@
           <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value" name="nankudai_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity" name="nankudai_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="nankudai_vari_value" name="nankudai_vari_value"></div>
-        </div>
+        </div></br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
@@ -223,7 +225,7 @@
           <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value" name="undiyal__vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity" name="undiyal__vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="undiyal_vari_value" name="undiyal_vari_value"></div>
-        </div>
+        </div></br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
@@ -233,7 +235,7 @@
           <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value" name="nemisa_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity" name="nemisa_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="nemisa_vari_value" name="nemisa_vari_value"></div>
-        </div>
+        </div></br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
@@ -243,6 +245,17 @@
           <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value" name="ithara_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity" name="ithara_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="ithara_vari_value" name="ithara_vari_value"></div>
+        </div>
+      </br>
+        <div class="row">
+          <div class="col">
+            <label for="total_amount">
+              Total Amount
+            </label>
+          </div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount" readonly></div>
         </div>
         <div class="row">
           <input type="button" value="Add" onclick="submitData()">

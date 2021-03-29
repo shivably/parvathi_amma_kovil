@@ -71,3 +71,45 @@ CREATE TABLE IF NOT EXISTS Expense
     dor DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(type_id) REFERENCES ExpenseType(id)
 );
+
+
+CREATE TABLE IF NOT EXISTS DonationType
+( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT NOT NULL, 
+    kovil_name TEXT NOT NULL,
+    description TEXT, 
+    active BOOLEAN DEFAULT 1,
+    dor DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO DonationType (name, kovil_name) VALUES ('Kodai vari', 'Parvathiamman Kovil') ,('Seethana Vari', 'Parvathiamman Kovil'), 
+('Nankudai Varavu', 'Parvathiamman Kovil'), ('Undiyal Varavu', 'Parvathiamman Kovil'),
+('Nemisa Varavu', 'Parvathiamman Kovil'),('Ithara Varavu', 'Parvathiamman Kovil'),
+('Kodai vari', 'Ayyan Kovil') ,('Seethana Vari', 'Ayyan Kovil'), 
+('Nankudai Varavu', 'Ayyan Kovil'), 
+('Undiyal Varavu', 'Ayyan Kovil'),('Nemisa Varavu', 'Ayyan Kovil'),
+('Ithara Varavu', 'Ayyan Kovil');
+
+CREATE TABLE IF NOT EXISTS Donor
+( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    name TEXT DEFAULT NULL,
+    contact TEXT DEFAULT NULL,
+    member_id INTEGER DEFAULT NULL, 
+    description TEXT,
+    FOREIGN KEY(member_id) REFERENCES Members(id)
+);
+
+CREATE TABLE IF NOT EXISTS DonationDetails
+(
+    receipt_id INTEGER NOT NULL,
+    donation_type INTEGER NOT NULL,
+    unit_value INTEGER,
+    quantity INTEGER,
+    value INTEGER NOT NULL,
+    description TEXT,
+    FOREIGN KEY(receipt_id) REFERENCES Donor(id),
+    FOREIGN KEY(donation_type) REFERENCES DonationType(id)
+);

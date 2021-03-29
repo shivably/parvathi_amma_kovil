@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./app/routes')(app, db);
 
+app.get('/', (req, res) => {
+    res.redirect('/add-donation-parvathiamman');
+});
+
 app.get('/members', (req, res) => {
     res.sendFile('./app/assets/html/members.html', { root: __dirname });
 });
@@ -35,9 +39,14 @@ app.get('/add_income_type', (req, res) => {
     res.sendFile('./app/assets/html/add_income_type.html', { root: __dirname });
 });
 
-app.get('/donations', (req, res) => {
-    res.sendFile('./app/assets/html/donations.html', { root: __dirname });
+app.get('/add-donation-ayyan', (req, res) => {
+    res.sendFile('./app/assets/html/add-donation-ayyan.html', { root: __dirname });
 });
+
+app.get('/add-donation-parvathiamman', (req, res) => {
+    res.sendFile('./app/assets/html/add-donation-parvathiamman.html', { root: __dirname });
+});
+
 app.get('/add-donation', (req, res) => {
     res.sendFile('./app/assets/html/add-donation.html', { root: __dirname });
 });
