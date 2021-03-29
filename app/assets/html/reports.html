@@ -15,15 +15,12 @@
             if($('#member_id').val() != null && $('#member_id').val() != ""){
                 $('#example').DataTable({
                     "ajax": {
-                        "url": "/api/receipt/member_id/" + $('#member_id').val() + "/" + $('#income_type_id').val(),
+                        "url": "/api/receipt/member_id/" + $('#member_id').val(),
                         dataSrc: ""
                     },
                     "columns": [
-                        {"data": "donation_date" },
+                        {"data": "date" },
                         { "data": "id" },
-                        { "data": "quantity_value" },
-                        { "data": "quantity" },
-                        { "data": "value" },
                         { 'data': 'link',
                          'render': function (data, type, row, meta)
                          {
@@ -35,17 +32,14 @@
             } else if($('#donor_name').val()!= null && $('#donor_name').val() != ""){
                 $('#example').DataTable({
                     "ajax": {
-                        "url": "api/reports/",
+                        "url": "api/receipt",
                         "type": "POST",
-                        "data": {'donor_name': $('#donor_name').val()},
+                        "data": {'name': $('#donor_name').val()},
                         dataSrc: ""
                     },
                     "columns": [
-                        { "data": "donation_date" },
+                        { "data": "date" },
                         { "data": "id" },
-                        { "data": "quantity_value" },
-                        { "data": "quantity" },
-                        { "data": "value" },
                         { 'data': 'link',
                          'render': function (data, type, row, meta)
                          {
@@ -72,17 +66,18 @@
                 },
             });
 
-            $.ajax({
-                url: '/api/income_type/',
+            /*$.ajax({
+                url: '/api/donation_type/',
                 type: 'get',
                 contentType: 'application/json',
                 success: function (response_data) {
                     income_type = response_data
+                    console.dir(income_type)
                     $.each(response_data, function (k, v) {
-                        $('#income_type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+                        $('#donation_type').append('<option value="' + v.id + '">' + v.name +' ('+ v.kovil_name+')</option>');
                     });
                 },
-            });
+            });*/
         });
     </script>
 </head>
@@ -122,9 +117,9 @@
             <input type="text" class="form-control" id="donor_name" name="donor_name">
             <br>
 
-            <label for="income_type_id">Type</label>
-            <select type="text" class="form-control" id="income_type_id" name="income_type_id">
-            </select>
+            <!--label for="donation_type">Type</label>
+            <select type="text" class="form-control" id="donation_type" name="donation_type">
+            </select-->
             <input type="button" value="Show Details" onclick="showdonations()">
         </form>
         <table id="example" class="display" style="width:100%">
@@ -132,9 +127,6 @@
                 <tr>
                     <th>Date</th>
                     <th>Receipt Number</th>
-                    <th>Quantity Value</th>
-                    <th>Quantity</th>
-                    <th>Value</th>
                     <th></th>
                 </tr>
             </thead>

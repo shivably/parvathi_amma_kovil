@@ -5,11 +5,15 @@ module.exports = function (app, db) {
     processData(res, "SELECT * FROM DonationDetails where id == " + req.params.id);
   });
 
+  app.get('/api/donation_type/', (req, res) => {
+    processData(res, "SELECT * FROM DonationType");
+  });
+
   app.get('/api/donor/id/:id', (req, res) => {
     processData(res, "SELECT * FROM Donor where id == " + req.params.id);
   });
 
-  app.get('/api/receipt/member_id/:member_id', (req, res) => {
+  app.get('/api/receipt/member_id/:member_id/', (req, res) => {
     processData(res, "SELECT * FROM Donor where member_id == " + req.params.member_id);
   });
 
@@ -34,12 +38,16 @@ module.exports = function (app, db) {
 
   app.get('/api/receipt/id/:id', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    processData(res, "SELECT * FROM Donor where name id =" + req.params.id + "%'");
+    processData(res, "SELECT * FROM Donor where name id =" + req.params.id);
   });
 
   // Load all products: http://localhost:4300/api/product/
   app.get('/api/donation_details', (req, res) => {
     processData(res, "SELECT * FROM DonationDetails");
+  });
+
+  app.get('/api/donation_details/receipt_id/:receipt_id', (req, res) => {
+    processData(res, "SELECT * FROM DonationDetails where receipt_id =" + req.params.receipt_id);
   });
 
   function processData(res, sql) {
@@ -164,7 +172,7 @@ function insertDonationDetail(income, res, db) {
         res.status(500).send(err);
       }
       else {
-        res.status(200).send({ response_action: 'redirect', url: '/donations', msg: "Successfully Added New Member" })
+        res.status(200).send({ response_action: 'redirect', url: '/receipt/?id='+receipt_id, msg: "Successfully Added New Member" })
       }
     });
   });

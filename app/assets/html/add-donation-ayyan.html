@@ -56,10 +56,14 @@
       })
     }
     function submitData() {
+      if($("#member_id").val() == '' && $("#donor_name").val() == ''){
+        alert("Please Enter Details")
+        return
+      }
       var person = {
         member_id: $("#member_id").val(),
         name: $("#donor_name").val(),
-        contact: $("#donor_contact").val(),
+        contact: $("#donor_contact").val()
       }
       console.dir(person);
       $.ajax({
@@ -152,10 +156,10 @@
       <li class="nav-item">
         <a class="nav-link" href="/members">Members</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
       </li>
       <li class="nav-item">
