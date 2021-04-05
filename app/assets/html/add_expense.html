@@ -1,89 +1,100 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-            $(document).ready(function() {
-            $.ajax({
-                url: '/api/expense_type/',
-                type: 'get',
-                contentType: 'application/json',
-                success: function (response_data) {
-                  console.dir(response_data)
-                  members = response_data;
-                  $.each(response_data, function(k, v) {
-                    $('#type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
-                  });
-                },
-            });
-        });
-        function submitData() {
-            var person = {
-              type_id: $("#type_id").val(),
-              receipt: $("#receipt").val(),
-              value: $("#value").val(),
-              description: $("#description").val(),
-            }
-            console.dir(person);
-            $.ajax({
-                url: '/api/expense/',
-                type: 'post',
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (response_data) {
-                    if (response_data.response_action == 'redirect'){
-                        window.location.replace(response_data.url+"?msg="+response_data.msg);
-                    }
-                },
-                data: JSON.stringify(person)
-            });
-        }
-    </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: '/api/expense_type/',
+        type: 'get',
+        contentType: 'application/json',
+        success: function (response_data) {
+          console.dir(response_data)
+          members = response_data;
+          $.each(response_data, function (k, v) {
+            $('#type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+          });
+        },
+      });
+    });
+    function submitData() {
+      if ($("#type_id").val() == '') {
+        alert("Please Select Expense Type")
+        return
+      }
+
+      if ($("#value").val() == '') {
+        alert("Please Enter Amount")
+        return
+      }
+      var person = {
+        type_id: $("#type_id").val(),
+        receipt: $("#receipt").val(),
+        value: $("#value").val(),
+        description: $("#description").val(),
+      }
+      console.dir(person);
+      $.ajax({
+        url: '/api/expense/',
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (response_data) {
+          if (response_data.response_action == 'redirect') {
+            window.location.replace(response_data.url + "?msg=" + response_data.msg);
+          }
+        },
+        data: JSON.stringify(person)
+      });
+    }
+  </script>
 </head>
 
 <body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/expenses">Expenses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-              </li>
-            </ul>
-          </nav>
-        <br/>
-    <div class="container center_div">
+  <!-- A grey horizontal navbar that becomes vertical on small screens -->
+  <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/members">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/expenses">Expenses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/reports">Reports</a>
+      </li>
+    </ul>
+  </nav>
+  <br />
+  <div class="container center_div">
     <h1>Add Expense</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-        <label for="type_id">Type</label><br>
-        <select type="text" id="type_id" name="type_id"></select><br>
+      <label for="type_id">Type</label><br>
+      <select type="text" id="type_id" name="type_id">
+        <option value=''>Expense Type</option>
+      </select><br>
 
-        <label for="receipt">Receipt</label><br>
-        <input type="text" id="receipt" name="receipt"><br>
+      <label for="receipt">Receipt</label><br>
+      <input type="text" id="receipt" name="receipt"><br>
 
-        <label for="value">Value</label><br>
-        <input type="text" id="value" name="value"><br>
+      <label for="value">Amount</label><br>
+      <input type="text" id="value" name="value"><br>
 
-        <label for="description">Description</label><br>
-        <textarea id="description" name="description"></textarea><br>
+      <label for="description">Description</label><br>
+      <textarea id="description" name="description"></textarea><br>
 
-        <input type="button" value="Add" onclick="submitData()">
-      </form>
-      </div>
+      <input type="button" value="Add" onclick="submitData()">
+    </form>
+  </div>
 </body>
 
 </html>
