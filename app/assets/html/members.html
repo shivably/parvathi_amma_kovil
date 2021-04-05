@@ -20,7 +20,17 @@
                     { "data": "permanent_address"},
                     { "data": "phone" },
                     { "data": "email" },
-                    { "data": "aadhar" }
+                    { "data": "aadhar" },
+                    {
+                        data: null,
+                        render: function (data, type, row, meta)
+                        {return  '<a href="edit-member" role="button">Edit</a>'}
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row, meta)
+                        {return  '<a href="activate-member" role="button">Activate/DeActivate</a>'}
+                    }
                 ]
             } );
         } );
@@ -59,6 +69,8 @@
                     <th>Phone</th>
                     <th>Email Address</th>
                     <th>Date Of Birth</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
         </table>
