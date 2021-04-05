@@ -60,6 +60,10 @@
         alert("Please Enter Details")
         return
       }
+      if ($('#ithara_vari_value').val() == '' && $('#nemisa_vari_value').val() == '' && $('#undiyal_vari_value').val() == '' && $('#nankudai_vari_value').val() == '' && $('#seethana_vari_value').val() == '' && $('#kodai_vari_value').val() == '') {
+        alert("Please Enter Values")
+        return
+      }
       var person = {
         member_id: $("#member_id").val(),
         name: $("#donor_name").val(),
