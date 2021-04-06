@@ -112,6 +112,12 @@ module.exports = function (app, db) {
     var data = req.body;
     editMember(req, res, db);
   });
+
+  app.put('/api/expense/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    modifyExpenseDetails(data, res, db);
+  });
 };
 
 function addExpense(req, res, db) {
@@ -232,7 +238,6 @@ function editMember(req, res, db) {
 function modifyMemberDetails(income_type, res, db) {
   var id = income_type.id;
   var name = income_type.name;
-  var value = income_type.value;
   var description = income_type.description;
 
   if (!id) {
@@ -250,9 +255,38 @@ function modifyMemberDetails(income_type, res, db) {
           res.status(500).send(err);
         }
         else
-          res.send();
+          res.status(200).send({ response_action: 'redirect', url: '/expenses', msg: "Successfully Edited Expense Type" });
       });
     });
   }
 }
+
+function modifyExpenseDetails(expense, res, db) {
+  var type_id = expense.type_id;
+  var receipt = expense.receipt;
+  var value = expense.value;
+  var description = expense.description;
+  var id = expense.id;
+
+  if (!id) {
+    res.status(400).send("ID is mandatory");
+  }
+
+  else {
+    var sql = `update Expense set type_id = ?, receipt = ?, value = ?, description = ? where id = ?;`;
+    var values = [type_id, receipt, value, description, id];
+
+    db.serialize(function () {
+      db.run(sql, values, function (err) {
+        if (err) {
+          console.error(err);
+          res.status(500).send(err);
+        }
+        else
+          res.status(200).send({ response_action: 'redirect', url: '/expenses', msg: "Successfully Edited Expense" });
+      });
+    });
+  }
+}
+
 
