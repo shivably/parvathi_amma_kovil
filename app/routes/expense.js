@@ -1,8 +1,8 @@
-module.exports = function(app, db) {
+module.exports = function (app, db) {
   // Load products by ID: http://localhost:4300/api/income_type/id/$id
   // example: http://localhost:4300/api/income_type/id/15
   app.get('/api/expense_type/id/:id', (req, res) => {
-    processData(res, "SELECT * FROM ExpenseType where id == "+req.params.id);
+    processData(res, "SELECT * FROM ExpenseType where id == " + req.params.id);
   });
 
   // Load all products: http://localhost:4300/api/income_type/
@@ -10,10 +10,10 @@ module.exports = function(app, db) {
     processData(res, "SELECT * FROM ExpenseType");
   });
 
-    // Load products by ID: http://localhost:4300/api/income_type/id/$id
+  // Load products by ID: http://localhost:4300/api/income_type/id/$id
   // example: http://localhost:4300/api/income_type/id/15
   app.get('/api/expense/id/:id', (req, res) => {
-    processData(res, "SELECT * FROM Expense where id == "+req.params.id);
+    processData(res, "SELECT * FROM Expense where id == " + req.params.id);
   });
 
   // Load all products: http://localhost:4300/api/income_type/
@@ -21,105 +21,105 @@ module.exports = function(app, db) {
     processData(res, "SELECT * FROM Expense");
   });
 
-  function processData(res, sql){
-    db.serialize(function() {
-      db.all(sql, 
-        function(err, rows) {
-          if(err){
+  function processData(res, sql) {
+    db.serialize(function () {
+      db.all(sql,
+        function (err, rows) {
+          if (err) {
             console.error(err);
             res.status(500).send(err);
           }
           else
             sendData(res, rows, err);
-      });
+        });
     });
   }
 
-  function sendData(res, data, err){
-    res.setHeader("Access-Control-Allow-Origin","*");
-    if(data[0])
+  function sendData(res, data, err) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    if (data[0])
       res.send(data);
-    else{
+    else {
       res.status(404).send("ExpenseType not found");
     }
   }
 
-    // Add new product
-    // http://localhost:4300/api/income_type
-    // Sending a JSON body:
-    // {
-    //     "name": "ExampleProductName",
-    //     "description": "Example product description",
-    //     "price": 2.00,
-    //     "currency": "EUR" 
-    // }
+  // Add new product
+  // http://localhost:4300/api/income_type
+  // Sending a JSON body:
+  // {
+  //     "name": "ExampleProductName",
+  //     "description": "Example product description",
+  //     "price": 2.00,
+  //     "currency": "EUR" 
+  // }
 
-    // or an array of products:
-    // [
-    //     {...},{...}
-    // ]
-    app.post('/api/expense_type/', (req, res) => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-       var data = req.body;
-        processProduct(req, res, db);
+  // or an array of products:
+  // [
+  //     {...},{...}
+  // ]
+  app.post('/api/expense_type/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    processProduct(req, res, db);
   });
 
   app.post('/api/expense/', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-     var data = req.body;
-      addExpense(req, res, db);
-});
-
-      
-    // Delete a product
-    // http://localhost:4300/api/product
-    // Sending a JSON body: (ID is needed)
-    // {
-    //     "id": "12",            
-    //     "name": "ExampleProductName",
-    //     "description": "Example product description",
-    //     "price": 2.00,
-    //     "currency": "EUR" 
-    // }
-
-    // or an array of products:
-    // [
-    //     {...},{...}
-    // ]
-    app.delete('/api/expense_type/', (req, res) => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      var data = req.body;
-      activateMember(req, res, db);
+    var data = req.body;
+    addExpense(req, res, db);
   });
 
-      // Update a product
-    // http://localhost:4300/api/product
-    // Sending a JSON body:
-    // {
-    //     "id": "12",            
-    //     "name": "ExampleProductName",
-    //     "description": "Example product description",
-    //     "price": 2.00,
-    //     "currency": "EUR" 
-    // }
 
-    // or an array of products:
-    // [
-    //     {...},{...}
-    // ]
-    app.put('/api/expense_type/', (req, res) => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      var data = req.body;
-      editMember(req, res, db);
+  // Delete a product
+  // http://localhost:4300/api/product
+  // Sending a JSON body: (ID is needed)
+  // {
+  //     "id": "12",            
+  //     "name": "ExampleProductName",
+  //     "description": "Example product description",
+  //     "price": 2.00,
+  //     "currency": "EUR" 
+  // }
+
+  // or an array of products:
+  // [
+  //     {...},{...}
+  // ]
+  app.delete('/api/expense_type/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    activateMember(req, res, db);
+  });
+
+  // Update a product
+  // http://localhost:4300/api/product
+  // Sending a JSON body:
+  // {
+  //     "id": "12",            
+  //     "name": "ExampleProductName",
+  //     "description": "Example product description",
+  //     "price": 2.00,
+  //     "currency": "EUR" 
+  // }
+
+  // or an array of products:
+  // [
+  //     {...},{...}
+  // ]
+  app.put('/api/expense_type/', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    editMember(req, res, db);
   });
 };
 
-function addExpense(req, res, db){
+function addExpense(req, res, db) {
   //validateRequest(req, res);
   insertExpense(req.body, res, db);
 }
 
-function insertExpense(income_type, res, db){
+function insertExpense(income_type, res, db) {
   var type_id = income_type.type_id;
   var receipt = income_type.receipt;
   var value = income_type.value;
@@ -134,24 +134,24 @@ function insertExpense(income_type, res, db){
   var values = [type_id, receipt, value, description];
 
   db.serialize(function () {
-      db.run(sql, values, function (err) {
-          if (err){
-              console.error(err);
-              res.status(500).send(err);
-          }
-          else {
-              res.status(200).send({response_action: 'redirect', url:'/expenses', msg: "Successfully Added Income Type"})
-          }
-      });
+    db.run(sql, values, function (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      }
+      else {
+        res.status(200).send({ response_action: 'redirect', url: '/expenses', msg: "Successfully Added Income Type" })
+      }
+    });
   });
 }
 
-function processProduct(req, res, db){
+function processProduct(req, res, db) {
   //validateRequest(req, res);
   insertProduct(req.body, res, db);
 }
 
-function insertProduct(income_type, res, db){
+function insertProduct(income_type, res, db) {
   var name = income_type.name;
   var description = income_type.description;
 
@@ -164,15 +164,15 @@ function insertProduct(income_type, res, db){
   var values = [name, description];
 
   db.serialize(function () {
-      db.run(sql, values, function (err) {
-          if (err){
-              console.error(err);
-              res.status(500).send(err);
-          }
-          else {
-              res.status(200).send({response_action: 'redirect', url:'/expenses', msg: "Successfully Added Income Type"})
-          }
-      });
+    db.run(sql, values, function (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send(err);
+      }
+      else {
+        res.status(200).send({ response_action: 'redirect', url: '/expenses', msg: "Successfully Added Income Type" })
+      }
+    });
   });
 }
 
@@ -185,74 +185,74 @@ function validateRequest(req, res) {
   var instance = req.body;
 
   js.validate(instance, schema, function (errs) {
-      if (errs) {
-          console.error(errs);
-          res.status(400).send(errs);
-      }
+    if (errs) {
+      console.error(errs);
+      res.status(400).send(errs);
+    }
   });
 
   if (req.body.id) {
-      res.status(400).send("ID cannot be submmited");
+    res.status(400).send("ID cannot be submmited");
   }
 };
 
 
-function activateMember(req, res, db){
+function activateMember(req, res, db) {
   updateProduct(req.body, res, db);
 }
 
-function updateProduct(product, res, db){
+function updateProduct(product, res, db) {
   var id = product.id;
 
-  if(!id){
-      res.status(400).send("ID is mandatory");
+  if (!id) {
+    res.status(400).send("ID is mandatory");
   }
-  else{
-      var sql = `delete from ExpenseType where id = ?;`;
-      var values = [id];
+  else {
+    var sql = `delete from ExpenseType where id = ?;`;
+    var values = [id];
 
-      db.serialize(function () {
-          db.run(sql, values, function (err) {
-              if (err){
-                  console.error(err);
-                  res.status(500).send(err);
-              }
-              else
-                  res.send();
-          });
+    db.serialize(function () {
+      db.run(sql, values, function (err) {
+        if (err) {
+          console.error(err);
+          res.status(500).send(err);
+        }
+        else
+          res.send();
       });
+    });
   }
 }
 
 
-function editMember(req, res, db){
+function editMember(req, res, db) {
   modifyMemberDetails(req.body, res, db);
 }
 
-function modifyMemberDetails(income_type, res, db){
+function modifyMemberDetails(income_type, res, db) {
   var id = income_type.id;
   var name = income_type.name;
   var value = income_type.value;
   var description = income_type.description;
 
-  if(!id){
-      res.status(400).send("ID is mandatory");
+  if (!id) {
+    res.status(400).send("ID is mandatory");
   }
 
-  else{
-      var sql = `update ExpenseType set name = ?, description = ? where id = ?;`;
-      var values = [name, description, id];
+  else {
+    var sql = `update ExpenseType set name = ?, description = ? where id = ?;`;
+    var values = [name, description, id];
 
-      db.serialize(function () {
-          db.run(sql, values, function (err) {
-              if (err){
-                  console.error(err);
-                  res.status(500).send(err);
-              }
-              else
-                  res.send();
-          });
+    db.serialize(function () {
+      db.run(sql, values, function (err) {
+        if (err) {
+          console.error(err);
+          res.status(500).send(err);
+        }
+        else
+          res.send();
       });
+    });
   }
 }
 
