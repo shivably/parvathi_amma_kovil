@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        var query_param;
         function getUrlVars() {
             var vars = [], hash;
             var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -17,13 +18,24 @@
             return vars;
         }
         $(document).ready(function () {
-            var query_param = getUrlVars()
+            $.ajax({
+                url: '/api/expense_type/',
+                type: 'get',
+                contentType: 'application/json',
+                success: function (response_data) {
+                    console.dir(response_data)
+                    members = response_data;
+                    $.each(response_data, function (k, v) {
+                        $('#type_id').append('<option value="' + v.id + '">' + v.name + '</option>');
+                    });
+                },
+            });
+            query_param = getUrlVars()
             $.ajax({
                 url: '/api/expense/id/' + query_param.id,
                 type: 'get',
                 contentType: 'application/json',
                 success: function (response_data) {
-                    console.dir(response_data)
                     var exp_type = response_data[0]
                     $("#type_id").val(exp_type['type_id'])
                     $("#receipt").val(exp_type['receipt'])
@@ -43,6 +55,7 @@
                 return
             }
             var person = {
+                id: query_param.id,
                 type_id: $("#type_id").val(),
                 receipt: $("#receipt").val(),
                 value: $("#value").val(),
@@ -51,7 +64,7 @@
             console.dir(person);
             $.ajax({
                 url: '/api/expense/',
-                type: 'put',
+                type: 'PUT',
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (response_data) {
@@ -106,7 +119,7 @@
             <label for="description">Description</label><br>
             <textarea id="description" name="description"></textarea><br>
 
-            <input type="button" value="Add" onclick="submitData()">
+            <input type="button" value="Update" onclick="submitData()">
         </form>
     </div>
 </body>
