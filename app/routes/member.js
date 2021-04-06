@@ -233,7 +233,7 @@ function updateProduct(product, res, db){
                   res.status(500).send(err);
               }
               else
-                  res.send();
+                  res.send({response_action: 'redirect', url:'/members', msg: "Successfully Updated Member"});
           });
       });
   }
@@ -276,7 +276,7 @@ function modifyMemberDetails(member, res, db){
                   res.status(500).send(err);
               }
               else
-                  res.send();
+                  res.send({response_action: 'redirect', url:'/members', msg: "Successfully Added New Member"});
           });
       });
   }
