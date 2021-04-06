@@ -44,10 +44,27 @@
         },
       });*/
     });
-    function compute(quantity) {
-      var quantity_value = $("#quantity_value").val()
-      $('#value').val(quantity_value * quantity);
+    // function compute(quantity) {
+    //   var quantity_value = $("#quantity_value").val()
+    //   $('#value').val(quantity_value * quantity);
+    // }
+    // //////////////////////////
+    function findTotal() {
+      var arr = document.getElementsByClassName('amount');
+      var tot = 0;
+      for (var i = 0; i < arr.length; i++) {
+        if (parseFloat(arr[i].value))
+          tot += parseFloat(arr[i].value);
+      }
+      document.getElementById('total_amount').value = tot;
     }
+    function multiply(name) {
+      num1 = document.getElementById(name+"_unit_value").value;
+      num2 = document.getElementById(name+"_quantity").value;
+      result = num1 * num2;
+      document.getElementById(name+"_value").value = result;
+    }
+    // /////////////////////////////////////////////
     function update_quantity_value(id) {
       $.each(income_type, function (k, v) {
         if (v.id = id) {
@@ -56,7 +73,7 @@
       })
     }
     function submitData() {
-      if($("#member_id").val() == '' && $("#donor_name").val() == ''){
+      if ($("#member_id").val() == '' && $("#donor_name").val() == '') {
         alert("Please Enter Details")
         return
       }
@@ -191,28 +208,34 @@
       <div class="row">
         &nbsp;
       </div>
-      <div class="jumbotron">
+      <div>
         <div class="row">
           <div class="col">
             <label for="donor_name">
               Kodai Vari
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="kodai_vari_unit_value" name="kodai_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="kodai_vari_value" name="kodai_vari_value"></div>
+          <div class="col"><label for="kodai_vari_unit_value"></label><input type="number" placeholder="Unit value"
+              onblur="multiply('kodai_vari')" id="kodai_vari_unit_value" name="kodai_vari_unit_value"></div>
+          <div class="col"><label for="kodai_vari_quantity"></label><input type="number" placeholder="Quantity"
+              onblur="multiply('kodai_vari')" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
+          <div class="col"><label for="kodai_vari_value"></label><input type="text" class="amount" placeholder="Amount"
+              onblur="findTotal()" id="kodai_vari_value" name="kodai_vari_value" readonly></div>
         </div>
-      </br>
+        </br>
         <div class="row">
           <div class="col">
             <label for="donor_name">
               Seethana Vari
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value" name="seethana_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity" name="seethana_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="seethana_vari_value" name="seethana_vari_value"></div>
-      </br>
+          <div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value"
+              name="seethana_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity"
+              name="seethana_vari_quantity"></div>
+          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+              id="seethana_vari_value" name="seethana_vari_value"></div>
+          </br>
         </div></br>
         <div class="row">
           <div class="col">
@@ -220,9 +243,12 @@
               Nankudai Varavu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value" name="nankudai_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity" name="nankudai_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="nankudai_vari_value" name="nankudai_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value"
+              name="nankudai_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity"
+              name="nankudai_vari_quantity"></div>
+          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+              id="nankudai_vari_value" name="nankudai_vari_value"></div>
         </div></br>
         <div class="row">
           <div class="col">
@@ -230,9 +256,12 @@
               Undiyal Varavu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value" name="undiyal__vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity" name="undiyal__vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="undiyal_vari_value" name="undiyal_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value"
+              name="undiyal__vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity"
+              name="undiyal__vari_quantity"></div>
+          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+              id="undiyal_vari_value" name="undiyal_vari_value"></div>
         </div></br>
         <div class="row">
           <div class="col">
@@ -240,9 +269,12 @@
               Nemisa Varavu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value" name="nemisa_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity" name="nemisa_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="nemisa_vari_value" name="nemisa_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value"
+              name="nemisa_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity"
+              name="nemisa_vari_quantity"></div>
+          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+              id="nemisa_vari_value" name="nemisa_vari_value"></div>
         </div></br>
         <div class="row">
           <div class="col">
@@ -250,11 +282,14 @@
               Ithara Varavu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value" name="ithara_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity" name="ithara_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="ithara_vari_value" name="ithara_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value"
+              name="ithara_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity"
+              name="ithara_vari_quantity"></div>
+          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+              id="ithara_vari_value" name="ithara_vari_value"></div>
         </div>
-      </br>
+        </br>
         <div class="row">
           <div class="col">
             <label for="total_amount">
@@ -263,7 +298,8 @@
           </div>
           <div class="col"></div>
           <div class="col"></div>
-          <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount" readonly></div>
+          <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount" readonly>
+          </div>
         </div>
         <div class="row">
           <input type="button" value="Add" onclick="submitData()">
