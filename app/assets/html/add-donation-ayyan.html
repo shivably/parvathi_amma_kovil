@@ -19,7 +19,10 @@
           $.each(response_data, function (k, v) {
             $('#member_id').append('<option value="' + v.id + '">' + v.name + '</option>');
           });
-        },
+          // $.each(response_data, function (k, v) {
+          //     $('#donor_contact').append('<input value="' + v.id + '">' + v.phone + '</input>');
+          //   });
+        }
       });
       /*$.ajax({
         url: '/api/ayyan_donation_type/',
@@ -44,6 +47,22 @@
         },
       });*/
     });
+    function getmemberdetails(id) {
+      console.log(id);
+      var i;
+      for (i = 0;i < members.length; i++ ) {
+        console.log(members[i]['id']);
+
+        if (id == members[i]['id']){
+          console.log(members[i]);
+          console.log(members[i]["address"]);
+         $('#phone').val(members[i]["phone"]); 
+         $('#address').val(members[i]["address"])
+        }
+      }
+
+    }
+      
     function compute(quantity) {
       var quantity_value = $("#quantity_value").val()
       $('#value').val(quantity_value * quantity);
@@ -193,16 +212,21 @@
   <div class="container-fluid center_div">
     <h1>Donation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-      <label for="member_id">Member</label><br>
-      <select type="text" id="member_id" name="member_id">
-        <option value="">Select Members</option>
+      <label for="member_id">Member</label>
+      <br>
+      <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
+        <option value=''>Select Members</option>
+        <input type="text" name="phone" id="phone" readonly><input type="text" name="address" id="address" readonly>
       </select>
+      <!-- <div></div> -->
+      <form action="/api/members/" name="addMemberForm" method="GET"></form>
+     
       <br>
       <label for="donor_name">Name</label><br>
-      <input type="text" id="donor_name" name="donor_name"><br>
+      <input type="text" id="donor_name" name="donor_name" onchange=""><br>
 
-      <label for="donor_contact">Contact</label><br>
-      <input type="text" id="donor_contact" name="donor_contact"><br>
+      <label for="donor_contact" id="donor_contact">Contact</label><br>
+      <input type="text" value=""><br>
       <div class="row">
         &nbsp;
       </div>
