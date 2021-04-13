@@ -1,4 +1,4 @@
-<html>
+ <html>
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -72,28 +72,25 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/expense_report">Expense Report</a>
+    </li>
     </ul>
   </nav>
   <br />
   <div class="container center_div">
     <h1>Add Expense</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-
       <label for="type_id">Type</label><span style=" color:#ff0000">*</span><br>
       <select type="text" id="type_id" name="type_id">
         <option value=''>Expense Type</option>
       </select><br>
-
       <label for="receipt">Receipt</label><br>
       <input type="text" id="receipt" name="receipt"><br>
-
-
       <label for="value">Amount</label><span style=" color:#ff0000">*</span><br>
       <input type="text" id="value" name="value"><br>
-
       <label for="description">Description</label><br>
       <textarea id="description" name="description"></textarea><br>
-
       <input type="button" value="Add" onclick="submitData()">
     </form>
   </div>

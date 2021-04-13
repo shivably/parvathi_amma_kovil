@@ -52,14 +52,14 @@
     function getmemberdetails(id) {
       console.log(id);
       var i;
-      for (i = 0;i < members.length; i++ ) {
+      for (i = 0; i < members.length; i++) {
         console.log(members[i]['id']);
 
-        if (id == members[i]['id']){
+        if (id == members[i]['id']) {
           console.log(members[i]);
-        
-         $('#phone').val(members[i]["phone"]) ;
-         $('#address').val(members[i]["address"])
+
+          $('#phone').val(members[i]["phone"]);
+          $('#address').val(members[i]["address"])
         }
       }
 
@@ -74,10 +74,10 @@
       document.getElementById('total_amount').value = tot;
     }
     function multiply(name) {
-      num1 = document.getElementById(name+"_unit_value").value;
-      num2 = document.getElementById(name+"_quantity").value;
+      num1 = document.getElementById(name + "_unit_value").value;
+      num2 = document.getElementById(name + "_quantity").value;
       result = num1 * num2;
-      document.getElementById(name+"_value").value = result;
+      document.getElementById(name + "_value").value = result;
     }
     // /////////////////////////////////////////////
     function update_quantity_value(id) {
@@ -204,6 +204,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/expense_report">Expense Report</a>
+      </li>
     </ul>
   </nav>
   <br />
@@ -218,7 +221,7 @@
         <input type="text" name="phone" id="phone" readonly><input type="text" name="address" id="address" readonly>
       </select>
       <!-- <div></div> -->
-     
+
       <br>
       <label for="donor_name">Name</label><br>
       <input type="text" id="donor_name" name="donor_name" onchange=""><br>
@@ -323,21 +326,22 @@
           <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
               id="ithara_vari_value" name="ithara_vari_value">
           </div>
-        </br>
-        <div class="row">
-          <div class="col">
-            <label for="total_amount">
-              Total Amount
-            </label>
+          </br>
+          <div class="row">
+            <div class="col">
+              <label for="total_amount">
+                Total Amount
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount"
+                readonly>
+            </div>
           </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount" readonly>
+          <div class="row">
+            <input type="button" value="Add" onclick="submitData()">
           </div>
-        </div>
-        <div class="row">
-          <input type="button" value="Add" onclick="submitData()">
-        </div>
     </form>
   </div>
 

@@ -77,6 +77,11 @@ app.get('/edit-member', (req, res) => {
 app.get('/edit_expense', (req, res) => {
     res.sendFile('./app/assets/html/edit_expense.html', { root: __dirname });
 });
+
+app.get('/expense_report', (req, res) => {
+    res.sendFile('./app/assets/html/expense_report.html', { root: __dirname });
+});
+
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
 });

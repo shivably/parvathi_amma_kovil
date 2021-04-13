@@ -50,19 +50,19 @@
     function getmemberdetails(id) {
       console.log(id);
       var i;
-      for (i = 0;i < members.length; i++ ) {
+      for (i = 0; i < members.length; i++) {
         console.log(members[i]['id']);
 
-        if (id == members[i]['id']){
+        if (id == members[i]['id']) {
           console.log(members[i]);
           console.log(members[i]["address"]);
-         $('#phone').val(members[i]["phone"]); 
-         $('#address').val(members[i]["address"])
+          $('#phone').val(members[i]["phone"]);
+          $('#address').val(members[i]["address"])
         }
       }
 
     }
-      
+
     function compute(quantity) {
       var quantity_value = $("#quantity_value").val()
       $('#value').val(quantity_value * quantity);
@@ -206,6 +206,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/expense_report">Expense Report</a>
+      </li>
     </ul>
   </nav>
   <br />
@@ -220,7 +223,7 @@
       </select>
       <!-- <div></div> -->
       <form action="/api/members/" name="addMemberForm" method="GET"></form>
-     
+
       <br>
       <label for="donor_name">Name</label><br>
       <input type="text" id="donor_name" name="donor_name" onchange=""><br>
