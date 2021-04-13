@@ -28,10 +28,12 @@
           { "data": "id" },
           {
             "data": "type_id",
-            render: function (data, type, row, meta) {
-              console.dir(expense_type);
-              console.dir(data);
-              return expense_type[data-1 ].name;
+            render: function (id, type, row, meta) {
+              for (i = 0; i < expense_type.length; i++) {
+                if (id == expense_type[i]['id']) {
+                  return expense_type[i]['name']
+                }
+              }
             }
           },
           { "data": "receipt" },
@@ -40,17 +42,12 @@
           {
             data: null,
             render: function (data, type, row, meta) {
-              return '<a href="edit_expense?id=' + data['id'] + '" role="button">Edit</a>'
+              return '<a href="edit_expense?id=' + data['id'] + '" class="btn btn-info">Edit</a>'
             }
           },
-
-
         ]
-
-
       });
     });
-
   </script>
 </head>
 
@@ -73,6 +70,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/expense_report">Expense Report</a>
+    </li>
     </ul>
   </nav>
   <br />
