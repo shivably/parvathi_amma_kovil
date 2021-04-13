@@ -2,16 +2,16 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
+            var table = $('#example').DataTable();
             $.ajax({
                 url: '/api/expense_type/',
                 type: 'get',
@@ -25,11 +25,25 @@
                 },
             });
         });
+        function generate_expense_report(){
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "/api/reports/expense",
+                    "type": "POST",
+                    "data": {'type_id': $('#type_id').val()},
+                    dataSrc: ""
+                },
+                "columns": [
+                    { "data": "dor" },
+                    { "data": "value" },
+                ]
 
+            });
+        }
     </script>
 </head>
 
-<body onload="loadMembers()">
+<body>
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
         <ul class="navbar-nav">
@@ -61,23 +75,18 @@
             <label for="date">From:</label><br>
             <input type="text" id="fromdate" name="date"><br>
             <label for="date">To:</label><br>
-            <input type="text" id="todate" name="date">
-            <input type="submit" value="Submit"><br>
-
+            <input type="text" id="todate" name="date"></br>
+            <label for="type">Type</label><br>
+            <select type="text" id="type_id" name="type_id">
+                <option value=''>Expense Type</option>
+            </select></br></br>
+            <input type="submit" value="Submit" onclick="generate_expense_report()"><br>
         </form>
-
-        <label for="type_id"></label>
-        <select type="text" id="type_id" name="type_id">
-            <option value=''>Expense Type</option>
-        </select>
-        
-
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Date</th>
                     <th>Amount</th>
-                    <th></th>
                 </tr>
             </thead>
         </table>

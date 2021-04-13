@@ -18,6 +18,13 @@ module.exports = function (app, db) {
     processData(res, "SELECT * FROM Income where donor_name like '%" + data.donor_name + "%'");
   });
 
+  app.post('/api/reports/expense', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    processData(res, "SELECT * FROM Expese where type_id = "+ data.type_id);
+  });
+
+
   function processData(res, sql) {
     db.serialize(function () {
       db.all(sql,
