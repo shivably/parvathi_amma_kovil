@@ -53,12 +53,17 @@
         document.addMemberForm.permanent_address.focus();
         return true;
       }
-      var phone = document.addMemberForm.phone.value;
-      if (phone == "") {
-        alert("Please Enter Your phone");
-        document.addMemberForm.phone.focus();
+      var phone = $("#phone").val();
+      console.log(phone)
+      var phoneNum = phone.replace(/^[6-9]\d{9}$/);
+      console.log(phoneNum)
+      if ( phoneNum.length == 10) {
+        return false;
+      }else{
+        alert("Please Enter 10-Digit Mobile Number")
         return true;
       }
+
 
       var email = document.addMemberForm.email.value;
       atpos = email.indexOf("@");
@@ -67,12 +72,41 @@
       if (atpos < 1 || (dotpos - atpos < 2)) {
         alert("Please enter correct email")
         document.addMemberForm.email.focus();
-        return true
+        return true;
       }
-      }
-    
+    }
 
-  </script>
+
+    //   /* this function is called when we
+    //   click on the submit button*/
+
+    //   /*get the value of the textfield using a
+    //   combination of name and id*/
+    //   //form is the name of the form coded below
+    //   //numbers are the name of the inputfield
+    //   /*value is used to fetch the value written
+    //   in that particular field*/
+    //   var phone = document.addMemberForm.phone.value;
+
+    //   /* isNan() function check whether passed variable
+    //      is number or not*/
+    //   if (isNaN(phone)) {
+    //     /*numberText is the ID of span that print "Please enter 
+    //     Numeric value" if the value of inputfield is not a number*/
+    //     document.getElementById(
+    //       "numberText").innerHTML =
+    //       "Please enter Numeric value";
+    //     return false;
+    //   } else {
+    //     /*numberText is the ID of span that print 
+    //       "Numeric value" if the value of inputfield is a number*/
+    //     document.getElementById(
+    //       "numberText").innerHTML =
+    //       "Numeric value is: " + n;
+    //     return true;
+    //   }
+    // }
+
   </script>
 </head>
 
@@ -97,7 +131,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/expense_report">Expense Report</a>
-    </li>
+      </li>
     </ul>
   </nav>
   <br />
@@ -120,7 +154,7 @@
 
         <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
         <span style=color:#ff0000>*</span>
-        <input type="text" class="form-control" id="phone" name="phone"><br>
+        <input type="number" class="form-control" id="phone" name="phone"><br>
 
         <label for="email">Email</label><span style=color:#ff0000>*</span>
         <input type="email" class="form-control" id="email" name="email"><br>
@@ -130,17 +164,11 @@
         <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
 
         <span aria-hidden="true" class="required"></span>
-        <label for="dob">
-          <p>Date Of Birth<font color="#CC0000"><b>(mm/dd/yyyy)</b></font>
-            :
-          </p>
-        </label><span aria-hidden="true" class="required"></span><span style=color:#ff0000>*</span>
-        <input type="text" class="form-control" id="dob" name="dob"><br>
-
-
-
-
+        <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
+        <input type="date" placeholder="dd/mm/yyyy" class="form-control" id="dob" name="dob"><br>
         <input type="button" value="Add" onclick="submitData()">
+
 
       </div>
     </form>
