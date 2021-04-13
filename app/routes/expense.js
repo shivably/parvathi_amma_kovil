@@ -20,7 +20,7 @@ module.exports = function (app, db) {
   app.get('/api/expenses', (req, res) => {
     processData(res, "SELECT * FROM Expense");
   });
-
+  
   function processData(res, sql) {
     db.serialize(function () {
       db.all(sql,
@@ -118,6 +118,7 @@ module.exports = function (app, db) {
     var data = req.body;
     modifyExpenseDetails(data, res, db);
   });
+  
 };
 
 function addExpense(req, res, db) {
@@ -130,9 +131,7 @@ function insertExpense(income_type, res, db) {
   var receipt = income_type.receipt;
   var value = income_type.value;
   var description = income_type.description;
-
   console.dir(income_type)
-
   var sql = `insert into Expense (type_id, receipt, value, description) 
           VALUES 
           (?, ?, ?, ?);`;
@@ -288,5 +287,3 @@ function modifyExpenseDetails(expense, res, db) {
     });
   }
 }
-
-

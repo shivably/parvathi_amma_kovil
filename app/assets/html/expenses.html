@@ -8,7 +8,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
+    var expense_type;
     $(document).ready(function () {
+      $.ajax({
+        url: '/api/expense_type/',
+        type: 'get',
+        contentType: 'application/json',
+        success: function (response_data) {
+          console.dir(response_data)
+          expense_type = response_data;
+        },
+      });
       $('#example').DataTable({
         "ajax": {
           "url": "api/expenses",
@@ -16,23 +26,28 @@
         },
         "columns": [
           { "data": "id" },
-          { "data": "type_id" },
+          {
+            "data": "type_id",
+            render: function (id, type, row, meta) {
+              for (i = 0; i < expense_type.length; i++) {
+                if (id == expense_type[i]['id']) {
+                  return expense_type[i]['name']
+                }
+              }
+            }
+          },
           { "data": "receipt" },
           { "data": "value" },
           { "data": "description" },
           {
             data: null,
-            render: function (data, type, row, meta) { 
-              return '<a href="edit_expense?id='+data['id']+'" role="button">Edit</a>' }
+            render: function (data, type, row, meta) {
+              return '<a href="edit_expense?id=' + data['id'] + '" class="btn btn-info">Edit</a>'
+            }
           },
-
-
         ]
-
-
       });
     });
-
   </script>
 </head>
 
@@ -55,6 +70,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/expense_report">Expense Report</a>
+    </li>
     </ul>
   </nav>
   <br />
