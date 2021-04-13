@@ -50,17 +50,24 @@
     // }
     // //////////////////////////
     function getmemberdetails(id) {
-      console.log(id);
-      var i;
-      for (i = 0; i < members.length; i++) {
-        console.log(members[i]['id']);
+      if (id != 'NON_MEMBER') {
+        for (var i = 0; i < members.length; i++) {
+          console.log(members[i]['id']);
 
-        if (id == members[i]['id']) {
-          console.log(members[i]);
+          if (id == members[i]['id']) {
+            console.log(members[i]);
 
-          $('#phone').val(members[i]["phone"]);
-          $('#address').val(members[i]["address"])
+            $('#phone').html(members[i]["phone"]);
+            $('#address').html(members[i]["address"])
+            $('#member_detail').show();
+            $('#non_member_detail').hide();
+          }
         }
+      } else {
+        $('#phone').html();
+        $('#address').html()
+        $('#member_detail').hide();
+        $('#non_member_detail').show();
       }
 
     }
@@ -204,7 +211,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/reports">Reports</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/expense_report">Expense Report</a>
       </li>
     </ul>
@@ -213,118 +220,121 @@
   <div class="container-fluid center_div">
     <h1>Donation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-      <label for="member_id">Member</label>
-      <br>
-      <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
-        <option value=''>Select Members</option>
-        <form action="/api/members/" name="addMemberForm" method="GET"></form>
-        <input type="text" name="phone" id="phone" readonly><input type="text" name="address" id="address" readonly>
-      </select>
-      <!-- <div></div> -->
+      <div class="d-flex justify-content-between">
+        <div>
 
-      <br>
-      <label for="donor_name">Name</label><br>
-      <input type="text" id="donor_name" name="donor_name" onchange=""><br>
-
-      <label for="donor_contact" id="donor_contact">Contact</label><br>
-      <input type="text" value=""><br>
-      <div class="row">
-        &nbsp;
-      </div>
-      <div>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Kodai Vari
-            </label>
+          <label for="member_id">Member</label>
+          <br>
+          <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
+            <option value='NON_MEMBER'>Select Members</option>
+          </select>
+          <div id="member_detail">
+            <br>
+            <div id="phone"></div>
+            <br>
+            <div id="address"></div>
           </div>
-          <div class="col"><label for="kodai_vari_unit_value"></label><input type="number" placeholder="Unit value"
-              onblur="multiply('kodai_vari')" id="kodai_vari_unit_value" name="kodai_vari_unit_value"></div>
-          <div class="col"><label for="kodai_vari_quantity"></label><input type="number" placeholder="Quantity"
-              onblur="multiply('kodai_vari')" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
-          <div class="col"><label for="kodai_vari_value"></label><input type="text" class="amount" placeholder="Amount"
-              onblur="findTotal()" id="kodai_vari_value" name="kodai_vari_value" readonly></div>
+          <div id="non_member_detail">
+            <label for="donor_name">Name</label><br>
+            <input type="text" id="donor_name" name="donor_name" onchange=""><br>
+            <label for="donor_contact" id="donor_contact">Contact</label><br>
+            <input type="text" value="">
+          </div>
         </div>
-        </br>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Seethana Vari
-            </label>
+        <div>
+          <div class="row">
+            &nbsp;
           </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <!--<div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value"
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Kodai Vari
+              </label>
+            </div>
+            <div class="col"><label for="kodai_vari_unit_value"></label><input type="number" placeholder="Unit value"
+                onblur="multiply('kodai_vari')" id="kodai_vari_unit_value" name="kodai_vari_unit_value"></div>
+            <div class="col"><label for="kodai_vari_quantity"></label><input type="number" placeholder="Quantity"
+                onblur="multiply('kodai_vari')" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
+            <div class="col"><label for="kodai_vari_value"></label><input type="text" class="amount"
+                placeholder="Amount" onblur="findTotal()" id="kodai_vari_value" name="kodai_vari_value" readonly></div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Seethana Vari
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <!--<div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value"
               name="seethana_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity"
               name="seethana_vari_quantity"></div> -->
-          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-              id="seethana_vari_value" name="seethana_vari_value">
-          </div>
-          </br>
-        </div></br>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Nankudai Varavu
-            </label>
-          </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <!-- <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value"
+            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="seethana_vari_value" name="seethana_vari_value">
+            </div>
+            </br>
+          </div></br>
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Nankudai Varavu
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <!-- <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value"
               name="nankudai_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity"
               name="nankudai_vari_quantity"></div> -->
-          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-              id="nankudai_vari_value" name="nankudai_vari_value">
-          </div>
-        </div></br>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Undiyal Varavu
-            </label>
-          </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <!-- <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value"
+            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="nankudai_vari_value" name="nankudai_vari_value">
+            </div>
+          </div></br>
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Undiyal Varavu
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <!-- <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value"
               name="undiyal__vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity"
               name="undiyal__vari_quantity"></div> -->
-          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-              id="undiyal_vari_value" name="undiyal_vari_value">
-          </div>
-        </div></br>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Nemisa Varavu
-            </label>
-          </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <!-- <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value"
+            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="undiyal_vari_value" name="undiyal_vari_value">
+            </div>
+          </div></br>
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Nemisa Varavu
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <!-- <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value"
               name="nemisa_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity"
               name="nemisa_vari_quantity"></div> -->
-          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-              id="nemisa_vari_value" name="nemisa_vari_value">
-          </div>
-        </div></br>
-        <div class="row">
-          <div class="col">
-            <label for="donor_name">
-              Ithara Varavu
-            </label>
-          </div>
-          <div class="col"></div>
-          <div class="col"></div>
-          <!-- <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value"
-              name="ithara_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity"
-              name="ithara_vari_quantity"></div> -->
-          <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-              id="ithara_vari_value" name="ithara_vari_value">
+            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="nemisa_vari_value" name="nemisa_vari_value">
+            </div>
+          </div></br>
+          <div class="row">
+            <div class="col">
+              <label for="donor_name">
+                Ithara Varavu
+              </label>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="ithara_vari_value" name="ithara_vari_value">
+            </div>
           </div>
           </br>
           <div class="row">
@@ -339,9 +349,14 @@
                 readonly>
             </div>
           </div>
+          </br>
           <div class="row">
-            <input type="button" value="Add" onclick="submitData()">
+            <div class="col">
+              <input type="button" value="Add" onclick="submitData()">
+            </div>
           </div>
+        </div>
+      </div>
     </form>
   </div>
 
