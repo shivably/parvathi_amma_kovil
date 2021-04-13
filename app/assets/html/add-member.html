@@ -11,6 +11,7 @@
       if (validation_error) {
         return;
       }
+
       var person = {
         name: $("#name").val(),
         address: $("#address").val(),
@@ -40,7 +41,41 @@
         alert("Please Enter Your Name");
         return true;
       }
+      var address = document.addMemberForm.address.value;
+      if (address == "") {
+        alert("Please Enter Your Address");
+        document.addMemberForm.address.focus();
+        return true;
+      }
+      var permanent_address = document.addMemberForm.permanent_address.value;
+      if (permanent_address == "") {
+        alert("Please Enter Your Permanent_Address");
+        document.addMemberForm.permanent_address.focus();
+        return true;
+      }
+      var phone = document.addMemberForm.phone.value;
+      if (phone == "") {
+        alert("Please Enter Your phone");
+        document.addMemberForm.phone.focus();
+        return true;
+      }
+
+      var email = document.addMemberForm.email.value;
+      atpos = email.indexOf("@");
+      dotpos = email.lastIndexOf(".");
+
+      if (atpos < 1 || (dotpos - atpos < 2)) {
+        alert("Please enter correct email")
+        document.addMemberForm.email.focus();
+        return true
+      }
+      return false;
     }
+  
+
+
+
+
 
   </script>
 </head>
@@ -71,26 +106,31 @@
     <h1>Add Member</h1>
     <form action="/api/members/" name="addMemberForm" method="POST">
       <div class="form-group">
-        <label for="name"><span aria-hidden="true" class="required">*</span>Name</label>
+        <label for="name">Name</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="name" name="name"><br>
 
 
-        <label for="address"><span aria-hidden="true" class="required">*</span>Address</label>
+        <label for="address">Address</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="address" name="address"><br>
 
-        <label for="permanent_address">Permanent Address</label>
+        <label for="permanent_address">Permanent Address</label><span aria-hidden="true" class="required"></span>
+        <span style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="permanent_address" name="permanent_address"><br>
 
-        <label for="phone"><span aria-hidden="true" class="required">*</span>Phone</label>
+        <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
+        <span style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="phone" name="phone"><br>
 
-        <label for="email">Email</label>
+        <label for="email">Email</label><span style=color:#ff0000>*</span>
         <input type="email" class="form-control" id="email" name="email"><br>
 
-        <label for="aadhar"><span aria-hidden="true" class="required">*</span>Aadhar</label>
+        <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
 
-        <label for="dob">DOB</label>
+        <label for="dob">DOB</label><span aria-hidden="true" class="required"></span><span style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="dob" name="dob"><br>
 
         <input type="button" value="Add" onclick="submitData()">

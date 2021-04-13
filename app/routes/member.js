@@ -1,7 +1,7 @@
 module.exports = function(app, db) {
   // Load products by ID: http://localhost:4300/api/product/id/$id
   // example: http://localhost:4300/api/product/id/15
-  app.get('/api/member/id/:id', (req, res) => {
+  app.get('/api/members/id/:id', (req, res) => {
     processData(res, "SELECT * FROM Members where id == "+req.params.id);
   });
 
@@ -10,7 +10,7 @@ module.exports = function(app, db) {
   //          http://localhost:4300/api/product/name/Suntone
   // $attribute = ['name', 'price', 'currency', 'description']*
   // * this is not checked values, wrong parameters will return in a DB error.
-  app.get('/api/member/:attribute/:name', (req, res) => {
+  app.get('/api/members/:attribute/:name', (req, res) => {
     processData(res, "SELECT * FROM Members where "+req.params.attribute+" = '"+req.params.name+"'");
   });
 
@@ -156,15 +156,15 @@ function processProduct(req, res, db){
   insertProduct(req.body, res, db);
 }
 
-function insertProduct(member, res, db){
-  var name = member.name;
-  var address = member.address;
-  var permanent_address = member.permanent_address;
-  var phone = member.phone;
-  var email = member.email;
-  var aadhar = member.aadhar;
-  var dob = member.dob;
-  console.dir(member)
+function insertProduct(members, res, db){
+  var name = members.name;
+  var address = members.address;
+  var permanent_address = members.permanent_address;
+  var phone = members.phone;
+  var email = members.email;
+  var aadhar = members.aadhar;
+  var dob = members.dob;
+  console.dir(members)
 
   var sql = `insert into Members (name, address, permanent_address, phone, email, aadhar, dob) 
           VALUES 
@@ -243,23 +243,23 @@ function updateProduct(product, res, db){
 function editMembers(req, res, db){
   for (var prod of req.body) {
       console.dir(prod)
-      modifyMemberDetails(prod, res, db);
+      modifyMembersDetails(prod, res, db);
   }
 }
 
 function editMember(req, res, db){
-  modifyMemberDetails(req.body, res, db);
+  modifyMembersDetails(req.body, res, db);
 }
 
-function modifyMemberDetails(member, res, db){
-  var id = member.id;
-  var name = member.name;
-  var address = member.address;
-  var permanent_address = member.permanent_address;
-  var phone = member.phone;
-  var email = member.email;
-  var aadhar = member.aadhar;
-  var dob = member.dob;
+function modifyMembersDetails(members, res, db){
+  var id = members.id;
+  var name = members.name;
+  var address = members.address;
+  var permanent_address = members.permanent_address;
+  var phone = members.phone;
+  var email = members.email;
+  var aadhar = members.aadhar;
+  var dob = members.dob;
 
   if(!id){
       res.status(400).send("ID is mandatory");
