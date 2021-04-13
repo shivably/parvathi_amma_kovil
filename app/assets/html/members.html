@@ -26,7 +26,9 @@
                     { "data": "dob" },
                     {
                         data: null,
-                        render: function (data, type, row, meta) { return '<a href="edit-member" class="btn btn-info" role="button">Edit</a>' }
+                        render: function (data, type, row, meta) { 
+                            return '<a href="edit-member?id='+data['id']+'" class="btn btn-info" role="button">Edit</a>' 
+                        }
                     },
                     {
                         data: null,
