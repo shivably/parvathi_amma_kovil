@@ -218,13 +218,16 @@ function activateMember(req, res, db){
 
 function updateProduct(product, res, db){
   var id = product.id;
+  var active = product.active;
+
 
   if(!id){
       res.status(400).send("ID is mandatory");
   }
   else{
-      var sql = `delete from Members where id = ?;`;
-      var values = [id];
+      //var sql = `delete from Members where id = ?;`;
+      var sql = `update Members set active = ? where id = ?;`;
+      var values = [active, id];
 
       db.serialize(function () {
           db.run(sql, values, function (err) {
