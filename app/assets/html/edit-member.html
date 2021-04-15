@@ -91,13 +91,17 @@
         document.editMemberForm.permanent_address.focus();
         return true;
       }
-      var phone = document.editMemberForm.phone.value;
-      if (phone == "") {
-        alert("Please Enter Your phone");
-        document.editMemberForm.phone.focus();
+      var phone = $("#phone").val();
+      console.log(phone)
+      var phoneNum = phone.replace(/^[6-9]\d{9}$/);
+      console.log(phoneNum)
+      if ( phoneNum.length == 10) {
+        return false;
+      }else{
+        alert("Please Enter 10-Digit Mobile Number")
         return true;
       }
-
+      
       var email = document.editMemberForm.email.value;
       atpos = email.indexOf("@");
       dotpos = email.lastIndexOf(".");

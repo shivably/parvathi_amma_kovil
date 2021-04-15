@@ -9,6 +9,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        function editData(id, state) {
+            var person = {
+                'id': id,
+                'active': state?0:1,
+            }
+            console.dir(person);
+            $.ajax({
+                url: '/api/members/',
+                type: 'delete',
+                dataType: 'json',
+                contentType: 'application/json',
+
+                success: function (response_data) {
+
+                    if (response_data.response_action == 'redirect') {
+                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                    }
+                },
+                data: JSON.stringify(person)
+            });
+        }
         $(document).ready(function () {
             $('#example').DataTable({
                 "ajax": {
@@ -26,13 +47,13 @@
                     { "data": "dob" },
                     {
                         data: null,
-                        render: function (data, type, row, meta) { 
-                            return '<a href="edit-member?id='+data['id']+'" class="btn btn-info" role="button">Edit</a>' 
+                        render: function (data, type, row, meta) {
+                            return '<a href="edit-member?id=' + data['id'] + '" class="btn btn-info" role="button">Edit</a>'
                         }
                     },
                     {
                         data: null,
-                        render: function (data, type, row, meta) { return '<a href="" class="btn btn-info" role="button">Activate/DeActivate</a>' }
+                        render: function (data, type, row, meta) {return '<a href="javascript:editData('+data['id']+','+data['active']+')" class="btn btn-info" role="button">Activate/DeActivate</a>' }
                     }
                 ]
 
@@ -85,6 +106,7 @@
             </thead>
         </table>
         <a href="add-member" class="btn btn-info" role="button">Add Member</a>
+
     </div>
     <script>
         function w3_open() {

@@ -36,18 +36,24 @@
       });
     }
     function validateform() {
-      var name = document.addMemberForm.name.value;
-      if (name == null || name == "") {
-        alert("Please Enter Your Name");
+      if (document.addMemberForm.name.value == "") {
+        alert("Enter Your Name");
+        document.addMemberForm.name.focus();
+        return true;
+
+      }
+      if (!/^[a-zA-Z]*$/g.test(document.addMemberForm.name.value)) {
+        alert("Enter valid characters");
+        document.addMemberForm.name.focus();
         return true;
       }
-      var address = document.addMemberForm.address.value;
+      var address = $("#address").val();
       if (address == "") {
         alert("Please Enter Your Address");
         document.addMemberForm.address.focus();
         return true;
       }
-      var permanent_address = document.addMemberForm.permanent_address.value;
+      var permanent_address = $("#permanent_address").val();
       if (permanent_address == "") {
         alert("Please Enter Your Permanent_Address");
         document.addMemberForm.permanent_address.focus();
@@ -57,15 +63,15 @@
       console.log(phone)
       var phoneNum = phone.replace(/^[6-9]\d{9}$/);
       console.log(phoneNum)
-      if ( phoneNum.length == 10) {
+      if (phoneNum.length == 10) {
         return false;
-      }else{
+      } else {
         alert("Please Enter 10-Digit Mobile Number")
         return true;
       }
 
 
-      var email = document.addMemberForm.email.value;
+      var email = $("#email").val();
       atpos = email.indexOf("@");
       dotpos = email.lastIndexOf(".");
 
@@ -74,7 +80,25 @@
         document.addMemberForm.email.focus();
         return true;
       }
+      var aadhar = $("#aadhar").val();
+      console.log(aadhar)
+      var aadharNum = aadhar.replace(/^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$/);
+      console.log(aadharNum)
+      if (aadharNum == "") {
+        alert("Please Enter Your Aadhar Card Number");
+        document.addMemberForm.aadhar.focus();
+        return true;
+      }
+
+
+      if  (document.addMemberForm.dob = " ") {
+        alert("Please Enter Your Date Of Birth");
+        document.addMemberForm.dob.focus();
+        return true;
+      }
     }
+
+
 
 
     //   /* this function is called when we
@@ -161,7 +185,7 @@
 
         <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
-        <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
+        <input type="" class="form-control" id="aadhar" name="aadhar"><br>
 
         <span aria-hidden="true" class="required"></span>
         <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span
