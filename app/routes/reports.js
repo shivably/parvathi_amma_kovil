@@ -21,7 +21,24 @@ module.exports = function (app, db) {
   app.post('/api/reports/expense', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
-    processData(res, "SELECT * FROM Expense where type_id = "+ data.type_id +" and dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    if(data.type_id){
+      processData(res, "SELECT * FROM Expense where type_id = "+ data.type_id +" and dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    } else {
+      processData(res, "SELECT * FROM Expense where dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    }
+  });
+
+  app.post('/api/reports/total_expense', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    processData(res, "SELECT sum(value) as TotalExpense FROM Expense where dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+  });
+
+  app.post('/api/reports/total_donation', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var data = req.body;
+    //processData(res, "SELECT sum(value) as TotalDonation FROM DonationDetails where dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    processData(res, "SELECT sum(value) as TotalDonation FROM DonationDetails");
   });
 
 
