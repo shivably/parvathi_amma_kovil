@@ -107,7 +107,8 @@
       var person = {
         member_id: $("#member_id").val(),
         name: $("#donor_name").val(),
-        contact: $("#donor_contact").val()
+        contact: $("#donor_contact").val(),
+        date: $('#dor').val()
       }
       console.dir(person);
       $.ajax({
@@ -242,6 +243,8 @@
             <label for="donor_contact" id="donor_contact">Contact</label><br>
             <input type="text" value="">
           </div>
+          <br>
+          <input type="date" id="dor"class="dor">
         </div>
         <div style="margin-right: 40px;">
           <div class="row">
@@ -359,6 +362,9 @@
           </div>
         </div>
       </div>
+      <script>
+        document.getElementById('dor').value = new Date().toISOString().substring(0, 10); 
+    </script>
     </form>
   </div>
 

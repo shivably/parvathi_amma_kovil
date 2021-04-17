@@ -12,39 +12,52 @@
         var income_type;
         var members;
         function showdonations() {
-            if($('#member_id').val() != null && $('#member_id').val() != ""){
+            $("#example").DataTable().destroy()
+            if ($('#member_id').val() != null && $('#member_id').val() != "") {
                 $('#example').DataTable({
                     "ajax": {
-                        "url": "/api/receipt/member_id/" + $('#member_id').val(),
-                        dataSrc: ""
-                    },
-                    "columns": [
-                        {"data": "date" },
-                        { "data": "id" },
-                        { 'data': 'link',
-                         'render': function (data, type, row, meta)
-                         {
-                             return '<a class="btn btn-info" role="button" href="/receipt' + "/?id=" + row.id + '">Show </a>'
-                         }
-                        }
-                    ]
-                })
-            } else if($('#donor_name').val()!= null && $('#donor_name').val() != ""){
-                $('#example').DataTable({
-                    "ajax": {
-                        "url": "api/receipt",
+                        "url": "/api/receipt",
                         "type": "POST",
-                        "data": {'name': $('#donor_name').val()},
+                        "data": {
+                            'member_id': $('#member_id').val(),
+                            'from_date': $('#from_date').val(),
+                            'to_date': $('#to_date').val()
+                        },
                         dataSrc: ""
                     },
                     "columns": [
                         { "data": "date" },
                         { "data": "id" },
-                        { 'data': 'link',
-                         'render': function (data, type, row, meta)
-                         {
-                             return '<a class="btn btn-info" role="button" href="/receipt' + "/?id=" + row.id + '">Show </a>'
-                         }
+                        { "data": "value"},
+                        {
+                            'data': 'link',
+                            'render': function (data, type, row, meta) {
+                                return '<a class="btn btn-info" role="button" href="/receipt' + "/?id=" + row.id + '">Show </a>'
+                            }
+                        }
+                    ]
+                })
+            } else if ($('#donor_name').val() != null && $('#donor_name').val() != "") {
+                $('#example').DataTable({
+                    "ajax": {
+                        "url": "api/receipt",
+                        "type": "POST",
+                        "data": {
+                            'name': $('#donor_name').val(),
+                            'from_date': $('#from_date').val(),
+                            'to_date': $('#to_date').val()
+                        },
+                        dataSrc: ""
+                    },
+                    "columns": [
+                        { "data": "date" },
+                        { "data": "id" },
+                        { "data": "value"},
+                        {
+                            'data': 'link',
+                            'render': function (data, type, row, meta) {
+                                return '<a class="btn btn-info" role="button" href="/receipt' + "/?id=" + row.id + '">Show </a>'
+                            }
                         }
                     ]
                 })
@@ -78,13 +91,13 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-              </li>
-              <li class="nav-item">
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-              </li>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/expenses">Expenses</a>
-              </li>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/reports">Reports</a>
             </li>
@@ -94,19 +107,19 @@
         </ul>
     </nav>
     <br />
-    <div id="report" class="container center_div">
+    <div id="report" style="margin-left: 20px;">
         <h1>Report</h1>
         <form action="/api/members/" name="addMemberForm" method="post">
             <label for="member_id">Member</label>
-            <select type="text" class="form-control" id="member_id" name="member_id">
+            <select type="text" id="member_id" name="member_id">
                 <option value="">Select Members</option>
             </select>
-            <br>
-
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="donor_name" name="donor_name">
-            <br>
-
+            <input type="text" id="donor_name" name="donor_name">
+            <label for="from_date">From</label>
+            <input type="date" id="from_date" name="from_date">
+            <label for="to_date">To</label>
+            <input type="date" id="to_date" name="to_date">
             <!--label for="donation_type">Type</label>
             <select type="text" class="form-control" id="donation_type" name="donation_type">
             </select-->
@@ -117,11 +130,16 @@
                 <tr>
                     <th>Date</th>
                     <th>Receipt Number</th>
+                    <th>Amount</th>
                     <th></th>
                 </tr>
             </thead>
         </table>
     </div>
+    <script>
+        document.getElementById('from_date').value = new Date().toISOString().substring(0, 10);
+        document.getElementById('to_date').value = new Date().toISOString().substring(0, 10);
+    </script>
 </body>
 
 </html>
