@@ -96,12 +96,16 @@
       })
     }
     function submitData() {
-      if ($("#member_id").val() == '' && $("#donor_name").val() == '') {
+      if ($("#member_id").val() == 'NON_MEMBER' && $("#donor_name").val() == '') {
         alert("Please Enter Donor Details")
         return
       }
       if ($('#ithara_vari_value').val() == '' && $('#nemisa_vari_value').val() == '' && $('#undiyal_vari_value').val() == '' && $('#nankudai_vari_value').val() == '' && $('#seethana_vari_value').val() == '' && $('#kodai_vari_value').val() == '') {
         alert("Please Enter Values")
+        return
+      }
+      if ($("#total_amount").val() <= 0 || $("#total_amount").val() == '') {
+        alert("can't be zero")
         return
       }
       var person = {
@@ -123,7 +127,7 @@
           if ($('#kodai_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 1,
+              donation_type: 7,
               unit_value: $('#kodai_vari_unit_value').val(),
               quantity: $('#kodai_vari_quantity').val(),
               value: $('#kodai_vari_value').val(),
@@ -132,7 +136,7 @@
           if ($('#seethana_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 2,
+              donation_type: 8,
               unit_value: $('#seethana_vari_unit_value').val(),
               quantity: $('#seethana_vari_quantity').val(),
               value: $('#seethana_vari_value').val(),
@@ -141,7 +145,7 @@
           if ($('#nankudai_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 3,
+              donation_type: 9,
               unit_value: $('#nankudai_vari_unit_value').val(),
               quantity: $('#nankudai_vari_quantity').val(),
               value: $('#nankudai_vari_value').val(),
@@ -150,7 +154,7 @@
           if ($('#undiyal_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 4,
+              donation_type: 10,
               unit_value: $('#undiyal__vari_unit_value').val(),
               quantity: $('#undiyal__vari_quantity').val(),
               value: $('#undiyal_vari_value').val()
@@ -159,7 +163,7 @@
           if ($('#nemisa_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 5,
+              donation_type: 11,
               unit_value: $('#nemisa_vari_unit_value').val(),
               quantity: $('#nemisa_vari_quantity').val(),
               value: $('#nemisa_vari_value').val()
@@ -168,7 +172,7 @@
           if ($('#ithara_vari_value').val() != '') {
             donation_details.push({
               receipt_id: receipt_id,
-              donation_type: 6,
+              donation_type: 12,
               unit_value: $('#ithara_vari_unit_value').val(),
               quantity: $('#ithara_vari_quantity').val(),
               value: $('#ithara_vari_value').val()
@@ -221,7 +225,7 @@
   </nav>
   <br />
   <div class="container-fluid center_div">
-    <h1 style="margin-left: 40px;">Donation</h1>
+    <h1 style="margin-left: 30%;">Ayyan Kovil Donation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
       <div class="d-flex justify-content-between">
         <div style="margin-left: 40px;">
@@ -293,8 +297,8 @@
               name="nankudai_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity"
               name="nankudai_vari_quantity"></div> -->
-            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
-                id="nankudai_vari_value" name="nankudai_vari_value">
+            <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
+                id="nankudai_vari_value" name="nankudai_vari_value" >
             </div>
           </div></br>
           <div class="row">
@@ -309,7 +313,7 @@
               name="undiyal__vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity"
               name="undiyal__vari_quantity"></div> -->
-            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+            <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
                 id="undiyal_vari_value" name="undiyal_vari_value">
             </div>
           </div></br>
@@ -325,7 +329,7 @@
               name="nemisa_vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity"
               name="nemisa_vari_quantity"></div> -->
-            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+            <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
                 id="nemisa_vari_value" name="nemisa_vari_value">
             </div>
           </div></br>
@@ -337,7 +341,7 @@
             </div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col"><input type="text" class="amount" placeholder="Amount" onblur="findTotal()"
+            <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
                 id="ithara_vari_value" name="ithara_vari_value">
             </div>
           </div>
@@ -350,7 +354,7 @@
             </div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col"><input type="text" placeholder="Total Amount" id="total_amount" name="total_amount"
+            <div class="col"><input type="number" placeholder="Total Amount" id="total_amount" name="total_amount"
                 readonly>
             </div>
           </div>
