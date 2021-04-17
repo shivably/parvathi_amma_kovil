@@ -21,14 +21,15 @@
       });
     });
     function submitData() {
-      if ($("#type_id").val() == '') {
+      if ($("#type_id").val() == '') { 
         alert("Please Select Expense Type")
         return
       }
 
-      if ($("#value").val() == '') {
-        alert("Please Enter Amount")
+      if ($("#value").val() <=0) {
+        alert("Please Valid Amount")
         return
+      
       }
       var person = {
         type_id: $("#type_id").val(),
@@ -90,7 +91,7 @@
       <label for="receipt">Receipt</label><br>
       <input type="text" id="receipt" name="receipt"><br>
       <label for="value">Amount</label><span style=" color:#ff0000">*</span><br>
-      <input type="text" id="value" name="value"><br>
+      <input type="number" id="value" name="value"><br>
       <label for="description">Description</label><br>
       <textarea id="description" name="description"></textarea><br>
       <input type="button" value="Add" onclick="submitData()">
