@@ -33,7 +33,11 @@ module.exports = function (app, db) {
   app.post('/api/receipt', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
-    processData(res, "SELECT * FROM Donor where name like '%" + data.name + "%'");
+    if(data.member_id){
+      processData(res, "SELECT * FROM Donor,DonationDetails where member_id == " + data.member_id +" and donor.id=donationdetails.receipt_id and donor.date between '"+ data.from_date + "' and '"+ data.to_date + "'");
+    }else{
+      processData(res, "SELECT * FROM Donor,DonationDetails where name like '%" + data.name + "%' and donor.id=donationdetails.receipt_id and donor.date between '"+ data.from_date + "' and '"+ data.to_date + "'");
+    }
   });
 
   app.get('/api/receipt/id/:id', (req, res) => {
@@ -139,12 +143,13 @@ function insertDonor(income, res, db) {
   var member_id = income.member_id;
   var name = income.name;
   var contact = income.contact;
+  var date =income.date;
 
-  var sql = `insert into Donor (member_id, name, contact) 
+  var sql = `insert into Donor (member_id, name, contact,date) 
           VALUES 
-          (?, ?, ?);`;
+          (?, ?, ?,?);`;
 
-  var values = [member_id, name, contact];
+  var values = [member_id, name, contact,date];
 
   db.serialize(function () {
     db.run(sql, values, function (err) {
@@ -162,7 +167,7 @@ function insertDonor(income, res, db) {
 
 function bulkinsertDonationDetail(receipt_id, donation_list, donation_list2, res, db) {
 
-  placeholders = donation_list.map((i) => '(?, ?, ?, ?, ?)').join(',');
+  placeholders = donation_list.map((i) => '(?, ?, ?,?, ?)').join(',');
   var sql = `insert into DonationDetails (receipt_id, donation_type, unit_value, quantity, value) 
           VALUES `+
           placeholders+`;`;
