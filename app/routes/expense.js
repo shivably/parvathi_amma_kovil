@@ -131,12 +131,13 @@ function insertExpense(income_type, res, db) {
   var receipt = income_type.receipt;
   var value = income_type.value;
   var description = income_type.description;
+  var dor = income_type.dor;
   console.dir(income_type)
-  var sql = `insert into Expense (type_id, receipt, value, description) 
+  var sql = `insert into Expense (type_id, receipt, value, description, dor) 
           VALUES 
-          (?, ?, ?, ?);`;
+          (?, ?, ?, ?, ?);`;
 
-  var values = [type_id, receipt, value, description];
+  var values = [type_id, receipt, value, description, dor];
 
   db.serialize(function () {
     db.run(sql, values, function (err) {
