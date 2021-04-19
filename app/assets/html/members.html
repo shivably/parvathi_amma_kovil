@@ -53,7 +53,15 @@
                     },
                     {
                         data: null,
-                        render: function (data, type, row, meta) {return '<a href="javascript:editData('+data['id']+','+data['active']+')" class="btn btn-info btn-sm" role="button">Activate/DeActivate</a>' }
+                        render: function (data, type, row, meta) {
+                            var msg = 'Active'
+                            var button = 'info'
+                            if(data['active'] == 0){
+                                msg = 'InActive'
+                                button = 'warning'
+                            }
+                            return '<a href="javascript:editData('+data['id']+','+data['active']+')" class="btn btn-'+button+' btn-sm" role="button">'+msg+'</a>' 
+                        }
                     }
                 ]
 

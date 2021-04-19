@@ -85,34 +85,35 @@
         document.editMemberForm.address.focus();
         return true;
       }
-      var permanent_address = document.editMemberForm.permanent_address.value;
-      if (permanent_address == "") {
-        alert("Please Enter Your Permanent_Address");
-        document.editMemberForm.permanent_address.focus();
-        return true;
-      }
+     
       var phone = $("#phone").val();
-      console.log(phone)
-      var phoneNum = phone.replace(/^[6-9]\d{9}$/);
-      console.log(phoneNum)
-      if ( phoneNum.length == 10) {
-        return false;
-      }else{
+      var phoneNum = phone.replace(/"^[0-9]{10}$"/);
+      if (phoneNum.length != 10) {
         alert("Please Enter 10-Digit Mobile Number")
         return true;
       }
 
-      var email = document.editMemberForm.email.value;
+
+      var email = $("#email").val();
       atpos = email.indexOf("@");
       dotpos = email.lastIndexOf(".");
 
       if (atpos < 1 || (dotpos - atpos < 2)) {
         alert("Please enter correct email")
-        document.editMemberForm.email.focus();
-        return true
+        document.addMemberForm.email.focus();
+        return true;
       }
-      return false;
+      var aadhar = $("#aadhar").val();
+      console.log(aadhar)
+      var aadharNum = aadhar.replace(/"^[0-9]{12}$"/);
+      if (aadharNum.length != 12) {  
+        alert("Please Enter Your Aadhar Card Number")
+        return true;
+      }
+
+
     }
+    
   </script>
 </head>
 

@@ -42,7 +42,7 @@
         return true;
 
       }
-      if (!/^[a-zA-Z]*$/g.test(document.addMemberForm.name.value)) {
+      if (!/^[a-z A-Z]*$/.test(document.addMemberForm.name.value)) {
         alert("Enter valid characters");
         document.addMemberForm.name.focus();
         return true;
@@ -53,19 +53,10 @@
         document.addMemberForm.address.focus();
         return true;
       }
-      var permanent_address = $("#permanent_address").val();
-      if (permanent_address == "") {
-        alert("Please Enter Your Permanent_Address");
-        document.addMemberForm.permanent_address.focus();
-        return true;
-      }
+      
       var phone = $("#phone").val();
-      console.log(phone)
-      var phoneNum = phone.replace(/^[6-9]\d{9}$/);
-      console.log(phoneNum)
-      if (phoneNum.length == 10) {
-        return false;
-      } else {
+      var phoneNum = phone.replace(/"^[0-9]{10}$"/);
+      if (phoneNum.length != 10) {
         alert("Please Enter 10-Digit Mobile Number")
         return true;
       }
@@ -82,21 +73,18 @@
       }
       var aadhar = $("#aadhar").val();
       console.log(aadhar)
-      var aadharNum = aadhar.replace(/^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$/);
-      console.log(aadharNum)
-      if (aadharNum == "") {
-        alert("Please Enter Your Aadhar Card Number");
-        document.addMemberForm.aadhar.focus();
+      var aadharNum = aadhar.replace(/"^[0-9]{12}$"/);
+      if (aadharNum.length != 12) {  
+        alert("Please Enter Your Aadhar Card Number")
         return true;
       }
 
 
-      if  (document.addMemberForm.dob = " ") {
-        alert("Please Enter Your Date Of Birth");
-        document.addMemberForm.dob.focus();
-        return true;
-      }
+      
     }
+
+
+
 
 
 
@@ -158,7 +146,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/balance">Balance Sheet</a>
-    </li>
+      </li>
     </ul>
   </nav>
   <br />
@@ -188,7 +176,7 @@
 
         <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
-        <input type="" class="form-control" id="aadhar" name="aadhar"><br>
+        <input type="number" class="form-control" id="aadhar" name="aadhar" maxlength="12"><br>
 
         <span aria-hidden="true" class="required"></span>
         <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span
