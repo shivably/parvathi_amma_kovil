@@ -267,14 +267,14 @@ function modifyExpenseDetails(expense, res, db) {
   var value = expense.value;
   var description = expense.description;
   var id = expense.id;
-
+  var dor = expense.dor;
   if (!id) {
     res.status(400).send("ID is mandatory");
   }
 
   else {
-    var sql = `update Expense set type_id = ?, receipt = ?, value = ?, description = ? where id = ?;`;
-    var values = [type_id, receipt, value, description, id];
+    var sql = `update Expense set type_id = ?, receipt = ?, value = ?, description =  ?,dor = ? where id = ?;`;
+    var values = [type_id, receipt, value, description, dor, id];
 
     db.serialize(function () {
       db.run(sql, values, function (err) {
