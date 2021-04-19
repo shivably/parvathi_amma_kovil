@@ -7,11 +7,29 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
     function submitData() {
-      var person = {
+      var type = {
         name: $("#name").val(),
         description: $("#description").val(),
       }
-      console.dir(person);
+      $.ajax({
+        url: '/api/expense_type/',
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (response_data) {
+          console.dir(response_data)
+          for(var i = 0; i<response_data.length; i++){
+            if(response_data[i]['name'] == $("#name").val()){
+              alert("Sorry it's already exists")
+              return 'Duplicate expense_type'
+            }
+          }
+          add_expense_type(type)
+        },
+      });
+    }
+    function add_expense_type(type) {
+      console.dir(type);
       $.ajax({
         url: '/api/expense_type/',
         type: 'post',
@@ -22,7 +40,7 @@
             window.location.replace(response_data.url + "?msg=" + response_data.msg);
           }
         },
-        data: JSON.stringify(person)
+        data: JSON.stringify(type)
       });
     }
   </script>
@@ -48,10 +66,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/expense_report">Expense Report</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/balance">Balance Sheet</a>
-  </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/balance">Balance Sheet</a>
+      </li>
     </ul>
   </nav>
   <br />
@@ -64,6 +82,7 @@
       <label for="description">Description</label><br>
       <textarea id="description" name="description"></textarea><br>
       <input type="button" value="Add" onclick="submitData()">
+
     </form>
   </div>
 </body>
