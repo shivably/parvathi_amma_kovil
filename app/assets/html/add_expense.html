@@ -29,7 +29,6 @@
       if ($("#value").val() <=0) {
         alert("Please Valid Amount")
         return
-      
       }
       var person = {
         type_id: $("#type_id").val(),
@@ -37,6 +36,7 @@
         value: $("#value").val(),
         description: $("#description").val(),
         dor: $("#dor").val(),
+        
       }
       console.dir(person);
       $.ajax({
@@ -86,7 +86,7 @@
     <h1>Add Expense</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
       <label for="type">Date:</label><br>
-      <input type=date id=date><br>
+      <input type=date id="dor"><br>
       <label for="type_id">Type</label><span style=" color:#ff0000">*</span><br>
       <select type="text" id="type_id" name="type_id">
         <option value=''>Expense Type</option>
@@ -107,8 +107,7 @@
     function w3_close() {
         document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
     }
-
-    document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+   document.getElementById('dor').value = new Date().toISOString().substring(0, 10);
 </script>
 
 </body>

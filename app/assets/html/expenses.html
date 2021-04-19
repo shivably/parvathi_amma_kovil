@@ -25,7 +25,7 @@
           dataSrc: ""
         },
         "columns": [
-          { "data": "id" },
+          { "data": "dor" },
           {
             "data": "type_id",
             render: function (id, type, row, meta) {
@@ -42,7 +42,7 @@
           {
             data: null,
             render: function (data, type, row, meta) {
-              return '<a href="edit_expense?id=' + data['id'] + '" class="btn btn-info">Edit</a>'
+              return '<a href="edit_expense?id=' + data['id'] + '" class="btn btn-info btn-sm">Edit</a>'
             }
           },
         ]
@@ -83,7 +83,7 @@
     <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Date</th>
           <th>Type</th>
           <th>Receipt</th>
           <th>Value</th>
@@ -93,8 +93,8 @@
   </tr>
   </thead>
   </table>
-  <a href="add_expense" class="btn btn-info" role="button">Add Expense</a>
-  <a href="add_expense_type" class="btn btn-info" role="button">Add Expense Type</a>
+  <a href="add_expense" class="btn btn-info btn-sm" role="button">Add Expense</a>
+  <a href="add_expense_type" class="btn btn-info btn-sm" role="button">Add Expense Type</a>
   </div>
   <script>
     function w3_open() {
