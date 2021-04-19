@@ -194,6 +194,20 @@
         data: JSON.stringify(person)
       });
     }
+    $(function () {
+      var dtToday = new Date();
+
+      var month = dtToday.getMonth() + 1;
+      var day = dtToday.getDate();
+      var year = dtToday.getFullYear();
+      if (month < 10)
+        month = '0' + month.toString();
+      if (day < 10)
+        day = '0' + day.toString();
+
+      var maxDate = year + '-' + month + '-' + day;
+      $('#dor').attr('max', maxDate);
+    });
   </script>
 </head>
 
@@ -221,7 +235,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/balance">Balance Sheet</a>
-    </li>
+      </li>
     </ul>
   </nav>
   <br />
@@ -248,7 +262,7 @@
             <input type="text" value="">
           </div>
           <br>
-          <input type="date" id="dor"class="dor">
+          <input type="date" id="dor" class="dor">
         </div>
         <div style="margin-right: 40px;">
           <div class="row">
@@ -367,8 +381,8 @@
         </div>
       </div>
       <script>
-        document.getElementById('dor').value = new Date().toISOString().substring(0, 10); 
-    </script>
+        document.getElementById('dor').value = new Date().toISOString().substring(0, 10);
+      </script>
     </form>
   </div>
 

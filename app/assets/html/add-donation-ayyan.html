@@ -196,6 +196,28 @@
         data: JSON.stringify(person)
       });
     }
+    function validDate(){
+	    var today = new Date().toISOString().split('T')[0];
+	    var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      document.getElementsByName("dor")[0].setAttribute('min', today);
+      document.getElementsByName("dor")[0].setAttribute('max', nextWeekDate)
+	}
+  //////////////////////////////////////////
+  $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+    $('#dor').attr('max', maxDate);
+});
+  //////////////////////////////////////////
   </script>
 </head>
 
@@ -223,7 +245,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/balance">Balance Sheet</a>
-    </li>
+      </li>
     </ul>
   </nav>
   <br />
@@ -237,7 +259,7 @@
           <br>
           <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
             <option value='NON_MEMBER'>Select Members</option>
-          </select>      
+          </select>
           <div id="member_detail" style="display: none;">
             <br>
             <div id="phone"></div>
@@ -251,7 +273,7 @@
             <input type="text" value="">
           </div>
           <br>
-          <input type="date" id="dor"class="dor">
+          <input type="date" id="dor" max="new Date()">
         </div>
         <div style="margin-right: 40px;">
           <div class="row">
@@ -301,7 +323,7 @@
           <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity"
               name="nankudai_vari_quantity"></div> -->
             <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
-                id="nankudai_vari_value" name="nankudai_vari_value" >
+                id="nankudai_vari_value" name="nankudai_vari_value">
             </div>
           </div></br>
           <div class="row">
@@ -370,8 +392,8 @@
         </div>
       </div>
       <script>
-        document.getElementById('dor').value = new Date().toISOString().substring(0, 10); 
-    </script>
+        document.getElementById('dor').value = new Date().toISOString().substring(0, 10);
+      </script>
     </form>
   </div>
 
