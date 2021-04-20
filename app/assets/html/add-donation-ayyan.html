@@ -196,13 +196,6 @@
         data: JSON.stringify(person)
       });
     }
-    function validDate(){
-	    var today = new Date().toISOString().split('T')[0];
-	    var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-      document.getElementsByName("dor")[0].setAttribute('min', today);
-      document.getElementsByName("dor")[0].setAttribute('max', nextWeekDate)
-	}
-  //////////////////////////////////////////
   $(function(){
     var dtToday = new Date();
     
@@ -217,7 +210,6 @@
     var maxDate = year + '-' + month + '-' + day;
     $('#dor').attr('max', maxDate);
 });
-  //////////////////////////////////////////
   </script>
 </head>
 

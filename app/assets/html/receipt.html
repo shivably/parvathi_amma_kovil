@@ -40,9 +40,9 @@
                     console.dir(donation)
                     $('#donation_date').html(donation[0].date)
 
-                    if (donation[0].member_id) {
+                    if (donation[0].member_id != 'NON_MEMBER') {
                         $.ajax({
-                            url: '/api/member/id/' + donation[0].member_id,
+                            url: '/api/members/id/' + donation[0].member_id,
                             type: 'get',
                             contentType: 'application/json',
                             success: function (member) {
@@ -165,7 +165,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div>
-                                    <span class="text-sm text-grey-m2 align-middle">To:</span>
+                                    <span class="text-sm text-grey-m2 align-middle">From:</span>
                                     <span class="text-600 text-110 text-blue align-middle" id="member"></span>
                                 </div>
                                 <div class="text-grey-m2">
