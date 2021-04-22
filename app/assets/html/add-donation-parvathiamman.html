@@ -10,7 +10,7 @@
     var members;
     $(document).ready(function () {
       $.ajax({
-        url: '/api/members/',
+        url: '/api/members/active/1',
         type: 'get',
         contentType: 'application/json',
         success: function (response_data) {
@@ -259,7 +259,7 @@
             <label for="donor_name">Name</label><br>
             <input type="text" id="donor_name" name="donor_name" onchange=""><br>
             <label for="donor_contact" id="donor_contact">Contact</label><br>
-            <input type="text" value="">
+            <input type="text" value="" maxlength="10">
           </div>
           <br>
           <input type="date" id="dor" class="dor">

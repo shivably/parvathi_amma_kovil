@@ -10,7 +10,7 @@
     var members;
     $(document).ready(function () {
       $.ajax({
-        url: '/api/members/',
+        url: '/api/members/active/1',
         type: 'get',
         contentType: 'application/json',
         success: function (response_data) {
