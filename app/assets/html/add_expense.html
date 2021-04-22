@@ -27,16 +27,16 @@
       }
 
       if ($("#value").val() <= 0) {
-        alert("Please Valid Amount")
+        alert("Please Enter Valid Amount")
         return
       }
+  
       var person = {
         type_id: $("#type_id").val(),
         receipt: $("#receipt").val(),
         value: $("#value").val(),
         description: $("#description").val(),
         dor: $("#dor").val(),
-
       }
       console.dir(person);
       $.ajax({
@@ -51,6 +51,8 @@
         },
         data: JSON.stringify(person)
       });
+
+
     }
     $(function () {
       var dtToday = new Date();
@@ -106,7 +108,7 @@
         <option value=''>Expense Type</option>
       </select><br>
       <label for="receipt">Receipt</label><br>
-      <input type="text" id="receipt" name="receipt"><br>
+      <input type="number" id="receipt" name="receipt"><br>
       <label for="value">Amount</label><span style=" color:#ff0000">*</span><br>
       <input type="number" id="value" name="value"><br>
       <label for="description">Description</label><br>
