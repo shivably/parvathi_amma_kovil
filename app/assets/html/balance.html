@@ -42,11 +42,14 @@
                 data: JSON.stringify(query)
             });
         }
+        
         function set_balance() {
+            
+
             $('#balance').html($('#total_donation').html() - $('#total_expense').html())
 
-
         }
+
     </script>
 
 </head>
@@ -82,11 +85,8 @@
     <div class="container center_div">
         <h1>Balance Sheet</h1>
         <table id="example" class="display" style="width:100%">
-            <thead>
-                <th>Total Donation</th>
-                <th>Total Expense</th>
-            </thead>
-    
+
+
             <div>
                 <form>
                     <label for="date">From:</label>
@@ -95,10 +95,17 @@
                     <input type="date" id="todate">
 
                     <input type="button" value="Search" onclick="generate_balance_report()">
+                    <h2>Account Balance</h2>
+                    ---------------------------------------------------<br>
+                    
+                    Donation: <div id ="total_donation"></div>
+                    Expense: <div id ="total_expense"></div>
+                    ---------------------------------------------------<br>
+                    Balance: <div id="balance"></div>
+                    
                 </form>
-                <div id="total_donation"></div>
-                <div id="total_expense"></div>
-                <div id="balance"></div>
+                
+
             </div>
     </div>
     <script>

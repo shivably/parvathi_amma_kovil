@@ -53,8 +53,9 @@
         document.addMemberForm.address.focus();
         return true;
       }
-      
+
       var phone = $("#phone").val();
+      debugger;
       var phoneNum = phone.replace(/"^[0-9]{10}$"/);
       if (phoneNum.length != 10) {
         alert("Please Enter 10-Digit Mobile Number")
@@ -74,13 +75,13 @@
       var aadhar = $("#aadhar").val();
       console.log(aadhar)
       var aadharNum = aadhar.replace(/"^[0-9]{12}$"/);
-      if (aadharNum.length != 12) {  
+      if (aadharNum.length != 12) {
         alert("Please Enter Your Aadhar Card Number")
         return true;
       }
 
 
-      
+
     }
 
 
@@ -121,6 +122,23 @@
 
   </script>
 </head>
+<style>
+  .form-group {
+    background-color: #65b7c2;
+    color: #07255ac2;
+    padding: 20px;
+    border: 5px solid #dbdbdb;
+  }
+
+  .form-control {
+    background-color: #c1e6eb;
+    color: #07255ac2;
+    padding: 20px;
+    border: 5px solid #78bdc9;
+
+  }
+</style>
+
 
 <body>
   <!-- A grey horizontal navbar that becomes vertical on small screens -->
@@ -169,7 +187,7 @@
 
         <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
         <span style=color:#ff0000>*</span>
-        <input type="number" class="form-control" id="phone" name="phone"><br>
+        <input type="text" class="form-control" id="phone" name="phone" maxlength="10"><br>
 
         <label for="email">Email</label><span style=color:#ff0000>*</span>
         <input type="email" class="form-control" id="email" name="email"><br>
