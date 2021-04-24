@@ -62,36 +62,15 @@
                 },
             });
         });
-    </script>
+        $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
+  </script>
 
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expenses">Expenses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/balance">Balance Sheet</a>
-            </li>
-        </ul>
-    </nav>
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
     <br />
     <div id="expense_report" class="container center_div">
         <h1>Expense Report</h1>

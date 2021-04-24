@@ -7,8 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    
-    
+
+
     var query_param;
     function getUrlVars() {
       var vars = [], hash;
@@ -40,9 +40,9 @@
         },
       });
     });
-  
+
     function editData() {
-     
+
       var validation_error = validateform();
       if (validation_error) {
         return;
@@ -85,7 +85,7 @@
         document.editMemberForm.address.focus();
         return true;
       }
-     
+
       var phone = $("#phone").val();
       var phoneNum = phone.replace(/"^[0-9]{10}$"/);
       if (phoneNum.length != 10) {
@@ -106,78 +106,56 @@
       var aadhar = $("#aadhar").val();
       console.log(aadhar)
       var aadharNum = aadhar.replace(/"^[0-9]{12}$"/);
-      if (aadharNum.length != 12) {  
+      if (aadharNum.length != 12) {
         alert("Please Enter Your Aadhar Card Number")
         return true;
       }
 
 
     }
-    
+    $(document).ready(function () {
+      $("#nav-links").load("navigation?balance");
+    })
   </script>
 </head>
 
-<body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/members">Members</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/expenses">Expenses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/reports">Reports</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/expense_report">Expense Report</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/balance">Balance Sheet</a>
-      </li>
-        </ul>
-      </nav>
-      <br/>
-      <div class="container center_div">
+<body onload="set_language('en')">
+  <div id="nav-links"></div>
+  <br />
+  <div class="container center_div">
     <h1>Edit Member</h1>
     <form action="/api/Members/" name="editMemberForm" method="POST">
       <div class="form-group">
         <label for="name">Name</label><span aria-hidden="true" class="required"></span><span
-        style=color:#ff0000>*</span>
-      <input type="text" class="form-control" id="name" name="name"><br>
+          style=color:#ff0000>*</span>
+        <input type="text" class="form-control" id="name" name="name"><br>
 
 
-      <label for="address">Address</label><span aria-hidden="true" class="required"></span><span
-        style=color:#ff0000>*</span>
-      <input type="text" class="form-control" id="address" name="address"><br>
+        <label for="address">Address</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
+        <input type="text" class="form-control" id="address" name="address"><br>
 
-      <label for="permanent_address">Permanent Address</label><span aria-hidden="true" class="required"></span>
-      <span style=color:#ff0000>*</span>
-      <input type="text" class="form-control" id="permanent_address" name="permanent_address"><br>
+        <label for="permanent_address">Permanent Address</label><span aria-hidden="true" class="required"></span>
+        <span style=color:#ff0000>*</span>
+        <input type="text" class="form-control" id="permanent_address" name="permanent_address"><br>
 
-      <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
-      <span style=color:#ff0000>*</span>
-      <input type="text" class="form-control" id="phone" name="phone"><br>
+        <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
+        <span style=color:#ff0000>*</span>
+        <input type="text" class="form-control" id="phone" name="phone"><br>
 
-      <label for="email">Email</label><span style=color:#ff0000>*</span>
-      <input type="email" class="form-control" id="email" name="email"><br>
+        <label for="email">Email</label><span style=color:#ff0000>*</span>
+        <input type="email" class="form-control" id="email" name="email"><br>
 
-      <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
-        style=color:#ff0000>*</span>
-      <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
+        <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
+        <input type="text" class="form-control" id="aadhar" name="aadhar"><br>
 
-      <span aria-hidden="true" class="required"></span>
-      
-        <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span style=color:#ff0000>*</span>
+        <span aria-hidden="true" class="required"></span>
+
+        <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span
+          style=color:#ff0000>*</span>
         <input type="date" placeholder="dd/mm/yyyy" class="form-control" id="dob" name="dob"><br>
-        
+
 
         <input type="button" value="Save" onclick="editData()">
 
