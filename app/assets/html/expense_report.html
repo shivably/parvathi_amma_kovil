@@ -7,8 +7,21 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
-
+        function sendEmail() {
+            $(document).ready(function () {
+                Email.send({
+                    Host: "smtp.gmail.com",
+                    Username: "parvathiamman123@gmail.com",
+                    Password: "parvathiayyan@2k21",
+                    To: $('#email').val(),
+                    From: "parvathiamman123@gmail.com",
+                    Subject: "Expenses",
+                    Body: $("#example").html()
+                }).then(message => alert('email sent successfully'));
+            });
+        }
         function generate_expense_report() {
             $("#example").DataTable().destroy()
             var table = $('#example').DataTable({
@@ -62,6 +75,7 @@
                 },
             });
         });
+
     </script>
 
 </head>
