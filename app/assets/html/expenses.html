@@ -7,6 +7,8 @@
   <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
   <script>
     var expense_type;
     $(document).ready(function () {
@@ -49,8 +51,8 @@
       });
     });
     $(document).ready(function () {
-            $("#nav-links").load("navigation?balance");
-        })
+      $("#nav-links").load("navigation?balance");
+    })
   </script>
 </head>
 
@@ -62,18 +64,18 @@
     <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Receipt</th>
-          <th>Value</th>
-          <th>Description</th>
+          <th class="trn">Date</th>
+          <th class="trn">Type</th>
+          <th class="trn">Receipt</th>
+          <th class="trn">Value</th>
+          <th class="trn">Description</th>
           <th></th>
   </div>
   </tr>
   </thead>
   </table>
-  <a href="add_expense" class="btn btn-info btn-sm" role="button">Add Expense</a>
-  <a href="add_expense_type" class="btn btn-info btn-sm" role="button">Add Expense Type</a>
+  <a href="add_expense" class="btn btn-info btn-sm trn" role="button">AddExpense</a>
+  <a href="add_expense_type" class="btn btn-info btn-sm trn" role="button">AddExpenseType</a>
   </div>
   <script>
     function w3_open() {

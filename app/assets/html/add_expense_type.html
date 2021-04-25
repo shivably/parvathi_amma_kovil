@@ -5,6 +5,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
   <script>
     function submitData() {
       var type = {
@@ -53,12 +55,12 @@
   <div id="nav-links"></div>
   <br />
   <div class="container center_div">
-    <h1>Add Expense Type</h1>
+    <h1 class="trn">AddExpenseType</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-      <label for="name">Name</label><br>
+      <label for="name" class="trn">Name</label><br>
       <input type="text" id="name" name="name"><br>
 
-      <label for="description">Description</label><br>
+      <label for="description" class="trn">Description</label><br>
       <textarea id="description" name="description"></textarea><br>
       <input type="button" value="Add" onclick="submitData()">
 

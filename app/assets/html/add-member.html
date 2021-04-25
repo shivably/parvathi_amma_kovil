@@ -5,6 +5,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
   <script>
     function submitData() {
       var validation_error = validateform();
@@ -147,35 +149,35 @@
   <div id="nav-links"></div>
   <br />
   <div class="container center_div">
-    <h1>Add Member</h1>
+    <h1 class="trn">AddMember</h1>
     <form action="/api/members/" name="addMemberForm" method="POST">
       <div class="form-group">
-        <label for="name">Name</label><span aria-hidden="true" class="required"></span><span
+        <label for="name" class="trn">Name</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="name" name="name"><br>
 
 
-        <label for="address">Address</label><span aria-hidden="true" class="required"></span><span
+        <label for="address" class="trn">Address</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="address" name="address"><br>
 
-        <label for="permanent_address">Permanent Address</label><span aria-hidden="true" class="required"></span>
+        <label for="permanent_address" class="trn">PermanentAddress</label><span aria-hidden="true" class="required"></span>
         <span style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="permanent_address" name="permanent_address"><br>
 
-        <label for="phone">Phone</label><span aria-hidden="true" class="required"></span>
+        <label for="phone" class="trn">Phone</label><span aria-hidden="true" class="required"></span>
         <span style=color:#ff0000>*</span>
         <input type="text" class="form-control" id="phone" name="phone" maxlength="10"><br>
 
-        <label for="email">Email</label><span style=color:#ff0000>*</span>
+        <label for="email" class="trn">Email</label><span style=color:#ff0000>*</span>
         <input type="email" class="form-control" id="email" name="email"><br>
 
-        <label for="aadhar">Aadhar</label><span aria-hidden="true" class="required"></span><span
+        <label for="aadhar" class="trn">Aadhar</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
         <input type="number" class="form-control" id="aadhar" name="aadhar" maxlength="12"><br>
 
         <span aria-hidden="true" class="required"></span>
-        <label for="dob">Date Of Birth</label><span aria-hidden="true" class="required"></span><span
+        <label for="dob" class="trn">DateOfBirth</label><span aria-hidden="true" class="required"></span><span
           style=color:#ff0000>*</span>
         <input type="date" placeholder="dd/mm/yyyy" class="form-control" id="dob" name="dob"><br>
         <input type="button" value="Add" onclick="submitData()">
