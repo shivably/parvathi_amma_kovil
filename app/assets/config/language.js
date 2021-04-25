@@ -1,7 +1,7 @@
 var lang_dict = {
     //////////////////// add-donation-ayyan.html/////////////////////////
     "AyyanKovilDonation": {
-        "ta": "அயன் கோயில் நன்கொடை",
+        "ta": "அய்யன் கோயில் நன்கொடை",
         "en": "Ayyan Kovil Donation"
     },
     "Member": {
@@ -10,254 +10,258 @@ var lang_dict = {
     },
     "SelectMembers": {
         "en": "Select Members",
-        "ta": "hey"
+        "ta": "உறுப்பினரைத் தேர்ந்தெடுக்கவும்"
     },
     "Name": {
         "en": "Name",
-        "ta": "hey"
+        "ta": "பெயர்"
     },
     "Contact": {
         "en": "Contact",
-        "ta": "hey"
+        "ta": "தொடர்பு கொள்ளுங்கள்"
     },
     "KodaiVari": {
         "en": "Kodai Vari",
-        "ta": "hey"
+        "ta": "கொடை வரி"
     },
     "Unitvalue": {
         "en": "Unit value",
-        "ta": "hai"
+        "ta": "அலகு மதிப்பு"
     },
     "SeethanaVari": {
         "en": "Seethana Vari",
-        "ta": "hey"
+        "ta": "சீதன வரி"
     },
     "NankudaiVaravu": {
         "en": "Nankudai Varavu",
-        "ta": "hey"
+        "ta": "நன்கொடை வரவு"
     },
     "UndiyalVaravu": {
         "en": "Undiyal Varavu",
-        "ta": ""
+        "ta": "உண்டியல் வரவு"
     },
-    " NemisaVaravu": {
+    "NemisaVaravu": {
         "en": " Nemisa Varavu",
-        "ta": ""
+        "ta": "நேமிஷ வரவு"
     },
     "ItharaVaravu": {
         "en": "Ithara Varavu",
-        "ta": ""
+        "ta": "இதர வரவு"
     },
     "TotalAmount": {
         "en": "Total Amount",
-        "ta": ""
+        "ta": "மொத்த தொகை"
     },
     ////////////////// add_expense_type.html/////////////////////////
     "AddExpenseType": {
         "en": "Add Expense Type",
-        "ta": ""
+        "ta": "செலவு வகையைச் சேர்க்கவும்"
     },
     "Description": {
         "en": "Description",
-        "ta": ""
+        "ta": "விளக்கம்"
     },
     ////////////////////////add_expense.html////////////////////////////
     "AddExpense": {
         "en": "Add Expense",
-        "ta": ""
+        "ta": "செலவு சேர்க்கவும்"
     },
     "Date:": {
         "en": "Date:",
-        "ta": ""
+        "ta": "தேதி"
     },
     "Type": {
         "en": "Type",
-        "ta": ""
+        "ta": "வகை"
     },
     "ExpenseType": {
         "en": "Expense Type",
-        "ta": ""
+        "ta": "செலவு வகை"
     },
     "Receipt": {
         "en": "Receipt",
-        "ta": ""
+        "ta": "ரசீது"
     },
     "Amount": {
         "en": "Amount",
-        "ta": ""
+        "ta": "தொகை"
     },
     ////////////////////add_income_type/////////////
     "AddDonationType": {
         "en": "Add Donation Type",
-        "ta": ""
+        "ta": "நன்கொடை வகையைச் சேர்க்கவும்"
     },
     "Kovil": {
         "en": "Kovil",
-        "ta": ""
+        "ta": "கோவில்"
     },
     "Value": {
         "en": "Value",
-        "ta": ""
+        "ta": "மதிப்பு"
     },
     ////////////////add-donation-parvathiamman.html////////////
     "ParvathiammanKovilDonation": {
         "en": "Parvathiamman Kovil Donation",
-        "ta": ""
+        "ta": "பார்வதியம்மன் கோவில் நன்கொடை"
     },
     ///////////////////////add-donation.html/////////////////
     "Donation": {
         "en": "Donation",
-        "ta": ""
+        "ta": "நன்கொடை"
     },
     ////////////////////add-member.html///////////////////
     "AddMember": {
         "en": "Add Member",
-        "ta": ""
+        "ta": "உறுப்பினரைச் சேர்க்கவும்"
     },
     "Address": {
         "en": "Address",
-        "ta": ""
+        "ta": "முகவரி",
     },
     "PermanentAddress": {
         "en": "Permanent Address",
-        "ta": ""
+        "ta": "நிரந்தர முகவரி"
     },
     "Phone": {
         "en": "Phone",
-        "ta": ""
+        "ta": "தொலைபேசி"
     },
     "Email": {
         "en": "Email",
-        "ta": ""
+        "ta": "மின்னஞ்சல்"
     },
     "Aadhar": {
         "en": "Aadhar",
-        "ta": ""
+        "ta": "ஆதார்"
     },
     "DateOfBirth": {
         "en": "Date Of Birth",
-        "ta": ""
+        "ta": "பிறந்த தேதி"
     },
     //////////////////////////balance.html////////////////////////////
     "BalanceSheet": {
         "en": "Balance Sheet",
-        "ta": " check"
+        "ta": "இருப்புநிலை"
     },
-    "AccountBalance:": {
+    "AccountBalance": {
         "en": "Account Balance",
-        "ta": ""
+        "ta": "கணக்கு இருப்பு"
     },
     "Expense:": {
         "en": "Expense",
-        "ta": ""
+        "ta": "செலவு"
     },
     "Balance:": {
         "en": "Balance:",
-        "ta": ""
+        "ta": "சமநிலை:"
     },
     //////////////////////////donations.html////////////////////////
     "ID": {
         "en": "ID",
-        "ta": ""
+        "ta": "அடையாள எண்"
     },
     "QuantityValue": {
         "en": "Quantity Value",
-        "ta": ""
+        "ta": "அளவு மதிப்பு"
     },
     "Quantity": {
         "en": "Quantity",
-        "ta": ""
+        "ta": "அளவு"
     },
     "AddDonation": {
         "en": "Add Donation",
-        "ta": ""
+        "ta": "நன்கொடை சேர்க்கவும்"
+    },
+    "Donation:":{
+        "en": "Donation:",
+        "ta": "நன்கொடை"
     },
     //////////////////////edit_expense.html/////////////////////////
     "EditExpense": {
         "en": "Edit Expense",
-        "ta": ""
+        "ta": "செலவைத் திருத்து"
    },
    ////////////////////////edit-member.html/////////////////////////
    "EditMember":{
        "en": "Edit Member",
-       "ta": ""
+       "ta": " உறுப்பினர் திருத்து"
    },
    /////////////////////////expense_report.html/////////////////////
    "ExpenseReport":{
        "en": "Expense Report",
-       "ta": ""
+       "ta": "செலவு அறிக்கை",
    },
    "From:":{
        "en": "From:",
-       "ta": ""
+       "ta": "தேதி முதல்"
    },
    "To:":{
        "en": "To:",
-       "ta": ""
+       "ta": "தேதி வரை:"
    },
    "Type:":{
        "en": "Type:",
-       "ta": ""
+       "ta": "வகை:"
    },
    "Email:":{
        "en": "Email:",
-       "ta": ""
+       "ta": "மின்னஞ்சல்:"
    },
    "Date":{
        "en": "Date",
-       "ta": ""
+       "ta": "தேதி"
    },
    ////////////////////income_type.html//////////////////
    "AddIncomeType":{
        "en": "Add Income Type",
-       "ta": ""
+       "ta": "வருமான வகையைச் சேர்",
    },
    ///////////////////kovil.html//////////////////////////
    "AddKovil":{
        "en": "Add Kovil",
-       "ta": ""
+       "ta": "கோவில் சேர்க்கவும்"
    },
    /////////////////////receipt.html////////////////////////
    "ReceiptNumber:":{
        "en": "Receipt Number:",
-       "ta": ""
+       "ta": "ரசீது எண்:"
    },
    "UnitPrice":{
        "en": "Unit Price",
-       "ta": ""
+       "ta": "அலகு விலை"
    },
    "Total":{
        "en": "Total",
-       "ta": ""
+       "ta": "மொத்தம்"
    },
    "Thankyouforyoursupport":{
        "en": "Thank you for your support",
-       "ta": ""
+       "ta": "உங்கள் ஆதரவுக்கு நன்றி"
    },
    "Print":{
        "en": "Print",
-       "ta": ""
+       "ta": "அச்சு"
    },
    /////////////////////////reports.html/////////////////
    "ReceiptNumber":{
        "en": "Receipt Number",
-       "ta": ""
+       "ta": "ரசீது எண்"
    },
    "From":{
        "en": "From",
-       "ta": ""
+       "ta": "தேதி முதல்"
    },
    ///////////////////////navigation.html///////////////////
    "Reports":{
        "en": "Reports",
-       "ta": "check"
+       "ta": "அறிக்கைகள்"
    },
    "Members":{
        "en": "Members",
-       "ta": " c"
+       "ta": "உறுப்பினர்கள்"
    },
    "Expenses":{
        "en": "Expenses",
-       "ta": "cc"
+       "ta": "செலவுகள்"
    },
 }
