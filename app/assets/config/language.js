@@ -147,13 +147,13 @@ var lang_dict = {
         "en": "Account Balance",
         "ta": "கணக்கு இருப்பு"
     },
-    "Expense:": {
+    "Expense": {
         "en": "Expense",
         "ta": "செலவு"
     },
-    "Balance:": {
-        "en": "Balance:",
-        "ta": "சமநிலை:"
+    "Balance": {
+        "en": "Balance",
+        "ta": "சமநிலை"
     },
     //////////////////////////donations.html////////////////////////
     "ID": {
@@ -191,21 +191,9 @@ var lang_dict = {
        "en": "Expense Report",
        "ta": "செலவு அறிக்கை",
    },
-   "From:":{
-       "en": "From:",
-       "ta": "தேதி முதல்"
-   },
-   "To:":{
-       "en": "To:",
-       "ta": "தேதி வரை:"
-   },
-   "Type:":{
-       "en": "Type:",
-       "ta": "வகை:"
-   },
-   "Email:":{
-       "en": "Email:",
-       "ta": "மின்னஞ்சல்:"
+   "To":{
+       "en": "To",
+       "ta": "தேதி வரை"
    },
    "Date":{
        "en": "Date",

@@ -92,16 +92,16 @@
         <h1 class="trn">ExpenseReport</h1>
         <div>
             <form>
-                <label for="type" class="trn">From:</label>
+                <label for="type" class="trn">From</label>
                 <input type=date id=fromdate>
-                <label for="type" class="trn">To:</label>
+                <label for="type" class="trn">To</label>
                 <input type=date id=todate>
-                <label for="type" class="trn">Type:</label>
+                <label for="type" class="trn">Type</label>
                 <select type="text" id="type_id" name="type_id">
                     <option value='' class="trn">ExpenseType</option>
                 </select>
                 <input type="button" value="Search" onclick="generate_expense_report()">
-                <label for="type" class="trn">Email:</label>
+                <label for="type" class="trn">Email</label>
                 <input type=email id="email">
                 <input type="button" value="Send Email" onclick="sendEmail()" />
             </form>
