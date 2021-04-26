@@ -5,6 +5,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
   <script>
     var income_type;
     var members;
@@ -196,61 +198,41 @@
         data: JSON.stringify(person)
       });
     }
-  $(function(){
-    var dtToday = new Date();
-    
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
+    $(function () {
+      var dtToday = new Date();
+
+      var month = dtToday.getMonth() + 1;
+      var day = dtToday.getDate();
+      var year = dtToday.getFullYear();
+      if (month < 10)
         month = '0' + month.toString();
-    if(day < 10)
+      if (day < 10)
         day = '0' + day.toString();
-    
-    var maxDate = year + '-' + month + '-' + day;
-    $('#dor').attr('max', maxDate);
-});
+
+      var maxDate = year + '-' + month + '-' + day;
+      $('#dor').attr('max', maxDate);
+    });
+    $(document).ready(function () {
+        $("#nav-links").load("navigation?balance");
+    })
   </script>
 </head>
 
-<body>
+<body onload="set_language('en')">
   <!-- A grey horizontal navbar that becomes vertical on small screens -->
-  <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/members">Members</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/expenses">Expenses</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/reports">Reports</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="/expense_report">Expense Report</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/balance">Balance Sheet</a>
-      </li>
-    </ul>
-  </nav>
+  <div id="nav-links">
+  </div>
   <br />
   <div class="container center_div">
-    <h1 style="margin-left: 30%;">Ayyan Kovil Donation</h1>
+    <h1 style="margin-left: 30%;" class="trn">AyyanKovilDonation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
       <div class="d-flex justify-content-between">
         <div style="margin-left: 40px;">
 
-          <label for="member_id">Member</label>
+          <label for="member_id" class="trn">Member</label>
           <br>
           <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
-            <option value='NON_MEMBER'>Select Members</option>
+            <option value='NON_MEMBER' class="trn">SelectMembers</option>
           </select>
           <div id="member_detail" style="display: none;">
             <br>
@@ -259,9 +241,9 @@
             <div id="address"></div>
           </div>
           <div id="non_member_detail">
-            <label for="donor_name">Name</label><br>
+            <label for="donor_name" class="trn">Name</label><br>
             <input type="text" id="donor_name" name="donor_name" onchange=""><br>
-            <label for="donor_contact" id="donor_contact">Contact</label><br>
+            <label for="donor_contact" id="donor_contact" class="trn">Contact</label><br>
             <input type="text" value="">
           </div>
           <br>
@@ -273,8 +255,8 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Kodai Vari
+              <label for="donor_name" class="trn">
+                KodaiVari
               </label>
             </div>
             <div class="col"><label for="kodai_vari_unit_value"></label><input type="number" placeholder="Unit value"
@@ -287,8 +269,8 @@
           </br>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Seethana Vari
+              <label for="donor_name" class="trn">
+                SeethanaVari
               </label>
             </div>
             <div class="col"></div>
@@ -304,8 +286,8 @@
           </div></br>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Nankudai Varavu
+              <label for="donor_name" class="trn">
+                NankudaiVaravu
               </label>
             </div>
             <div class="col"></div>
@@ -320,8 +302,8 @@
           </div></br>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Undiyal Varavu
+              <label for="donor_name" class="trn">
+                UndiyalVaravu
               </label>
             </div>
             <div class="col"></div>
@@ -330,14 +312,14 @@
               name="undiyal__vari_unit_value"></div>
           <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity"
               name="undiyal__vari_quantity"></div> -->
-            <div class="col"><input type="number" class="amount" placeholder="Amount" onblur="findTotal()"
+            <div class="col"><input type="number" class="amount trn" placeholder="Amount" onblur="findTotal()"
                 id="undiyal_vari_value" name="undiyal_vari_value">
             </div>
           </div></br>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Nemisa Varavu
+              <label for="donor_name" class="trn">
+                NemisaVaravu
               </label>
             </div>
             <div class="col"></div>
@@ -352,8 +334,8 @@
           </div></br>
           <div class="row">
             <div class="col">
-              <label for="donor_name">
-                Ithara Varavu
+              <label for="donor_name" class="trn">
+                ItharaVaravu
               </label>
             </div>
             <div class="col"></div>
@@ -365,8 +347,8 @@
           </br>
           <div class="row">
             <div class="col">
-              <label for="total_amount">
-                Total Amount
+              <label for="total_amount" class="trn">
+                TotalAmount
               </label>
             </div>
             <div class="col"></div>

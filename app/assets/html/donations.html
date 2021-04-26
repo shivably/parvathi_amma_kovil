@@ -1,15 +1,18 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-        $(document).ready(function() {
-            $('#example').DataTable( {
-                "ajax": { 
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
                     "url": "api/donations",
                     dataSrc: ""
                 },
@@ -17,65 +20,45 @@
                     { "data": "id" },
                     { "data": "member_id" },
                     { "data": "income_type_id" },
-                    { "data": "quantity_value"},
+                    { "data": "quantity_value" },
                     { "data": "quantity" },
                     { "data": "value" },
                 ]
-            } );
-        } );
-        </script>
-    </head>
-    <body onload="loadMembers()">
-        <!-- A grey horizontal navbar that becomes vertical on small screens -->
-        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/expenses">Expenses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/balance">Balance sheet</a>
-          </li>
-            </ul>
-          </nav>
-          <br/>
-          <div class="container center_div">
-          <table id="example" class="display" style="width:100%">
+            });
+        });
+        $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
+    </script>
+</head>
+
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
+    <br />
+    <div class="container center_div">
+        <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Member</th>
-                    <th>Type</th>
-                    <th>Quantity Value</th>
-                    <th>Quantity</th>
-                    <th>Value</th>
+                    <th class="trn">ID</th>
+                    <th class="trn">Member</th>
+                    <th class="trn">Type</th>
+                    <th class="trn">QuantityValue</th>
+                    <th class="trn">Quantity</th>
+                    <th class="trn">Value</th>
                 </tr>
             </thead>
         </table>
-        <a href="add-donation" class="btn btn-info" role="button">Add Donation</a>
-        <a href="add_income_type" class="btn btn-info" role="button">Add Donation Type</a>
-        </div>
-        <script>
-            function w3_open() {
-                document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
-            }
-            function w3_close() {
-                document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
-            }
-        </script>
-    </body>
+        <a href="add-donation" class="btn btn-info trn" role="button">AddDonation</a>
+        <a href="add_income_type" class="btn btn-info trn" role="button">AddDonationType</a>
+    </div>
+    <script>
+        function w3_open() {
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+        }
+        function w3_close() {
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+        }
+    </script>
+</body>
+
 </html>

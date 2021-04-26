@@ -5,6 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
     <script>
         var query_param;
         function getUrlVars() {
@@ -93,55 +95,34 @@
       var maxDate = year + '-' + month + '-' + day;
       $('#dor').attr('max', maxDate);
     });
+    $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
     </script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/expenses">Expenses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/balance">Balance Sheet</a>
-            </li>
-        </ul>
-    </nav>
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
     <br />
     <div class="container center_div">
-        <h1>Edit Expense</h1>
+        <h1 class="trn">EditExpense</h1>
         <form action="/api/members/" name="addMemberForm" method="post">
-            <label for="type">Date:</label><br>
+            <label for="type" class="trn">Date</label><br>
             <input type=date id="dor"><br>
 
-            <label for="type_id">Type</label><span style=" color:#ff0000">*</span><br>
+            <label for="type_id" class="trn">Type</label><span style=" color:#ff0000">*</span><br>
             <select type="text" id="type_id" name="type_id">
-                <option value=''>Expense Type</option>
+                <option value='' class="trn">ExpenseType</option>
             </select><br>
 
-            <label for="receipt">Receipt</label><br>
+            <label for="receipt" class="trn">Receipt</label><br>
             <input type="text" id="receipt" name="receipt"><br>
 
 
-            <label for="value">Amount</label><span style=" color:#ff0000">*</span><br>
+            <label for="value" class="trn">Amount</label><span style=" color:#ff0000">*</span><br>
             <input type="text" id="value" name="value"><br>
 
-            <label for="description">Description</label><br>
+            <label for="description" class="trn">Description</label><br>
             <textarea id="description" name="description"></textarea><br>
 
             <input type="button" value="Update" onclick="submitData()">

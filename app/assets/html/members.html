@@ -8,6 +8,8 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
     <script>
         function editData(id, state) {
             var person = {
@@ -67,6 +69,9 @@
 
             });
         });
+        $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
     </script>
 </head>
 <style>
@@ -84,33 +89,8 @@
     }
 </style>
 
-<body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/members">Members</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expenses">Expenses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/balance">Balance Sheet</a>
-            </li>
-        </ul>
-    </nav>
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
     <br />
     <div class="container center_div">
         <table id="example" class="display" style="width:100%">
@@ -119,14 +99,14 @@
                 <div>
 
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Permanent Address</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>aadhar</th>
-                        <th>Date Of Birth</th>
+                        <th class="trn">ID</th>
+                        <th class="trn">Name</th>
+                        <th class="trn">Address</th>
+                        <th class="trn">PermanentAddress</th>
+                        <th class="trn">Phone</th>
+                        <th class="trn">Email</th>
+                        <th class="trn">aadhar</th>
+                        <th class="trn">DateOfBirth</th>
                         <th></th>
                         <th></th>
                         <!-- <a href="edit-member.html"></a> -->
@@ -135,7 +115,7 @@
             </thead>
 
         </table>
-        <a href="add-member" class="btn btn-info btn-sm" role="button">Add Member</a>
+        <a href="add-member" class="btn btn-info btn-sm trn" role="button">AddMember</a>
 
     </div>
     <script>
