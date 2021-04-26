@@ -41,15 +41,18 @@
             var $this = $(this);
 
             var trn_key = $this.attr("data-trn-key");
+            console.dir(trn_key)
             if (!trn_key) {
                 trn_key = $this.html();
                 $this.attr("data-trn-key", trn_key);   //store key for next time
             }
+            trn_key = trn_key.trim()
             $this.html(that.get(trn_key));
         });
         return this;
     };
 })(jQuery);
+
 function set_language(language) {
     $('body').translate({ lang: language, t: lang_dict });
 }

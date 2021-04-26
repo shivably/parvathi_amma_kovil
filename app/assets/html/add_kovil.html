@@ -5,8 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
     <script>
-          $(document).ready(function () {
+        $(document).ready(function () {
             $.ajax({
                 url: '/api/kovil',
                 type: 'get',
@@ -19,7 +21,7 @@
                     });
                 },
             });
-          });
+        });
         function submitData() {
             var person = {
                 name: $("#name").val(),
@@ -32,8 +34,8 @@
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (response_data) {
-                    if (response_data.response_action == 'redirect'){
-                        window.location.replace(response_data.url+"?msg="+response_data.msg);
+                    if (response_data.response_action == 'redirect') {
+                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
                     }
                 },
                 data: JSON.stringify(person)
@@ -46,20 +48,20 @@
 </head>
 
 <body onload="set_language('en')">
-  <div id="nav-links"></div>
-        <br/>
+    <div id="nav-links"></div>
+    <br />
     <div class="container center_div">
-    <h1>Kovil</h1>
-    <form action="/api/members/" name="addMemberForm" method="post">
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name"><br>
+        <h1 class="trn">Kovil</h1>
+        <form action="/api/members/" name="addMemberForm" method="post">
+            <label for="name" class="trn">Name</label><br>
+            <input type="text" id="name" name="name"><br>
 
-        <label for="description">Description</label><br>
-        <textarea id="description" name="description"></textarea><br>
+            <label for="description" class="trn">Description</label><br>
+            <textarea id="description" name="description"></textarea><br>
 
-        <input type="button" value="Add Type" onclick="submitData()">
-      </form>
-      </div>
+            <input type="button" value="Add Type" onclick="submitData()">
+        </form>
+    </div>
 </body>
 
 </html>
