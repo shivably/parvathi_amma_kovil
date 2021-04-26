@@ -1,93 +1,76 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-          $(document).ready(function () {
-            $.ajax({
-                url: '/api/kovil',
-                type: 'get',
-                contentType: 'application/json',
-                success: function (response_data) {
-                    console.dir(response_data)
-                    members = response_data;
-                    $.each(response_data, function (k, v) {
-                        $('#kovil_id').append('<option value="' + v.id + '">' + v.name + '</option>');
-                    });
-                },
-            });
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: '/api/kovil',
+        type: 'get',
+        contentType: 'application/json',
+        success: function (response_data) {
+          console.dir(response_data)
+          members = response_data;
+          $.each(response_data, function (k, v) {
+            $('#kovil_id').append('<option value="' + v.id + '">' + v.name + '</option>');
           });
-        function submitData() {
-            var person = {
-                name: $("#name").val(),
-                kovil_id: $("#kovil_id").val(),
-                value: $("#value").val(),
-                description: $("#description").val(),
-            }
-            console.dir(person);
-            $.ajax({
-                url: '/api/income_type/',
-                type: 'post',
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (response_data) {
-                    if (response_data.response_action == 'redirect'){
-                        window.location.replace(response_data.url+"?msg="+response_data.msg);
-                    }
-                },
-                data: JSON.stringify(person)
-            });
-        }
-    </script>
+        },
+      });
+    });
+    function submitData() {
+      var person = {
+        name: $("#name").val(),
+        kovil_id: $("#kovil_id").val(),
+        value: $("#value").val(),
+        description: $("#description").val(),
+      }
+      console.dir(person);
+      $.ajax({
+        url: '/api/income_type/',
+        type: 'post',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (response_data) {
+          if (response_data.response_action == 'redirect') {
+            window.location.replace(response_data.url + "?msg=" + response_data.msg);
+          }
+        },
+        data: JSON.stringify(person)
+      });
+    }
+    $(document).ready(function () {
+      $("#nav-links").load("navigation?balance");
+    })
+  </script>
 </head>
 
-<body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/expenses">Expenses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            </ul>
-          </nav>
-        <br/>
-    <div class="container center_div">
-    <h1>Add Donation Type</h1>
+<body onload="set_language('en')">
+  <div id="nav-links"></div>
+  <br />
+  <div class="container center_div">
+    <h1 class="trn">AddDonationType</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name"><br>
+      <label for="name">Name</label><br>
+      <input type="text" id="name" name="name"><br>
 
-        <label for="kovil_id">Kovil</label><br>
-        <select type="text" id="kovil_id" name="kovil_id">
-        </select><br>
+      <label for="kovil_id" class="trn">Kovil</label><br>
+      <select type="text" id="kovil_id" name="kovil_id">
+      </select><br>
 
-        <label for="value">Value</label><br>
-        <input type="text" id="value" name="value"><br>
+      <label for="value" class="trn">Value</label><br>
+      <input type="text" id="value" name="value"><br>
 
-        <label for="description">Description</label><br>
-        <textarea id="description" name="description"></textarea><br>
+      <label for="description" class="trn">Description</label><br>
+      <textarea id="description" name="description"></textarea><br>
 
-        <input type="button" value="Add Type" onclick="submitData()">
-      </form>
-      </div>
+      <input type="button" value="Add Type" onclick="submitData()">
+    </form>
+  </div>
 </body>
 
 </html>

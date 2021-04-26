@@ -86,6 +86,18 @@ app.get('/balance', (req, res) => {
     res.sendFile('./app/assets/html/balance.html', { root: __dirname });
 });
 
+app.get('/navigation', (req, res) => {
+    res.sendFile('./app/assets/html/navigation.html', { root: __dirname });
+});
+
+app.get('/js/language.js', (req, res) => {
+    res.sendFile('./app/assets/js/language.js', { root: __dirname });
+});
+
+app.get('/config/language.js', (req, res) => {
+    res.sendFile('./app/assets/config/language.js', { root: __dirname });
+});
+
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
 });

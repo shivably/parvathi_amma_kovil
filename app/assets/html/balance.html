@@ -5,6 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
     <script>
         function generate_balance_report() {
             var query = {
@@ -42,63 +44,47 @@
                 data: JSON.stringify(query)
             });
         }
+
         function set_balance() {
             $('#balance').html($('#total_donation').html() - $('#total_expense').html())
-
-
         }
+
+        $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
     </script>
 
 </head>
 
-<body>
-    <!-- A grey horizontal navbar that becomes vertical on small screens -->
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/members">Members</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-parvathiamman">Parvathiamman Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add-donation-ayyan">Ayyan Kovil Vari</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expenses">Expenses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reports">Reports</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/expense_report">Expense Report</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/balance">Balance sheet</a>
-            </li>
-        </ul>
-    </nav>
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
     <br />
     <div class="container center_div">
-        <h1>Balance Sheet</h1>
+        <h1 class="trn">BalanceSheet</h1>
         <table id="example" class="display" style="width:100%">
-            <thead>
-                <th>Total Donation</th>
-                <th>Total Expense</th>
-            </thead>
-    
             <div>
                 <form>
-                    <label for="date">From:</label>
+                    <label for="date" class="trn">From:</label>
                     <input type="date" id="fromdate">
-                    <label for="date">To:</label>
+                    <label for="date" class="trn">To:</label>
                     <input type="date" id="todate">
 
-                    <input type="button" value="Search" onclick="generate_balance_report()">
+                    <input type="button" value="Search" onclick="generate_balance_report()"><br /><br />
+                    <h4 class="trn">AccountBalance</h4>
+                    <div>
+                        ---------------------------------------------------<br>
+                        <div style="float: left;padding-right: 20px;" class="trn">Donation:</div>
+                        <div style="float: left;" id="total_donation"></div></br>
+                        <div style="float: left;padding-right: 20px;" class="trn">Expense:</div>
+                        <div id="total_expense"></div></br>
+                        ---------------------------------------------------<br>
+                        <div style="float: left;padding-right: 20px;" class="trn">Balance:</div>
+                        <div id="balance"></div>
+                    </div>
                 </form>
-                <div id="total_donation"></div>
-                <div id="total_expense"></div>
-                <div id="balance"></div>
+
+
+
             </div>
     </div>
     <script>

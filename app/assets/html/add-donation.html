@@ -5,6 +5,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../config/language.js"></script>
+  <script src="../js/language.js"></script>
   <script>
     var income_type;
     var members;
@@ -142,49 +144,27 @@
         data: JSON.stringify(person)
       });
     }
+    $(document).ready(function () {
+      $("#nav-links").load("navigation?balance");
+    })
   </script>
 </head>
 
-<body>
-  <!-- A grey horizontal navbar that becomes vertical on small screens -->
-  <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/members">Members</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/kovil">Kovil</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/donations">Donation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/expenses">Expenses</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/reports">Reports</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/expense_report">Expense Report</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/balance">Balance Sheet</a>
-  </li>
-    </ul>
-  </nav>
+<body onload="set_language('en')">
+  <div id="nav-links"></div>
   <br />
   <div class="container-fluid center_div">
-    <h1>Donation</h1>
+    <h1 class="trn">Donation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
-      <label for="member_id">Member</label><br>
+      <label for="member_id" class="trn">Member</label><br>
       <select type="text" id="member_id" name="member_id">
-        <option value="">Select Members</option>
+        <option value="" class="trn">Select Members</option>
       </select>
       <br>
-      <label for="donor_name">Name</label><br>
+      <label for="donor_name" class="trn">Name</label><br>
       <input type="text" id="donor_name" name="donor_name"><br>
 
-      <label for="donor_contact">Contact</label><br>
+      <label for="donor_contact" class="trn">Contact</label><br>
       <input type="text" id="donor_contact" name="donor_contact"><br>
       <div class="row">
         &nbsp;
@@ -192,63 +172,80 @@
       <div class="jumbotron">
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Kodai vari
+            <label for="donor_name" class="trn">
+              Kodaivari
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="kodai_vari_unit_value" name="kodai_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="kodai_vari_quantity" name="kodai_vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="kodai_vari_unit_value"
+              name="kodai_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="kodai_vari_quantity"
+              name="kodai_vari_quantity"></div>
           <div class="col"><input type="text" placeholder="Amount" id="kodai_vari_value" name="kodai_vari_value"></div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Seethana Vari
+            <label for="donor_name" class="trn">
+              SeethanaVari
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value" name="seethana_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity" name="seethana_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="seethana_vari_value" name="seethana_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="seethana_vari_unit_value"
+              name="seethana_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="seethana_vari_quantity"
+              name="seethana_vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Amount" id="seethana_vari_value" name="seethana_vari_value">
+          </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Nankudai Varavu
+            <label for="donor_name" class="trn">
+              NankudaiVaravu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value" name="nankudai_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity" name="nankudai_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="nankudai_vari_value" name="nankudai_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="nankudai_vari_unit_value"
+              name="nankudai_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="nankudai_vari_quantity"
+              name="nankudai_vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Amount" id="nankudai_vari_value" name="nankudai_vari_value">
+          </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Undiyal Varavu
+            <label for="donor_name" class="trn">
+              UndiyalVaravu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value" name="undiyal__vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity" name="undiyal__vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="undiyal_vari_value" name="undiyal_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="undiyal__vari_unit_value"
+              name="undiyal__vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="undiyal__vari_quantity"
+              name="undiyal__vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Amount" id="undiyal_vari_value" name="undiyal_vari_value">
+          </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Nemisa Varavu
+            <label for="donor_name" class="trn">
+              NemisaVaravu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value" name="nemisa_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity" name="nemisa_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="nemisa_vari_value" name="nemisa_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="nemisa_vari_unit_value"
+              name="nemisa_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="nemisa_vari_quantity"
+              name="nemisa_vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Amount" id="nemisa_vari_value" name="nemisa_vari_value">
+          </div>
         </div>
         <div class="row">
           <div class="col">
-            <label for="donor_name">
-              Ithara Varavu
+            <label for="donor_name" class="trn">
+              ItharaVaravu
             </label>
           </div>
-          <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value" name="ithara_vari_unit_value"></div>
-          <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity" name="ithara_vari_quantity"></div>
-          <div class="col"><input type="text" placeholder="Amount" id="ithara_vari_value" name="ithara_vari_value"></div>
+          <div class="col"><input type="text" placeholder="Unit value" id="ithara_vari_unit_value"
+              name="ithara_vari_unit_value"></div>
+          <div class="col"><input type="text" placeholder="Quantity" id="ithara_vari_quantity"
+              name="ithara_vari_quantity"></div>
+          <div class="col"><input type="text" placeholder="Amount" id="ithara_vari_value" name="ithara_vari_value">
+          </div>
         </div>
         <div class="row">
           <input type="button" value="Add" onclick="submitData()">
