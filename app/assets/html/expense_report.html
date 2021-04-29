@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -15,9 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
     <script>
         function sendEmail() {
             $(document).ready(function () {
@@ -70,10 +72,21 @@
                 ],
                 dom: 'Bfrtip',
                 buttons: [
-                    { extend: 'copyHtml5', footer: true },
-                    { extend: 'excelHtml5', footer: true },
-                    { extend: 'csvHtml5', footer: true },
-                    { extend: 'pdfHtml5', footer: true }
+                    {
+                        extend: 'copyHtml5',
+                        text: '<i class="fa fa-files-o"></i>',
+                        titleAttr: 'Copy'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-excel-o"></i>',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o"></i>',
+                        titleAttr: 'PDF'
+                    }
                 ]
             })
 
@@ -104,7 +117,11 @@
     <div id="nav-links"></div>
     <br />
     <div id="expense_report" class="container center_div">
-        <h1 class="trn">ExpenseReport</h1>
+        <h1 style="margin-left: 250px;" class="trn">ExpenseReport</h1>
+        <i class='fas fa-gopuram' style='font-size:48px'></i>
+        <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
+
+
         <div>
             <form>
                 <label for="type" class="trn">From</label>

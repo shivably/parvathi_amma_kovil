@@ -113,3 +113,10 @@ CREATE TABLE IF NOT EXISTS DonationDetails
     FOREIGN KEY(receipt_id) REFERENCES Donor(id),
     FOREIGN KEY(donation_type) REFERENCES DonationType(id)
 );
+
+CREATE TABLE Users 
+(
+    username TEXT PRIMARY KEY,
+    isAdmin BOOLEAN DEFAULT 0,
+    password TEXT NOT NULL
+);

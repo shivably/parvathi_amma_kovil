@@ -5,6 +5,8 @@ const donation = require('./donations');
 const reports = require('./reports');
 const expense_type = require('./expense');
 const kovil = require('./kovil');
+const authetication = require('./login');
+
 
 module.exports = function (app, db) {
   // create database in case it was not created yeat, 
@@ -16,5 +18,6 @@ module.exports = function (app, db) {
   reports(app, db);
   expense_type(app, db);
   kovil(app, db);
+  authetication(app,db)
 
 };
