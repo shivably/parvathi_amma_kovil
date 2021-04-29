@@ -226,7 +226,7 @@
         <div style="margin-left: 40px;">
           <label for="member_id" class="trn">Member</label>
           <br>
-          <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
+          <select type="text" id="member_id" name="member_id" style="width: 190px;" onchange="getmemberdetails(this.value)">
             <option value='NON_MEMBER' class="trn">SelectMembers</option>
           </select>
           <div id="member_detail" style="display: none;">
@@ -355,7 +355,7 @@
           </br>
           <div class="row">
             <div class="col">
-              <input type="button" value="Add" onclick="submitData()">
+              <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="submitData()">Add</a>
             </div>
           </div>
         </div>

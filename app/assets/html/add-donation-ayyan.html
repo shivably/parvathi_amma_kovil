@@ -227,11 +227,11 @@
     <h1 style="margin-left: 30%;" class="trn">AyyanKovilDonation</h1>
     <form action="/api/members/" name="addMemberForm" method="post">
       <div class="d-flex justify-content-between">
-        <div style="margin-left: 40px;">
+        <div>
 
           <label for="member_id" class="trn">Member</label>
           <br>
-          <select type="text" id="member_id" name="member_id" onchange="getmemberdetails(this.value)">
+          <select type="text" id="member_id" name="member_id" style="width: 190px;" onchange="getmemberdetails(this.value)">
             <option value='NON_MEMBER' class="trn">SelectMembers</option>
           </select>
           <div id="member_detail" style="display: none;">
@@ -249,7 +249,7 @@
           <br>
           <input type="date" id="dor" max="new Date()">
         </div>
-        <div style="margin-right: 40px;">
+        <div>
           <div class="row">
             &nbsp;
           </div>
@@ -360,7 +360,7 @@
           </br>
           <div class="row">
             <div class="col">
-              <input type="button" value="Add" onclick="submitData()">
+              <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="submitData()">Add</a>
             </div>
           </div>
         </div>

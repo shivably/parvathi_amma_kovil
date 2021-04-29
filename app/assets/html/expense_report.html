@@ -132,10 +132,10 @@
                 <select type="text" id="type_id" name="type_id">
                     <option value='' class="trn">ExpenseType</option>
                 </select>
-                <input type="button" value="Search" onclick="generate_expense_report()">
+                <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="generate_expense_report()">Search</a>
                 <label for="type" class="trn">Email</label>
                 <input type=email id="email">
-                <input type="button" value="Send Email" onclick="sendEmail()" />
+                <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="sendEmail()" >SendEmail</a>
             </form>
             <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>
