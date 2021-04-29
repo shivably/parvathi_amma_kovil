@@ -52,6 +52,10 @@ var lang_dict = {
         "en": "Total Amount",
         "ta": "மொத்த தொகை"
     },
+    "Add":{
+        "en": "Add",
+        "ta": "கூட்டு"
+    },
     ////////////////// add_expense_type.html/////////////////////////
     "AddExpenseType": {
         "en": "Add Expense Type",
@@ -155,6 +159,10 @@ var lang_dict = {
         "en": "Balance",
         "ta": "சமநிலை"
     },
+    "Search":{
+        "en": "Search",
+        "ta": "தேடல்"
+    },
     //////////////////////////donations.html////////////////////////
     "ID": {
         "en": "ID",
@@ -186,6 +194,22 @@ var lang_dict = {
        "en": "Edit Member",
        "ta": " உறுப்பினர் திருத்து"
    },
+   "Save":{
+       "en": "Save",
+       "ta": "சேமி"
+   },
+   "Edit":{
+       "en": "Edit",
+       "ta": "தொகு"
+   },
+   "Active":{
+       "en": "Active",
+       "ta": "செயலில்"
+   },
+   "InActive":{
+    "en": "In Active",
+    "ta": "செயலற்றது"
+},
    /////////////////////////expense_report.html/////////////////////
    "ExpenseReport":{
        "en": "Expense Report",
@@ -198,6 +222,10 @@ var lang_dict = {
    "Date":{
        "en": "Date",
        "ta": "தேதி"
+   },
+   "SendEmail":{
+       "en": "Send Email",
+       "ta": "மின்னஞ்சல் அனுப்பு"
    },
    ////////////////////income_type.html//////////////////
    "AddIncomeType":{
@@ -238,6 +266,10 @@ var lang_dict = {
    "From":{
        "en": "From",
        "ta": "தேதி முதல்"
+   },
+   "ShowDetails":{
+       "en": "Show Details",
+       "ta": "விவரங்களை காட்டு"
    },
    ///////////////////////navigation.html///////////////////
    "Reports":{
