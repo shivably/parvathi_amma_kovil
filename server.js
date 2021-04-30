@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./app/routes')(app, db);
+var backup = require('./app/routes/backup')
 
 app.get('/', (req, res) => {
     res.redirect('/add-donation-parvathiamman');
@@ -100,5 +101,7 @@ app.get('/config/language.js', (req, res) => {
 
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
+    backup.schedule();
 });
+
 
