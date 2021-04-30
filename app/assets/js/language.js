@@ -54,5 +54,14 @@
 })(jQuery);
 
 function set_language(language) {
+    var language_preference = localStorage.getItem("language");
+    if(language_preference){
+        language = language_preference;
+    }
     $('body').translate({ lang: language, t: lang_dict });
+}
+
+function set_preference(language){
+    localStorage.setItem("language", language);
+    set_language(language);
 }
