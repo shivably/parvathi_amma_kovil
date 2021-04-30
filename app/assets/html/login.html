@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function Toggle() {
+            var temp = document.getElementById("password");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+        function authenticate() {
+            var credential = {
+                "username": $('#username').val(),
+                "password": $('#password').val()
+            }
+            $.ajax({
+                url: '/api/login/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response_data) {
+                    console.dir(response_data)
+                    if (response_data.response_action == 'redirect') {
+                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                    }
+                },
+                data: JSON.stringify(credential)
+            });
+            var IdealTimeOut = 10; //10 seconds
+        var idleSecondsTimer = null;
+        var idleSecondsCounter = 0;
+        document.onclick = function () { idleSecondsCounter = 0; };
+        document.onmousemove = function () { idleSecondsCounter = 0; };
+        document.onkeypress = function () { idleSecondsCounter = 0; };
+        idleSecondsTimer = window.setInterval(CheckIdleTime, 1000);
+ 
+        function CheckIdleTime() {
+            idleSecondsCounter++;
+            var oPanel = document.getElementById("timeOut");
+            if (oPanel) {
+                oPanel.innerHTML = (IdealTimeOut - idleSecondsCounter);
+            }
+            if (idleSecondsCounter >= IdealTimeOut) {
+                window.clearInterval(idleSecondsTimer);
+                alert("Your Session has expired. Please login again.");
+                window.location = "/login";
+            }
+        }
+
+        }
+    
+    </script>
+
+</head>
+
+<body>
+
+    <h3>login</h3>
+    <div class="container">
+        <form>
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="psw">Password</label><br>
+            <input type="password" id="password"><br>
+
+            <input type="checkbox" onclick="Toggle()">
+            <b>Show Password</b>
+            <button type="button" onclick="authenticate()">Login</button>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>
