@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./app/routes')(app, db);
-var backup = require('./app/routes/backup')
+var backup = require('./app/routes/backup');
+const { schedule } = require('node-cron');
 
 var notLoggedIn = 0;
 
@@ -163,6 +164,15 @@ app.get('/config/language.js', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile('./app/assets/html/login.html', { root: __dirname });
 });
+app.get('/backup', (req, res) => {
+    if(notLoggedIn) {
+        res.redirect('/login');
+    }else{
+        res.sendFile('./app/assets/html/backup.html', { root: __dirname });
+    }
+});
+
+
 
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
