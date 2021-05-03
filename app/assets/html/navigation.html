@@ -26,94 +26,17 @@
         </li>
 
         <li class="nav-item" style="margin-left: 250px;">
-            <select id="language" onclick="set_language(this.value)">
-                <option value="en">English</option>
-                <option value="ta">Tamil</option>
+            <select id="language" onchange="set_preference(this.value)">
+                <option value="en" selected>English</option>
+                <option value="ta">தமிழ்</option>
             </select>
         </li>
     </ul>
 </nav>
-<!-- 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            padding-top: 20px;
-        }
-
-        .sidenav a {
-            padding: 6px 6px 6px 2px;
-            text-decoration: none;
-            font-size: 15px;
-            color: #818181;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-        .main {
-            margin-left: 200px;
-            /* Same as the width of the sidenav */
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 1px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-
-        #leftbox {
-            float: left;
-        }
-
-        #middlebox {
-            float: left;
-            padding-right: 80px;
-        }
-
-        #rightbox {
-            float: right;
-            padding: auto;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="sidenav">
-        <li class="nav-item"> <a class="nav-link trn" href="/members">Members</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/add-donation-parvathiamman">ParvathiammanKovilDonation</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/add-donation-ayyan">AyyanKovilDonation</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/expenses">Expenses</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/reports">Reports</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/expense_report">ExpenseReport</a></li>
-        <li class="nav-item"><a class="nav-link trn" href="/balance">BalanceSheet</a></li>
-        <li class="nav-item">
-            <select id="language" onclick="set_language(this.value)">
-                <option value="en">English</option>
-                <option value="ta">Tamil</option>
-            </select>
-        </li>
-    </div> -->
-    <script src="../config/language.js"></script>
-    <script src="../js/language.js"></script>
-    <script>
-        set_language('en')
-    </script>
+<script src="../config/language.js"></script> 
+<script src="../js/language.js"></script>
+<script>
+    set_language('en')
+    let value = localStorage.getItem("language");
+$("#language").val(value);
+</script>

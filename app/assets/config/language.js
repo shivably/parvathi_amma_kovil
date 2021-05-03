@@ -258,6 +258,15 @@ var lang_dict = {
        "en": "Print",
        "ta": "அச்சு"
    },
+   "From:":{
+       "en": "From:",
+       "ta": "தேதி முதல்"
+   },
+    /////////////////////////reports.html/////////////////
+    "ReceiptNumber:":{
+        "en": "Receipt Number:",
+        "ta": "ரசீது எண்:"
+    },
    /////////////////////////reports.html/////////////////
    "ReceiptNumber":{
        "en": "Receipt Number",
@@ -276,6 +285,10 @@ var lang_dict = {
        "en": "Reports",
        "ta": "அறிக்கைகள்"
    },
+   "Report":{
+    "en": "Report",
+    "ta": "அறிக்கை"
+},
    "Members":{
        "en": "Members",
        "ta": "உறுப்பினர்கள்"
