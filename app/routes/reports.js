@@ -1,4 +1,39 @@
+var fs = require('fs');
 module.exports = function (app, db) {
+
+  app.get('/api/backup/', (req, res) => {
+    try {
+      var dt = (new Date()).toLocaleDateString().replace(/\//g, '-');
+      fs.promises.copyFile('app/data/sqlitedb', 'app/db_backup/backup_manual_' + dt + '.sqlite3');
+      res.status(200).send('Finished Backup of Database');
+    } catch (e) {
+      console.dir(e)
+      res.status(404).send('The file could not be copied');
+    }
+  });
+
+
+  app.get('/api/restore-point/', (req, res) => {
+    try {
+      var restore_points = []
+      fs.readdir('app/db_backup/', (err, files) => {
+        if (err){
+          console.log(err);
+          res.status(404).send('No Restore Point found!');
+        } else {
+          files.forEach(file => {
+            restore_points.push(file)
+          })
+          res.status(200).send(restore_points);
+        }
+      })
+    } catch (e) {
+      console.dir(e)
+      res.status(404).send('No Restore Point found!');
+    }
+  });
+
+
   app.get('/api/reports/:member_id/:income_type_id', (req, res) => {
     var member_id = req.params.member_id;
     var income_type_id = req.params.income_type_id;
@@ -21,17 +56,17 @@ module.exports = function (app, db) {
   app.post('/api/reports/expense', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
-    if(data.type_id){
-      processData(res, "SELECT * FROM Expense where type_id = "+ data.type_id +" and dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    if (data.type_id) {
+      processData(res, "SELECT * FROM Expense where type_id = " + data.type_id + " and dor between '" + data.fromdate + "' and '" + data.todate + "'");
     } else {
-      processData(res, "SELECT * FROM Expense where dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+      processData(res, "SELECT * FROM Expense where dor between '" + data.fromdate + "' and '" + data.todate + "'");
     }
   });
 
   app.post('/api/reports/total_expense', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
-    processData(res, "SELECT sum(value) as TotalExpense FROM Expense where dor between '"+ data.fromdate + "' and '"+ data.todate + "'");
+    processData(res, "SELECT sum(value) as TotalExpense FROM Expense where dor between '" + data.fromdate + "' and '" + data.todate + "'");
   });
 
   app.post('/api/reports/total_donation', (req, res) => {
