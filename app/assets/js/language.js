@@ -59,6 +59,7 @@ function set_language(language) {
         language = language_preference;
     }
     $('body').translate({ lang: language, t: lang_dict });
+    $("#language").val(language);
 }
 
 function set_preference(language) {

@@ -29,10 +29,13 @@
         </li>
     </ul>
 </nav>
-<script src="../config/language.js"></script> 
+<script src="../config/language.js"></script>
 <script src="../js/language.js"></script>
 <script>
-    set_language('en')
-    let value = localStorage.getItem("language");
-$("#language").val(value);
+    var preference = localStorage.getItem('language');
+    if (null === preference) {
+        preference = "en";
+    }
+    set_language(preference)
+    $("#language").val(value);
 </script>
