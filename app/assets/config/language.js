@@ -285,6 +285,10 @@ var lang_dict = {
        "en": "Reports",
        "ta": "அறிக்கைகள்"
    },
+   "Report":{
+    "en": "Report",
+    "ta": "அறிக்கை"
+},
    "Members":{
        "en": "Members",
        "ta": "உறுப்பினர்கள்"

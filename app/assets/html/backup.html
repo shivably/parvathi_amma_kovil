@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
+
+    <script>
+        function backup_now() {
+            $.ajax({
+                url: '/api/backup/',
+                type: 'get',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response_data) {
+                    if (response_data.response_action == 'redirect') {
+                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                    }
+
+                },
+
+            });
+            $.ajax({
+                url: '/api/restore-point/',
+                type: 'get',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response_data) {
+                    if (response_data.response_action == 'redirect') {
+                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                    }
+
+                },
+
+            });
+
+        }
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": {
+                    "url": "api/db_backup/",
+                    dataSrc: ""
+                },
+                "columns": [
+                    { "data": "Name" },
+                    
+                ]
+            });
+        });
+        $(document).ready(function () {
+            $("#nav-links").load("navigation?balance");
+        })
+    </script>
+</head>
+
+<body onload="set_language('en')">
+    <div id="nav-links"></div>
+    <br />
+    
+    <a class="btn btn-info btn-sm trn" role="button">Restore</a>
+    <div class="container center_div">
+        <table id="example" class="display" style="width:100%">
+
+            <thead>
+                <tr>
+                    <th> Restore Point</th>
+                </tr>
+
+            </thead>
+
+        </table>
+        <a class="btn btn-info btn-sm trn" onclick="backup_now()" role="button">Backup</a>
+    </div>
+</body>
+
+<!-- <body onload="set_language('en')">
+    <div id="nav-links"></div>
+    <br />
+    <div class="container center_div">
+        <a href="add-member" class="btn btn-info btn-sm trn" role="button">AddMember</a>
+    
+    </div>
+    <script>
+        function w3_open() {
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+        }
+        function w3_close() {
+            document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+        }
+    </script>
+</body> -->
+
+</html>

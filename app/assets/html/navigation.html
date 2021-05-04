@@ -21,10 +21,14 @@
         <li class="nav-item ">
             <a class="nav-link trn" href="/balance">BalanceSheet</a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link trn" href="/backup">Backup</a>
+        </li>
+
         <li class="nav-item" style="margin-left: 250px;">
             <select id="language" onchange="set_preference(this.value)">
-                <option value="en">English</option>
-                <option value="ta">Tamil</option>
+                <option value="en" selected>English</option>
+                <option value="ta">தமிழ்</option>
             </select>
         </li>
     </ul>
@@ -32,7 +36,10 @@
 <script src="../config/language.js"></script>
 <script src="../js/language.js"></script>
 <script>
-    set_language('en')
-    let value = localStorage.getItem("language");
-$("#language").val(value);
+    var preference = localStorage.getItem('language');
+    if (null === preference) {
+        preference = "en";
+    }
+    set_language(preference)
+    $("#language").val(value);
 </script>
