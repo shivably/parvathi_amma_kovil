@@ -12,9 +12,8 @@ module.exports = function (app, db) {
     var password = credential.password;
   
     if(!username){
-        res.status(400).send("username is mandatory");
+      res.status(200).send({response_action: 'redirect', url:'/login', msg: "Login Failed!"});
     }
-  
     else{
         var sql = `select username,isAdmin from Users where username = ? and password = ?;`;
         var values = [username, password];
