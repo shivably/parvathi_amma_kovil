@@ -31,7 +31,14 @@
                     From: "parvathiamman123@gmail.com",
                     Subject: "Expenses",
                     Body: $("#example").html()
-                }).then(message => alert('email sent successfully'));
+                })
+                if ($("#email").val() == '') {
+                    alert("Please Enter Valid EmailId")
+                    return
+                }
+                else {
+                    alert(" Email Sent Successfully")
+                }
             });
         }
         function generate_expense_report() {
@@ -117,12 +124,13 @@
     <div id="nav-links"></div>
     <br />
     <div id="expense_report" class="container center_div">
-        <h1 style="margin-left: 250px;" class="trn">ExpenseReport</h1>
-        <i class='fas fa-gopuram' style='font-size:48px'></i>
-        <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
 
 
         <div>
+            <h1 style="margin-left: 250px;" class="trn">ExpenseReport</h1>
+            <i class='fas fa-gopuram' style='font-size:48px'></i>
+            <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
+
             <form>
                 <label for="type" class="trn">From</label>
                 <input type=date id=fromdate>
@@ -132,10 +140,11 @@
                 <select type="text" id="type_id" name="type_id">
                     <option value='' class="trn">ExpenseType</option>
                 </select>
-                <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="generate_expense_report()">Search</a>
+                <a type="button" class="btn btn-info btn-sm trn" role="button"
+                    onclick="generate_expense_report()">Search</a>
                 <label for="type" class="trn">Email</label>
                 <input type=email id="email">
-                <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="sendEmail()" >SendEmail</a>
+                <a type="button" class="btn btn-info btn-sm trn" role="button" onclick="sendEmail()">SendEmail</a>
             </form>
             <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>

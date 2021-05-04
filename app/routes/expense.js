@@ -70,22 +70,6 @@ module.exports = function (app, db) {
     addExpense(req, res, db);
   });
 
-
-  // Delete a product
-  // http://localhost:4300/api/product
-  // Sending a JSON body: (ID is needed)
-  // {
-  //     "id": "12",            
-  //     "name": "ExampleProductName",
-  //     "description": "Example product description",
-  //     "price": 2.00,
-  //     "currency": "EUR" 
-  // }
-
-  // or an array of products:
-  // [
-  //     {...},{...}
-  // ]
   app.delete('/api/expense_type/', (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     var data = req.body;
