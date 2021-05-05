@@ -118,5 +118,8 @@ CREATE TABLE Users
 (
     username TEXT PRIMARY KEY,
     isAdmin BOOLEAN DEFAULT 0,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    language TEXT DEFAULT 'en'
 );
+
+insert into Users VALUES('Admin',1,'admin','en');
