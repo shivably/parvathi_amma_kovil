@@ -12,10 +12,32 @@
     <script src="../js/language.js"></script>
 
     <script>
+        function restore_now(name) {
+            var restore_confirm = confirm("Are you sure you want to Restore?");
+            if (restore_confirm) {
+                var hint = {
+                    filename: name,
+                }
+                $.ajax({
+                    url: '/api/restore/',
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (response_data) {
+                        if (response_data.response_action == 'redirect') {
+                            window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                        }
+                    },
+                    data: JSON.stringify(hint)
+                });
+            } else
+                return false;
+
+        }
         function backup_now() {
             $.ajax({
                 url: '/api/backup/',
-                type: 'get',
+                type: 'post',
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (response_data) {
@@ -24,59 +46,60 @@
                     }
 
                 },
-
             });
-            $.ajax({
-                url: '/api/restore-point/',
-                type: 'get',
-                dataType: 'json',
-                contentType: 'application/json',
-                success: function (response_data) {
-                    if (response_data.response_action == 'redirect') {
-                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
-                    }
-
-                },
-
-            });
-
         }
+
 
         $(document).ready(function () {
             $('#example').DataTable({
+                
                 "ajax": {
-                    "url": "api/db_backup/",
+                    "url": "api/restore-point/",
                     dataSrc: ""
+
                 },
                 "columns": [
-                    { "data": "Name" },
-                    
+                    { "data": "name" },
+                    {
+                        data: null,
+                        render: function (data, type, row, meta) {
+                            return '<a href=# class=" btn btn-info btn-sm" role="button" onclick=restore_now(\'' + data.name + '\')>Restore</a>'
+                        }
+
+                    }
+
                 ]
+
             });
         });
+
         $(document).ready(function () {
             $("#nav-links").load("navigation?balance");
         })
     </script>
 </head>
 
-<body onload="set_language('en')">
+<body>
     <div id="nav-links"></div>
     <br />
-    
-    <a class="btn btn-info btn-sm trn" role="button">Restore</a>
+
+
     <div class="container center_div">
         <table id="example" class="display" style="width:100%">
 
             <thead>
                 <tr>
-                    <th> Restore Point</th>
+                    <th>Restore Point</th>
+                    <th></th>
+
                 </tr>
 
             </thead>
 
         </table>
-        <a class="btn btn-info btn-sm trn" onclick="backup_now()" role="button">Backup</a>
+
+        <a class="btn btn-info btn-sm trn" onclick="backup_now()" role="button">Backup Now</a>
+
     </div>
 </body>
 

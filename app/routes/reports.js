@@ -1,7 +1,7 @@
 var fs = require('fs');
 module.exports = function (app, db) {
 
-  app.get('/api/backup/', (req, res) => {
+  app.post('/api/backup/', (req, res) => {
     try {
       var dt = (new Date()).toLocaleDateString().replace(/\//g, '-');
       fs.promises.copyFile('app/data/sqlitedb', 'app/db_backup/backup_manual_' + dt + '.sqlite3');
@@ -11,7 +11,16 @@ module.exports = function (app, db) {
       res.status(404).send('The file could not be copied');
     }
   });
-
+  app.post('/api/restore/', (req, res) => {
+    var data = req.body;
+    try {
+      fs.promises.copyFile('app/db_backup/'+ data.filename , 'app/data/sqlitedb');
+      res.status(200).send('Finished Restore Of Database');
+    } catch (e) {
+      console.dir(e)
+      res.status(404).send('The file could not be copied');
+    }
+  });
 
   app.get('/api/restore-point/', (req, res) => {
     try {
@@ -22,7 +31,7 @@ module.exports = function (app, db) {
           res.status(404).send('No Restore Point found!');
         } else {
           files.forEach(file => {
-            restore_points.push(file)
+            restore_points.push({"name": file})
           })
           res.status(200).send(restore_points);
         }
