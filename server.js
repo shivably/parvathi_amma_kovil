@@ -1,4 +1,5 @@
 const express = require('express');
+var cookieParser = require('cookie-parser')
 const app = express();
 const port = 80;
 const ip = '0.0.0.0'
@@ -9,7 +10,7 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cookieParser())
 require('./app/routes')(app, db);
 var backup = require('./app/routes/backup');
 const { schedule } = require('node-cron');
@@ -17,6 +18,7 @@ const { schedule } = require('node-cron');
 var notLoggedIn = 0;
 
 app.get('/', (req, res) => {
+    console.log('Cookies: ', req.cookies['sss-session'])
     if(notLoggedIn) {
         res.redirect('/login');
     }else{

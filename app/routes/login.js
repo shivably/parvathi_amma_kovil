@@ -22,9 +22,12 @@ module.exports = function (app, db) {
             if (err) {
               return console.error(err.message);
             }
-            return row
-              ? res.status(200).send({response_action: 'redirect', url:'/add-donation-parvathiamman', msg: "Login Successfull!"})
-              : res.status(200).send({response_action: 'redirect', url:'/login', msg: "Login Failed!"});
+            if (row){
+              res.cookie('sss-session', 1000, { maxAge: 900000, httpOnly: true });
+              res.status(200).send({response_action: 'redirect', url:'/add-donation-parvathiamman', msg: "Login Successfull!"})
+            }else{
+              res.status(200).send({response_action: 'redirect', url:'/login', msg: "Login Failed!"});
+            }
           });
 
     }
