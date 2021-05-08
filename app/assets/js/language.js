@@ -41,7 +41,6 @@
             var $this = $(this);
 
             var trn_key = $this.attr("data-trn-key");
-            console.dir(trn_key)
             if (!trn_key) {
                 trn_key = $this.html();
                 $this.attr("data-trn-key", trn_key);   //store key for next time
