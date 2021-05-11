@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -9,161 +10,68 @@
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
     <style>
-        @import url('https://rsms.me/inter/inter-ui.css');
-
-        ::selection {
-            background: #2D2F36;
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        ::-webkit-selection {
-            background: #2D2F36;
+        * {
+            box-sizing: border-box;
         }
 
-        ::-moz-selection {
-            background: #2D2F36;
+        .bg-img {
+            /* The image used */
+            background-image: url("Parvathiamman.jpg");
+
+            min-height: 380px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
         }
 
-        body {
-            background: white;
-            font-family: 'Inter UI', sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .page {
-            background: #e2e2e5;
-            display: flex;
-            flex-direction: column;
-            height: calc(100% - 40px);
-            position: absolute;
-            place-content: center;
-            width: calc(100% - 40px);
-        }
-
-        @media (max-width: 767px) {
-            .page {
-                height: auto;
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-            }
-        }
-
+        /* Add styles to the form container */
         .container {
-            display: flex;
-            height: 320px;
-            margin: 0 auto;
-            width: 640px;
-        }
-
-        @media (max-width: 767px) {
-            .container {
-                flex-direction: column;
-                height: 630px;
-                width: 320px;
-            }
-        }
-
-        .left {
-            background: white;
-            height: calc(100% - 40px);
-            top: 20px;
-            position: relative;
-            width: 50%;
-        }
-
-        @media (max-width: 767px) {
-            .left {
-                height: 100%;
-                left: 20px;
-                width: calc(100% - 40px);
-                max-height: 270px;
-            }
-        }
-
-        .login {
-            font-size: 50px;
-            font-weight: 900;
-            margin: 50px 40px 40px;
-        }
-
-        .eula {
-            color: #999;
-            font-size: 14px;
-            line-height: 1.5;
-            margin: 40px;
-        }
-
-        .right {
-            background: #474A59;
-            box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
-            color: #F1F1F2;
-            position: relative;
-            width: 50%;
-        }
-
-        @media (max-width: 767px) {
-            .right {
-                flex-shrink: 0;
-                height: 100%;
-                width: 100%;
-                max-height: 350px;
-            }
-        }
-
-        svg {
             position: absolute;
-            width: 320px;
+            right: 0;
+            margin: 20px;
+            max-width: 300px;
+            padding: 16px;
+            background-color: white;
         }
 
-        path {
-            fill: none;
-            stroke: url(#linearGradient);
-            ;
-            stroke-width: 4;
-            stroke-dasharray: 240 1386;
-        }
-
-        .form {
-            margin: 40px;
-            position: absolute;
-        }
-
-        label {
-            color: #c2c2c5;
-            display: block;
-            font-size: 14px;
-            height: 16px;
-            margin-top: 20px;
-            margin-bottom: 5px;
-        }
-
-        input {
-            background: transparent;
-            border: 0;
-            color: #f2f2f2;
-            font-size: 20px;
-            height: 30px;
-            line-height: 30px;
-            outline: none !important;
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password] {
             width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
         }
 
-        input::-moz-focus-inner {
-            border: 0;
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
         }
 
-        #button {
-            color: #707075;
-            margin-top: 40px;
-            transition: color 300ms;
+        /* Set a style for the submit button */
+        .btn {
+            background-color: #000000;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
         }
 
-        #button:focus {
-            color: #f2f2f2;
-        }
-
-        #button:active {
-            color: #d0d0d2;
+        .btn:hover {
+            opacity: 1;
         }
     </style>
 
@@ -174,43 +82,23 @@
         <option value="en" selected>English</option>
         <option value="ta">தமிழ்</option>
     </select>
-    <div class="page">
-        <div class="container">
-            <div class="left">
-                <div class="login trn">Login</div>
-            </div>
-            <div class="right">
-                <svg viewBox="0 0 320 300">
-                    <defs>
-                        <linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307"
-                            y2="193.49992" gradientUnits="userSpaceOnUse">
-                            <stop style="stop-color:#ff00ff;" offset="0" id="stop876" />
-                            <stop style="stop-color:#ff0000;" offset="1" id="stop878" />
-                        </linearGradient>
-                    </defs>
-                    <path
-                        d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-                </svg>
-                <div class="form">
-                    <form action="/login" method="POST" name="login">
+    <div class="login-box">
+        <form action="/login" class="container">
+            <h1>Login</h1>
 
-                        <label for="username" class="trn">Username</label>
-                        <input type="text" name="username" id="username">
-                        <label for="password" class="trn">Password</label>
-                        <input type="password" name="password" id="password">
-                        <div>
-                            <button type="Submit" class="btn btn-outline-primary trn">Login</button>
-                        </div>
-                    </form>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
 
-                </div>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
 
-            </div>
-        </div>
-
+            <button type="submit" class="btn">Login</button>
+        </form>
     </div>
+
 </body>
 <script>
     var preference = localStorage.getItem('language');
 </script>
+
 </html>
