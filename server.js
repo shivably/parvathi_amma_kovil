@@ -259,6 +259,8 @@ app.get('/logout', (req, res) => {
     res.redirect('/login?msg=Logged Out');
 });
 
+app.use('/static/images', express.static('./app/assets/images/'))
+
 app.listen(port, ip, () => {
     console.log('Backend NodeJS live on ' + port);
     backup.schedule();
