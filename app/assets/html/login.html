@@ -6,6 +6,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <script src="../config/language.js"></script>
+    <script src="../js/language.js"></script>
     <style>
         @import url('https://rsms.me/inter/inter-ui.css');
 
@@ -167,11 +169,15 @@
 
 </head>
 
-<body>
+<body onload="set_language('en')">
+    <select id="language" onchange="set_preference(this.value)">
+        <option value="en" selected>English</option>
+        <option value="ta">தமிழ்</option>
+    </select>
     <div class="page">
         <div class="container">
             <div class="left">
-                <div class="login">Login</div>
+                <div class="login trn">Login</div>
             </div>
             <div class="right">
                 <svg viewBox="0 0 320 300">
@@ -188,12 +194,12 @@
                 <div class="form">
                     <form action="/login" method="POST" name="login">
 
-                        <label for="username">Username</label>
+                        <label for="username" class="trn">Username</label>
                         <input type="text" name="username" id="username">
-                        <label for="password">Password</label>
+                        <label for="password" class="trn">Password</label>
                         <input type="password" name="password" id="password">
                         <div>
-                            <button type="Submit" class="btn btn-outline-primary">Login</button>
+                            <button type="Submit" class="btn btn-outline-primary trn">Login</button>
                         </div>
                     </form>
 
@@ -204,5 +210,7 @@
 
     </div>
 </body>
-
+<script>
+    var preference = localStorage.getItem('language');
+</script>
 </html>

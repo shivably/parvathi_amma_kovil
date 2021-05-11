@@ -52,7 +52,7 @@ var lang_dict = {
         "en": "Total Amount",
         "ta": "மொத்த தொகை"
     },
-    "Add":{
+    "Add": {
         "en": "Add",
         "ta": "கூட்டு"
     },
@@ -159,7 +159,7 @@ var lang_dict = {
         "en": "Balance",
         "ta": "சமநிலை"
     },
-    "Search":{
+    "Search": {
         "en": "Search",
         "ta": "தேடல்"
     },
@@ -180,7 +180,7 @@ var lang_dict = {
         "en": "Add Donation",
         "ta": "நன்கொடை சேர்க்கவும்"
     },
-    "Donation:":{
+    "Donation:": {
         "en": "Donation:",
         "ta": "நன்கொடை"
     },
@@ -188,113 +188,143 @@ var lang_dict = {
     "EditExpense": {
         "en": "Edit Expense",
         "ta": "செலவைத் திருத்து"
-   },
-   ////////////////////////edit-member.html/////////////////////////
-   "EditMember":{
-       "en": "Edit Member",
-       "ta": " உறுப்பினர் திருத்து"
-   },
-   "Save":{
-       "en": "Save",
-       "ta": "சேமி"
-   },
-   "Edit":{
-       "en": "Edit",
-       "ta": "தொகு"
-   },
-   "Active":{
-       "en": "Active",
-       "ta": "செயலில்"
-   },
-   "InActive":{
-    "en": "In Active",
-    "ta": "செயலற்றது"
-},
-   /////////////////////////expense_report.html/////////////////////
-   "ExpenseReport":{
-       "en": "Expense Report",
-       "ta": "செலவு அறிக்கை",
-   },
-   "To":{
-       "en": "To",
-       "ta": "தேதி வரை"
-   },
-   "Date":{
-       "en": "Date",
-       "ta": "தேதி"
-   },
-   "SendEmail":{
-       "en": "Send Email",
-       "ta": "மின்னஞ்சல் அனுப்பு"
-   },
-   ////////////////////income_type.html//////////////////
-   "AddIncomeType":{
-       "en": "Add Income Type",
-       "ta": "வருமான வகையைச் சேர்",
-   },
-   ///////////////////kovil.html//////////////////////////
-   "AddKovil":{
-       "en": "Add Kovil",
-       "ta": "கோவில் சேர்க்கவும்"
-   },
-   /////////////////////receipt.html////////////////////////
-   "ReceiptNumber:":{
-       "en": "Receipt Number:",
-       "ta": "ரசீது எண்:"
-   },
-   "UnitPrice":{
-       "en": "Unit Price",
-       "ta": "அலகு விலை"
-   },
-   "Total":{
-       "en": "Total",
-       "ta": "மொத்தம்"
-   },
-   "Thankyouforyoursupport":{
-       "en": "Thank you for your support",
-       "ta": "உங்கள் ஆதரவுக்கு நன்றி"
-   },
-   "Print":{
-       "en": "Print",
-       "ta": "அச்சு"
-   },
-   "From:":{
-       "en": "From:",
-       "ta": "தேதி முதல்"
-   },
-    /////////////////////////reports.html/////////////////
-    "ReceiptNumber:":{
+    },
+    ////////////////////////edit-member.html/////////////////////////
+    "EditMember": {
+        "en": "Edit Member",
+        "ta": " உறுப்பினர் திருத்து"
+    },
+    "Save": {
+        "en": "Save",
+        "ta": "சேமி"
+    },
+    "Edit": {
+        "en": "Edit",
+        "ta": "தொகு"
+    },
+    "Active": {
+        "en": "Active",
+        "ta": "செயலில்"
+    },
+    "InActive": {
+        "en": "In Active",
+        "ta": "செயலற்றது"
+    },
+    /////////////////////////expense_report.html/////////////////////
+    "ExpenseReport": {
+        "en": "Expense Report",
+        "ta": "செலவு அறிக்கை",
+    },
+    "To": {
+        "en": "To",
+        "ta": "தேதி வரை"
+    },
+    "Date": {
+        "en": "Date",
+        "ta": "தேதி"
+    },
+    "SendEmail": {
+        "en": "Send Email",
+        "ta": "மின்னஞ்சல் அனுப்பு"
+    },
+    ////////////////////income_type.html//////////////////
+    "AddIncomeType": {
+        "en": "Add Income Type",
+        "ta": "வருமான வகையைச் சேர்",
+    },
+    ///////////////////kovil.html//////////////////////////
+    "AddKovil": {
+        "en": "Add Kovil",
+        "ta": "கோவில் சேர்க்கவும்"
+    },
+    /////////////////////receipt.html////////////////////////
+    "ReceiptNumber:": {
         "en": "Receipt Number:",
         "ta": "ரசீது எண்:"
     },
-   /////////////////////////reports.html/////////////////
-   "ReceiptNumber":{
-       "en": "Receipt Number",
-       "ta": "ரசீது எண்"
-   },
-   "From":{
-       "en": "From",
-       "ta": "தேதி முதல்"
-   },
-   "ShowDetails":{
-       "en": "Show Details",
-       "ta": "விவரங்களை காட்டு"
-   },
-   ///////////////////////navigation.html///////////////////
-   "Reports":{
-       "en": "Reports",
-       "ta": "அறிக்கைகள்"
-   },
-   "Report":{
-    "en": "Report",
-    "ta": "அறிக்கை"
-},
-   "Members":{
-       "en": "Members",
-       "ta": "உறுப்பினர்கள்"
-   },
-   "Expenses":{
-       "en": "Expenses",
-       "ta": "செலவுகள்"
-   },
+    "UnitPrice": {
+        "en": "Unit Price",
+        "ta": "அலகு விலை"
+    },
+    "Total": {
+        "en": "Total",
+        "ta": "மொத்தம்"
+    },
+    "Thankyouforyoursupport": {
+        "en": "Thank you for your support",
+        "ta": "உங்கள் ஆதரவுக்கு நன்றி"
+    },
+    "Print": {
+        "en": "Print",
+        "ta": "அச்சு"
+    },
+    "From:": {
+        "en": "From:",
+        "ta": "தேதி முதல்:"
+    },
+    /////////////////////////reports.html/////////////////
+    "ReceiptNumber:": {
+        "en": "Receipt Number:",
+        "ta": "ரசீது எண்:"
+    },
+    /////////////////////////reports.html/////////////////
+    "ReceiptNumber": {
+        "en": "Receipt Number",
+        "ta": "ரசீது எண்"
+    },
+    "From": {
+        "en": "From",
+        "ta": "தேதி முதல்"
+    },
+    "ShowDetails": {
+        "en": "Show Details",
+        "ta": "விவரங்களை காட்டு"
+    },
+    ///////////////////////navigation.html///////////////////
+    "Reports": {
+        "en": "Reports",
+        "ta": "அறிக்கைகள்"
+    },
+    "Report": {
+        "en": "Report",
+        "ta": "அறிக்கை"
+    },
+    "Members": {
+        "en": "Members",
+        "ta": "உறுப்பினர்கள்"
+    },
+    "Expenses": {
+        "en": "Expenses",
+        "ta": "செலவுகள்"
+    },
+    "Backup": {
+        "en": "Backup",
+        "ta": "காப்புப்பிரதி"
+    },
+    ///////////////////Login.html//////////////////////////
+    "Login": {
+        "en": "Login",
+        "ta": "உள்நுழைய"
+    },
+    "Username": {
+        "en": "Username",
+        "ta": "பயனர்பெயர்"
+    },
+    "Password": {
+        "en": "Password",
+        "ta": "கடவுச்சொல்"
+    },
+    "Logout": {
+        "en": "Logout",
+        "ta": "வெளியேறு"
+    },
+    /////////////////////backup.html///////////////////
+    "RestorePoint": {
+        "en": "Restore Point",
+        "ta": "மீட்டெடுப்பு புள்ளி"
+    },
+    "BackupNow": {
+        "en": "Backup Now",
+        "ta": "காப்புப்பிரதி இப்போது"
+    },
 }
