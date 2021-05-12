@@ -9,8 +9,25 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script>
+        function show(a) {
+            var x = document.getElementById(a);
+            var c = x.nextElementSibling
+            if (x.getAttribute('type') == "password") {
+                c.removeAttribute("class");
+                c.setAttribute("class", "fas fa-eye");
+                x.removeAttribute("type");
+                x.setAttribute("type", "text");
+            } else {
+                x.removeAttribute("type");
+                x.setAttribute('type', 'password');
+                c.removeAttribute("class");
+                c.setAttribute("class", "fas fa-eye-slash");
+            }
+        }
+    </script>
     <style>
         body,
         html {
@@ -75,12 +92,16 @@
         .btn:hover {
             opacity: 1;
         }
-    </style>
-    <style>
+
         .header h2 {
             background-color: rgb(255, 255, 255);
-            padding: 1px;
-           margin:-40px ;
+            padding: -5px;
+            margin: 30px;
+        }
+        i{
+            
+            margin-left: 230px;
+        
         }
     </style>
 
@@ -93,9 +114,6 @@
     </select>
     <div class="login-box">
         <div class="header">
-            <i class='fas fa-gopuram' style='font-size:48px'></i>
-            <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
-
             <h2 style="text-align:center">Welcome to Parvathiamman-Ayyan Web Portal</h2>
         </div>
         <!-- <img src="/static/images/login.jpg" alt="ima"> -->
@@ -106,7 +124,8 @@
             <input type="text" placeholder="Enter Username" name="username" required>
 
             <label for="password" class="trn"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" id="currentPass"class="commanClass" name="password" placeholder=" Password">
+            <i onclick="show('currentPass')" class="fas fa-eye-slash" id="display"></i>
 
             <button type="submit" class="btn trn">Login</button>
         </form>
