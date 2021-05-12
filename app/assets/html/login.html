@@ -7,26 +7,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <script src="https://use.fontawesome.com/releases/v5.7.1/css/all.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script>
-        function show(a) {
-            var x = document.getElementById(a);
-            var c = x.nextElementSibling
-            if (x.getAttribute('type') == "password") {
-                c.removeAttribute("class");
-                c.setAttribute("class", "fas fa-eye");
-                x.removeAttribute("type");
-                x.setAttribute("type", "text");
-            } else {
-                x.removeAttribute("type");
-                x.setAttribute('type', 'password');
-                c.removeAttribute("class");
-                c.setAttribute("class", "fas fa-eye-slash");
-            }
-        }
+        $(function () {
+
+            $('#eye').click(function () {
+
+                if ($(this).hasClass('fa-eye-slash')) {
+
+                    $(this).removeClass('fa-eye-slash');
+
+                    $(this).addClass('fa-eye');
+
+                    $('#password').attr('type', 'text');
+
+                } else {
+
+                    $(this).removeClass('fa-eye');
+
+                    $(this).addClass('fa-eye-slash');
+
+                    $('#password').attr('type', 'password');
+                }
+            });
+        });
     </script>
     <style>
         body,
@@ -56,9 +65,9 @@
         .container {
             position: absolute;
             right: 0;
-            margin: 170px;
+            margin: 100px;
             max-width: 300px;
-            padding: 16px;
+            padding: 30px;
             background-color: white;
         }
 
@@ -96,12 +105,16 @@
         .header h2 {
             background-color: rgb(255, 255, 255);
             padding: -5px;
-            margin: 30px;
+            margin: 90px;
         }
-        i{
-            
-            margin-left: 230px;
-        
+
+        .container form {
+            width: 250px;
+            margin: 20px auto;
+        }
+
+        i {
+            cursor: pointer;
         }
     </style>
 
@@ -121,11 +134,20 @@
             <h1 class="trn">Login</h1>
 
             <label for="username" class="trn"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <div class="input-group mb-2 mr-sm-2">
+                <input type="username" class="form-control" id="username" placeholder="Username" name="username"
+                    required>
+            </div>
+
 
             <label for="password" class="trn"><b>Password</b></label>
-            <input type="password" id="currentPass"class="commanClass" name="password" placeholder=" Password">
-            <i onclick="show('currentPass')" class="fas fa-eye-slash" id="display"></i>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-eye-slash" id="eye"></i></div>
+                </div>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                    required>
+            </div>
 
             <button type="submit" class="btn trn">Login</button>
         </form>
