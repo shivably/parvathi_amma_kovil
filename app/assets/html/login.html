@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
     <style>
         body,
         html {
@@ -37,7 +39,7 @@
         .container {
             position: absolute;
             right: 0;
-            margin: 20px;
+            margin: 170px;
             max-width: 300px;
             padding: 16px;
             background-color: white;
@@ -74,6 +76,13 @@
             opacity: 1;
         }
     </style>
+    <style>
+        .header h2 {
+            background-color: rgb(255, 255, 255);
+            padding: 1px;
+           margin:-40px ;
+        }
+    </style>
 
 </head>
 
@@ -83,6 +92,12 @@
         <option value="ta">தமிழ்</option>
     </select>
     <div class="login-box">
+        <div class="header">
+            <i class='fas fa-gopuram' style='font-size:48px'></i>
+            <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
+
+            <h2 style="text-align:center">Welcome to Parvathiamman-Ayyan Web Portal</h2>
+        </div>
         <!-- <img src="/static/images/login.jpg" alt="ima"> -->
         <form action="/login" class="container" method="POST">
             <h1 class="trn">Login</h1>
