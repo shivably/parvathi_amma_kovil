@@ -18,7 +18,6 @@
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
     <script src="../config/language.js"></script>
     <script src="../js/language.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <script>
         function sendEmail() {
@@ -117,7 +116,10 @@
             $("#nav-links").load("navigation?balance");
         })
     </script>
-
+<style>h1 {
+    text-align: center;
+  }
+  </style>
 </head>
 
 <body onload="set_language('en')">
@@ -127,10 +129,7 @@
 
 
         <div>
-            <h1 style="margin-left: 250px;" class="trn">ExpenseReport</h1>
-            <i class='fas fa-gopuram' style='font-size:48px'></i>
-            <i class='fas fa-gopuram fa-pull-right fa-3x' style='font-size:48px'></i>
-
+            <h1 class="trn">ExpenseReport</h1>
             <form>
                 <label for="type" class="trn">From</label>
                 <input type=date id=fromdate>
