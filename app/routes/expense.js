@@ -40,7 +40,7 @@ module.exports = function (app, db) {
     if (data[0])
       res.send(data);
     else {
-      res.status(404).send("ExpenseType not found");
+      res.status(200).send([]);
     }
   }
 
