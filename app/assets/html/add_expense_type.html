@@ -13,6 +13,10 @@
         name: $("#name").val(),
         description: $("#description").val(),
       }
+      if ($("#name").val() == '' || !/^[a-z A-Z]*$/.test($("#name").val())) {
+        alert('Plese Enter Valid Name')
+        return
+      }
       $.ajax({
         url: '/api/expense_type/',
         type: 'get',
@@ -20,8 +24,8 @@
         contentType: 'application/json',
         success: function (response_data) {
           console.dir(response_data)
-          for(var i = 0; i<response_data.length; i++){
-            if(response_data[i]['name'] == $("#name").val()){
+          for (var i = 0; i < response_data.length; i++) {
+            if (response_data[i]['name'] == $("#name").val()) {
               alert(" Its already exists")
               return 'Duplicate expense_type'
             }
@@ -46,8 +50,8 @@
       });
     }
     $(document).ready(function () {
-            $("#nav-links").load("navigation?balance");
-        })
+      $("#nav-links").load("navigation?balance");
+    })
   </script>
 </head>
 
