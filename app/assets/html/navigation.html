@@ -29,9 +29,11 @@
         <li class="nav-item ">
             <a class="nav-link trn" href="/logout">Logout</a>
         </li>
+    </ul>
 
-        <li class="nav-item" style="margin-left: 190px;">
-            <select id="language" onchange="set_preference(this.value)">
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item">
+            <select class="selectpicker" id="language" onchange="set_preference(this.value)">
                 <option value="en" selected>English</option>
                 <option value="ta">தமிழ்</option>
             </select>
