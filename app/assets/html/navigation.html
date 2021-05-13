@@ -12,18 +12,20 @@
         <li class="nav-item">
             <a class="nav-link trn" href="/expenses">Expenses</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link trn" href="/reports">Reports</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link trn" href="/expense_report">ExpenseReport</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link trn" href="/balance">BalanceSheet</a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link trn" href="/backup">Backup</a>
-        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reports
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/reports">Receipt</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/expense_report">Expense Report</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/balance">Balance Sheet</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/backup">Backup</a>
+            </div>
+          </li>
         <li class="nav-item ">
             <a class="nav-link trn" href="/logout">Logout</a>
         </li>
