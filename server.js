@@ -1,20 +1,19 @@
 const express = require('express');
 var cookieParser = require('cookie-parser')
-var sqlite3 = require('sqlite3');
-var bodyParser = require("body-parser");
-var backup = require('./app/routes/backup');
-
-
-var db = new sqlite3.Database('app/data/sqlitedb');
 const app = express();
 const port = 80;
 const ip = '0.0.0.0'
-require('./app/routes')(app, db);
+
+var sqlite3 = require('sqlite3');
+var db = new sqlite3.Database('app/data/sqlitedb');
+var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
+require('./app/routes')(app, db);
 
+var backup = require('./app/routes/backup');
 
 var notLoggedIn = 0;
 
