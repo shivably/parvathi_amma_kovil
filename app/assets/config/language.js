@@ -155,9 +155,17 @@ var lang_dict = {
         "en": "Expense",
         "ta": "செலவு"
     },
+    "Expense:": {
+        "en": "Expense:",
+        "ta": "செலவு:"
+    },
     "Balance": {
         "en": "Balance",
         "ta": "சமநிலை"
+    },
+    "Balance:": {
+        "en": "Balance:",
+        "ta": "சமநிலை:"
     },
     "Search": {
         "en": "Search",
@@ -182,7 +190,7 @@ var lang_dict = {
     },
     "Donation:": {
         "en": "Donation:",
-        "ta": "நன்கொடை"
+        "ta": "நன்கொடை:"
     },
     //////////////////////edit_expense.html/////////////////////////
     "EditExpense": {
@@ -218,6 +226,10 @@ var lang_dict = {
     "To": {
         "en": "To",
         "ta": "தேதி வரை"
+    },
+    "To:": {
+        "en": "To:",
+        "ta": "தேதி வரை:"
     },
     "Date": {
         "en": "Date",
@@ -326,5 +338,9 @@ var lang_dict = {
     "BackupNow": {
         "en": "Backup Now",
         "ta": "காப்புப்பிரதி இப்போது"
+    },
+    "WelcometoParvathiammanAyyanWebPortal": {
+        "en": "Welcome to Parvathiamman-Ayyan Web Portal",
+        "ta": "பார்வதியம்மன்-ஐயன் வலை இணையதளத்திற்கு வருக"
     },
 }
