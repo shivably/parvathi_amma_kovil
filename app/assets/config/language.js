@@ -4,6 +4,10 @@ var lang_dict = {
         "ta": "அய்யன் கோயில் நன்கொடை",
         "en": "Ayyan Kovil Donation"
     },
+    "AyyanKovil": {
+        "ta": "அய்யன் கோயில்",
+        "en": "Ayyan Kovil"
+    },
     "Member": {
         "ta": "உறுப்பினர்",
         "en": "Member"
@@ -107,6 +111,10 @@ var lang_dict = {
     "ParvathiammanKovilDonation": {
         "en": "Parvathiamman Kovil Donation",
         "ta": "பார்வதியம்மன் கோவில் நன்கொடை"
+    },
+    "ParvathiammanKovil": {
+        "en": "Parvathiamman Kovil",
+        "ta": "பார்வதியம்மன் கோவில்"
     },
     ///////////////////////add-donation.html/////////////////
     "Donation": {

@@ -66,10 +66,12 @@
                         success: function (response_data) {
                             var total = 0;
                             $.each(response_data, function (index, data) {
+                                $('#ayyan_kovil_name').hide()
+                                $('#parvathiamman_kovil_name').hide()
                                 if (data.donation_type > 6) {
-                                    $('#kovil_name').html("Ayyan Kovil")
+                                    $('#ayyan_kovil_name').show()
                                 } else {
-                                    $('#kovil_name').html("Parvathiamman Kovil")
+                                    $('#parvathiamman_kovil_name').show()
                                 }
                                 if (data.donation_type === 1 || data.donation_type === 7) {
                                     $('#Kodai_unit_value').html(data.unit_value)
@@ -108,6 +110,8 @@
             $("#nav-links").load("navigation?balance");
         })
     </script>
+
+
 </head>
 
 <body onload="set_language('en')">
@@ -127,7 +131,9 @@
                             <div class="col-12">
                                 <div class="text-center text-150">
                                     <i class="far fa-gopuram fa-2x text-success-m2 mr-1"></i>
-                                    <span class="text-default-d3 trn" id="kovil_name">Kovil</span>
+                                    <span class="text-default-d3 trn" id="ayyan_kovil_name">AyyanKovil</span>
+                                    <span class="text-default-d3 trn"
+                                        id="parvathiamman_kovil_name">ParvathiammanKovil</span>
                                 </div>
                             </div>
                         </div>
@@ -236,8 +242,6 @@
                                     <hr />
                                     <div>
                                         <span class="text-secondary-d1 text-105 trn">Thankyouforyoursupport</span>
-                                        <a href="javascript:printDiv()"
-                                            class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0 trn">Print</a>
                                     </div>
                                 </div>
                             </div>
@@ -246,6 +250,10 @@
                 </div>
             </div>
         </b>
+        </div>
+        <div class="container" style="position: absolute;">
+            <a href="javascript:printDiv()" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0 trn">Print</a>
+        </div>
 </body>
 
 </html>

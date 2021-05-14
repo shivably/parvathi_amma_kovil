@@ -103,9 +103,9 @@
         }
 
         .header h2 {
-            background-color: rgb(255, 255, 255);
+            margin-top: 25px;
             padding: -5px;
-            margin: 90px;
+            background-color: ivory;
         }
 
         .container form {
@@ -116,19 +116,26 @@
         i {
             cursor: pointer;
         }
+        .topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+  }
     </style>
 
 </head>
 
 <body onload="set_language('en')" style="background: url('/static/images/login.jpg')">
+   <div class="topcorner">
     <select id="language" onchange="set_preference(this.value)">
         <option value="en" selected>English</option>
         <option value="ta">தமிழ்</option>
     </select>
+   </div>
+   <div class="header">
+    <h2 style="text-align:center"><strong class="trn">WelcometoParvathiammanAyyanWebPortal</strong></h2>
+</div>
     <div class="login-box">
-        <div class="header">
-            <h2 style="text-align:center" class="trn">WelcometoParvathiammanAyyanWebPortal</h2>
-        </div>
         <!-- <img src="/static/images/login.jpg" alt="ima"> -->
         <form action="/login" class="container" method="POST">
             <h1 class="trn">Login</h1>
