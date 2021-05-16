@@ -4,8 +4,10 @@ module.exports = function (app, db) {
   app.post('/api/backup/', (req, res) => {
     try {
       var dt = (new Date()).toLocaleDateString().replace(/\//g, '-');
-      fs.promises.copyFile('app/data/sqlitedb', 'app/db_backup/backup_manual_' + dt + '.sqlite3');
-      res.status(200).send('Finished Backup of Database');
+      var filename_location = 'app/db_backup/backup_manual_' + dt + '.sqlite3'
+      fs.promises.copyFile('app/data/sqlitedb', filename_location);
+      var msg = 'Finished Backup of Database. Location = '+filename_location;
+      res.status(200).send({ response_action: 'redirect', url: '/backup', msg: msg });
     } catch (e) {
       console.dir(e)
       res.status(404).send('The file could not be copied');

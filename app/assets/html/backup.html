@@ -42,9 +42,9 @@
                 contentType: 'application/json',
                 success: function (response_data) {
                     if (response_data.response_action == 'redirect') {
-                        window.location.replace(response_data.url + "?msg=" + response_data.msg);
+                        alert(response_data.msg)
+                        window.location.replace(response_data.url);
                     }
-
                 },
             });
         }
