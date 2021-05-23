@@ -351,4 +351,8 @@ var lang_dict = {
         "en": "Welcome to Parvathiamman-Ayyan Web Portal",
         "ta": "பார்வதியம்மன்-ஐயன் வலை இணையதளத்திற்கு வருக"
     },
+    "Restore": {
+        "en": "Restore",
+        "ta": "மீட்டெடுப்பு"
+    },
 }
